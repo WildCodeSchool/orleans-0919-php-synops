@@ -9,5 +9,7 @@
 require('../scss/app.scss');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
+// eslint-disable-next-line import/no-extraneous-dependencies
 const $ = require('jquery');
+// eslint-disable-next-line import/no-extraneous-dependencies
 require('bootstrap');

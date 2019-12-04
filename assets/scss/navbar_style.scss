@@ -9,7 +9,7 @@
 
 .logo-fb, .logo-in {
     font-size: 3rem;
-    padding:  10px;
+    padding: 10px;
 }
 
 .nav-link:hover {
@@ -33,7 +33,7 @@
 }
 
 .navbar-toggler {
-  borde r-color: $warm-color;
+    borde r-color: $warm-color;
 }
 
 .navbar {
@@ -42,7 +42,7 @@
 }
 
 .dropdown:hover .dropdown-menu {
-  di  splay: block;
+    di splay: block;
 }
 
 .dropdown-menu {
@@ -63,77 +63,77 @@
 }
 
 .navbar-toggler:focus {
-    outline:0;
+    outline: 0;
 }
 
 @media screen and (min-width: 768px) {
     .nav-link {
-      font-size: 1.8vw;
-      margin: 0;
+        font-size: 1.8vw;
+        margin: 0;
     }
 
     .dropdown-item {
-      font-size: 1.6vw;
+        font-size: 1.6vw;
     }
 
-    .logo-fb , .logo-in {
-      font-size: 3vw;
+    .logo-fb, .logo-in {
+        font-size: 3vw;
     }
 
     .dropdown {
-      .dropdown-menu {
-        transition: all 0.2s;
-        transform-origin: top center;
-        transform: scale(1, 0);
-        display: block;
-      }
-
-      &:hover {
         .dropdown-menu {
-          transform: scale(1);
+            transition: all 0.2s;
+            transform-origin: top center;
+            transform: scale(1, 0);
+            display: block;
         }
-      }
+
+        &:hover {
+            .dropdown-menu {
+                transform: scale(1);
+            }
+        }
     }
 
     //Hover Effect
     .nav-effect {
-      position: relative;
+        position: relative;
     }
 
     .nav-effect::before, .nav-effect::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background-color: $warm-color;
-      transform: scaleX(0);
-      transition: transform 0.5s ease;
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $warm-color;
+        transform: scaleX(0);
+        transition: transform 0.5s ease;
     }
 
     .nav-effect::before {
-      top: 0;
-      transform-origin: center right;
+        top: 0;
+        transform-origin: center right;
     }
 
     .nav-effect:hover::before {
-      transform-origin: center left;
-      transform: scaleX(1);
+        transform-origin: center left;
+        transform: scaleX(1);
     }
 
     .nav-effect::after {
-      bottom: 0;
-      transform-origin: center left;
+        bottom: 0;
+        transform-origin: center left;
     }
 
     .nav-effect:hover::after {
-      transform-origin: center right;
-      transform: scaleX(1);
+        transform-origin: center right;
+        transform: scaleX(1);
     }
 }
 
 @media screen and (max-width: 768px) {
     .navbar.brand {
-      display: none;
-  }
+        display: none;
+    }
 }

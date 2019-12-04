@@ -1,23 +1,23 @@
 .caroussel_image {
-  object-fit: cover;
+    object-fit: cover;
 }
 
 .carousel_title_one h5{
-  color: $warm-color;
-  font-size: 2vw;
-  text-align: start;
-  text-transform: uppercase;
+    color: $warm-color;
+    font-size: 2vw;
+    text-align: start;
+    text-transform: uppercase;
 }
 
 .carousel_title_one p{
-  font-size: 3vw;
-  color: $light-color;
-  text-align: start;
-  margin-bottom: 0;
+    font-size: 3vw;
+    color: $light-color;
+    text-align: start;
+    margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  #carouselExample1{
-    display: none;
-  }
+    #carouselExample1{
+        display: none;
+    }
 }

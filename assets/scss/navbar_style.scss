@@ -1,139 +1,139 @@
 .navbar-brand {
-  padding: 0.4rem;
+    padding: 0.4rem;
 }
 
 .nav-link {
-  font-size: 1.5rem;
-  color: $light-color;
+    font-size: 1.5rem;
+    color: $light-color;
 }
 
 .logo-fb, .logo-in {
-  font-size: 3rem;
-  padding:  10px;
+    font-size: 3rem;
+    padding:  10px;
 }
 
 .nav-link:hover {
-  color: $nav-hover-color;
+    color: $nav-hover-color;
 }
 
 .logo-navbar {
-  height: 8vw;
-  width: 8vw;
+    height: 8vw;
+    width: 8vw;
 }
 
 .custom-toggler.navbar-toggler {
-  border: none;
+    border: none;
 }
 
 .custom-toggler .navbar-toggler-icon {
-  background-image: url(
-  "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(237, 181, 45)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  height: 12vw;
-  width: 12vw;
+    background-image: url(
+    "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(237, 181, 45)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    height: 12vw;
+    width: 12vw;
 }
 
 .navbar-toggler {
-  border-color: $warm-color;
+  borde r-color: $warm-color;
 }
 
 .navbar {
-  padding: 0;
-  background-color: $nav-background-color;
+    padding: 0;
+    background-color: $nav-background-color;
 }
 
 .dropdown:hover .dropdown-menu {
-  display: block;
+  di  splay: block;
 }
 
 .dropdown-menu {
-  margin: 0;
-  width: 100%;
-  background-color: $nav-background-color;
+    margin: 0;
+    width: 100%;
+    background-color: $nav-background-color;
 }
 
 .dropdown-item {
-  font-size: 1.3rem;
-  white-space: normal;
-  color: $light-color;
+    font-size: 1.3rem;
+    white-space: normal;
+    color: $light-color;
 }
 
 .dropdown-item:hover {
-  background-color: transparent;
-  color: $nav-hover-color;
+    background-color: transparent;
+    color: $nav-hover-color;
 }
 
 .navbar-toggler:focus {
-  outline:0;
+    outline:0;
 }
 
 @media screen and (min-width: 768px) {
-  .nav-link {
-    font-size: 1.8vw;
-    margin: 0;
-  }
-
-  .dropdown-item {
-    font-size: 1.6vw;
-  }
-
-  .logo-fb , .logo-in {
-    font-size: 3vw;
-  }
-
-  .dropdown {
-    .dropdown-menu {
-      transition: all 0.2s;
-      transform-origin: top center;
-      transform: scale(1, 0);
-      display: block;
+    .nav-link {
+      font-size: 1.8vw;
+      margin: 0;
     }
 
-    &:hover {
+    .dropdown-item {
+      font-size: 1.6vw;
+    }
+
+    .logo-fb , .logo-in {
+      font-size: 3vw;
+    }
+
+    .dropdown {
       .dropdown-menu {
-        transform: scale(1);
+        transition: all 0.2s;
+        transform-origin: top center;
+        transform: scale(1, 0);
+        display: block;
+      }
+
+      &:hover {
+        .dropdown-menu {
+          transform: scale(1);
+        }
       }
     }
-  }
 
-  //Hover Effect
-  .nav-effect {
-    position: relative;
-  }
+    //Hover Effect
+    .nav-effect {
+      position: relative;
+    }
 
-  .nav-effect::before, .nav-effect::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background-color: $warm-color;
-    transform: scaleX(0);
-    transition: transform 0.5s ease;
-  }
+    .nav-effect::before, .nav-effect::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $warm-color;
+      transform: scaleX(0);
+      transition: transform 0.5s ease;
+    }
 
-  .nav-effect::before {
-    top: 0;
-    transform-origin: center right;
-  }
+    .nav-effect::before {
+      top: 0;
+      transform-origin: center right;
+    }
 
-  .nav-effect:hover::before {
-    transform-origin: center left;
-    transform: scaleX(1);
-  }
+    .nav-effect:hover::before {
+      transform-origin: center left;
+      transform: scaleX(1);
+    }
 
-  .nav-effect::after {
-    bottom: 0;
-    transform-origin: center left;
-  }
+    .nav-effect::after {
+      bottom: 0;
+      transform-origin: center left;
+    }
 
-  .nav-effect:hover::after {
-    transform-origin: center right;
-    transform: scaleX(1);
-  }
+    .nav-effect:hover::after {
+      transform-origin: center right;
+      transform: scaleX(1);
+    }
 }
 
 @media screen and (max-width: 768px) {
-  .navbar.brand {
-    display: none;
+    .navbar.brand {
+      display: none;
   }
 }

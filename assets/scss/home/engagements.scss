@@ -24,6 +24,10 @@
         display: flex;
         align-items: center;
     }
+
+    .card-body {
+        width: 90%;
+    }
 }
 
 .engagement-title {
@@ -31,7 +35,7 @@
     padding-left: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.3rem;
-    hyphens: auto;
+
 }
 
 @media screen and (max-width: 768px) {

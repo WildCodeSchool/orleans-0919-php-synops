@@ -7,11 +7,17 @@
         display: flex;
         align-items: center;
     }
+
+    .picture {
+        background-color: $primary-color;
+    }
 }
 
 .engagement-title {
-        color:$light-color;
-        z-index: 99;
+    border-left: solid 5px $warm-color;
+    padding-left: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
 }
 
 @media screen and (max-width: 768px) {

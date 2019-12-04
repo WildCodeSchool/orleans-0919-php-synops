@@ -16,16 +16,16 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Tapez un titre',
+                'label' => 'Titre de l\'article',
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'Tapez un texte',
+                'label' => 'Contenu de l\'article',
                 'attr' => [
                     'rows' => 15,
                 ]
             ])
             ->add('date', DateTimeType::class, [
-                'label' => 'Sélectionnez une date de publication'
+                'label' => 'Date de publication'
             ])
         ;
     }

@@ -4,9 +4,11 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @UniqueEntity("title")
  */
 class Article
 {
@@ -18,12 +20,10 @@ class Article
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(
-     *     min = 2,
      *     max = 255,
-     *     minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
      *     maxMessage = "Votre titre ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
@@ -32,28 +32,20 @@ class Article
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank()
-     * @Assert\Length(
-     *     min = 2,
-     *     minMessage = "Votre article doit faire un minimum de {{ limit }} caractères",
-     *     )
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank()
-     * @Assert\Length(
-     *     min = 5,
-     *     max = 255,
-     *     minMessage = "Le nom de votre photo doit faire au moins {{ limit }} caractères",
-     *     maxMessage = "Le nom de votre photo doit faire un minimum de {{ limit }} caractères"
-     * )
      */
     private $picture;
 
     /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
      */
     private $date;
 

@@ -1,11 +1,11 @@
 {% extends 'layout_admin.html.twig' %}
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-{% block title %}Actualités{% endblock %}
+{% block title %}Ajouter une actualité{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un nouvel article</h1>
     <div class="container">
+        <h1 class="m-5">Ajouter un nouvel article</h1>
         <div class="AdminForm">
             {{ form_start(form) }}
             {{ form_errors(form.title) }}
@@ -15,7 +15,7 @@
             {{ form_row(form.content) }}
             {{ form_row(form.date) }}
             <div class="d-flex justify-content-center">
-                <div class="AdminAddButon">
+                <div class="adminAddButton">
                     <button class="btn btn-primary">Ajouter l'article</button>
                 </div>
             </div>
@@ -26,8 +26,10 @@
         <hr/>
         {{ form_end(form) }}
             <div class="d-flex justify-content-end">
-                <div class="AdminButtonBack">
-                <button type="button" class="btn btn-light"><a href="{{ path('article_index') }}">Revenir à la page de création d'un article</a></button>
+                <div class="adminButtonBack">
+                    <a href="{{ path('article_index') }}">
+                    <button type="button" class="btn btn-dark">Revenir à la page de création d'un article</button>
+                    </a>
                 </div>
             </div>
         </div>

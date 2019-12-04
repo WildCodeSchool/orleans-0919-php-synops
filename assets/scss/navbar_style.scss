@@ -4,7 +4,7 @@
 
 .nav-link {
   font-size: 1.5rem;
-  color: white;   //Todo: VARIABLE
+  color: $light-color;
 }
 
 .logo-fb, .logo-in {
@@ -13,7 +13,7 @@
 }
 
 .nav-link:hover {
-  color: #c2b7c4;   //Todo: VARIABLE
+  color: $nav-hover-color;
 }
 
 .logo-navbar {
@@ -33,13 +33,11 @@
 }
 
 .navbar-toggler {
-  //Todo: VARIABLE
-  border-color: yellow;
+  border-color: $warm-color;
 }
 
 .navbar {
   padding: 0;
-  //Todo: VARIABLE
   background-color: $nav-background-color;
 }
 
@@ -50,21 +48,22 @@
 .dropdown-menu {
   margin: 0;
   width: 100%;
-  //Todo: VARIABLE
   background-color: $nav-background-color;
 }
 
 .dropdown-item {
   font-size: 1.3rem;
   white-space: normal;
-  //Todo: VARIABLE
-  color: white;
+  color: $light-color;
 }
 
 .dropdown-item:hover {
   background-color: transparent;
-  //Todo: VARIABLE
-  color: lightgray;
+  color: $nav-hover-color;
+}
+
+.navbar-toggler:focus {
+  outline:0;
 }
 
 @media screen and (min-width: 768px) {

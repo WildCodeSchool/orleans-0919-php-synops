@@ -11,3 +11,9 @@
   text-align: start;
   margin-bottom: 0;
 }
+
+@media (max-width: 768px) {
+  #carouselExample1{
+    display: none;
+  }
+}

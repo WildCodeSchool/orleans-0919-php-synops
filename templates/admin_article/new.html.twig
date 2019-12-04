@@ -1,0 +1,35 @@
+{% extends 'layout_admin.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Actualités{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un nouvel article</h1>
+    <div class="container">
+        <div class="AdminForm">
+            {{ form_start(form) }}
+            {{ form_errors(form.title) }}
+            {{ form_errors(form.content) }}
+            {{ form_errors(form.date) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.content) }}
+            {{ form_row(form.date) }}
+            <div class="d-flex justify-content-center">
+                <div class="AdminAddButon">
+                    <button class="btn btn-primary">Ajouter l'article</button>
+                </div>
+            </div>
+        <hr/>
+            <div class="d-flex justify-content-center"
+                {{ include('admin_article/_form.html.twig') }}
+            </div>
+        <hr/>
+        {{ form_end(form) }}
+            <div class="d-flex justify-content-end">
+                <div class="AdminButtonBack">
+                <button type="button" class="btn btn-light"><a href="{{ path('article_index') }}">Revenir à la page de création d'un article</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

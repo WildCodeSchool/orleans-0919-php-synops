@@ -1,4 +1,5 @@
 @import "home/call";
+@import "home/concretely";
 
 .title {
     display: flex;
@@ -24,5 +25,6 @@
         text-align: center;
         width: 100%;
         padding: 0.5rem;
+        hyphens: manual;
     }
 }

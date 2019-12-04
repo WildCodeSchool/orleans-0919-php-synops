@@ -40,7 +40,7 @@
 .navbar {
   padding: 0;
   //Todo: VARIABLE
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: $nav-background-color;
 }
 
 .dropdown:hover .dropdown-menu {
@@ -51,7 +51,7 @@
   margin: 0;
   width: 100%;
   //Todo: VARIABLE
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $nav-background-color;
 }
 
 .dropdown-item {
@@ -94,6 +94,42 @@
         transform: scale(1);
       }
     }
+  }
+
+  //Hover Effect
+  .nav-effect {
+    position: relative;
+  }
+
+  .nav-effect::before, .nav-effect::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: $warm-color;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+  }
+
+  .nav-effect::before {
+    top: 0;
+    transform-origin: center right;
+  }
+
+  .nav-effect:hover::before {
+    transform-origin: center left;
+    transform: scaleX(1);
+  }
+
+  .nav-effect::after {
+    bottom: 0;
+    transform-origin: center left;
+  }
+
+  .nav-effect:hover::after {
+    transform-origin: center right;
+    transform: scaleX(1);
   }
 }
 

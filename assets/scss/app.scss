@@ -1,7 +1,22 @@
 @import "~bootstrap/scss/bootstrap";
-@import "vars";
-@import "navbar_style";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+
+@import "vars";
+@import "navbar_style";
+@import "home";
+
+body {
+    p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: $primary-font-size;
+        text-align: justify;
+    }
+}
+
+a:focus {
+    outline:0;
+}

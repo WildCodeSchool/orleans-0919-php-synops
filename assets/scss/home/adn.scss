@@ -2,4 +2,14 @@
     .container {
         border-left: $primary-color solid 10px;
     }
+
+    .highlight {
+        color:$primary-color;
+        font-weight: bold;
+        text-align: center;
+        margin-top:2rem;
+        margin-bottom: 2rem;
+        letter-spacing: 0.1rem;
+        font-size: $primary-font-size * 1.1;
+    }
 }

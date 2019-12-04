@@ -18,13 +18,13 @@
 $pic-size: 15rem;
 
 .picture {
-  border: 4px solid $primary-color;
-  height: $pic-size;
-  width: $pic-size;
+    border: 4px solid $primary-color;
+    height: $pic-size;
+    width: $pic-size;
 }
 
 .picture-align {
-  display: flex;
-  align-self: center;
-  justify-content: center;
+    display: flex;
+    align-self: center;
+    justify-content: center;
 }

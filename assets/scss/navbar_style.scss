@@ -1,15 +1,73 @@
-.logo-navbar {
-  max-height: 17vh;
-  max-width: 17vw;
+.nav-link {
+  font-size: 1.5vw;
+  color: white;   //Todo: VARIABLE
 }
 
-.navbar-brand {
-  padding: 0.5rem;
+.nav-link:hover {
+  color: #c2b7c4;   //Todo: VARIABLE
+}
+
+.logo-navbar {
+  height: 8vw;
+  width: 8vw;
+}
+
+.custom-toggler.navbar-toggler {
+  border: none;
+}
+
+.custom-toggler .navbar-toggler-icon {
+  background-image: url(
+  "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(237, 181, 45)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  height: 9vw;
+  width: 9vw;
+}
+
+.navbar-toggler {
+  //Todo: VARIABLE
+  border-color: yellow;
 }
 
 .navbar {
-  max-height: 150px;
   padding: 0;
+  //Todo: VARIABLE
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu {
+  margin: 0;
+  width: 100%;
+  //Todo: VARIABLE
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dropdown-item {
+  white-space: normal;
+  //Todo: VARIABLE
+  color: white;
+}
+
+.dropdown-item:hover {
+  background-color: transparent;
+  //Todo: VARIABLE
+  color: lightgray;
+}
+
+.dropdown {
+  .dropdown-menu {
+    transition: all 0.2s;
+    transform-origin: top center;
+    transform: scale(1, 0);
+    display: block;
+  }
+
+  &:hover {
+    .dropdown-menu {
+      transform: scale(1);
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.concretely {
+    .smaller-title {
+        font-size: $title-size/1.5;
+        padding: 0.5rem;
+    }
+
+    .container {
+        border-left: $primary-color solid 10px;
+    }
+}

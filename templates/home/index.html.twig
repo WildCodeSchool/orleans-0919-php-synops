@@ -1,5 +1,21 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <h1>Hello</h1>
+
+    <section class="call">
+        {% include 'home/_call.html.twig' %}
+    </section>
+
+    <section class="concretely">
+        {% include 'home/_concretely.html.twig' %}
+    </section>
+
+    <section class="adn">
+        {% include 'home/_adn.html.twig' %}
+    </section>
+
+    <section class="engagements">
+        {% include 'home/_engagements.html.twig' %}
+    </section>
+
 {% endblock %}

@@ -18,5 +18,4 @@ class ArticleRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Article::class);
     }
-
 }

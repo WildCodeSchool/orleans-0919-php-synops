@@ -3,10 +3,6 @@
     align-items: center;
 }
 
-p {
-    margin: 0
-}
-
 .call .card {
     border: 0;
 }
@@ -16,12 +12,6 @@ p {
     padding-bottom: 0;
     text-align: justify;
     border-left: $primary-color solid 10px;
-}
-
-.call p {
-    margin-top: 0.8rem;
-    margin-bottom: 0.8rem;
-    font-size: $primary-font-size;
 }
 
 $pic-size: 15rem;

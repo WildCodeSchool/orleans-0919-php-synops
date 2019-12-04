@@ -1,3 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 @import "vars";
 @import "home";
+
+body {
+    p {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: $primary-font-size;
+        text-align: justify;
+    }
+}

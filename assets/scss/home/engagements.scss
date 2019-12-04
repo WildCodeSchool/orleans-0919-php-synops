@@ -8,8 +8,21 @@
         align-items: center;
     }
 
+    $shadow-size : -15px;
+
     .picture {
         background-color: $primary-color;
+        box-shadow: $shadow-size $shadow-size 0px $warm-color;
+    }
+
+    svg {
+        font-size: 5rem;
+        margin: 1rem;
+    }
+
+    .card-text {
+        display: flex;
+        align-items: center;
     }
 }
 

@@ -3,14 +3,16 @@ footer {
     width: 100%;
     height: 50%;
 }
-
-address {
-    text-align: center;
-}
-
-.row {
+.t_footer {
     padding-top: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 0;
     border-bottom: solid 1px $light-color;
+}
+.b_footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+.l_display {
+    display: flex;
+    justify-content: flex-end;
 }

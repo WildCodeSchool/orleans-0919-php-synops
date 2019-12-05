@@ -5,11 +5,13 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 @import "vars";
+@import "carousel";
 @import "home";
 
 @import "footer";
 
 @import "admin/admin_article";
+
 
 body {
     p {

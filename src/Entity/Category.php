@@ -24,7 +24,7 @@ class Category
     private $sector;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Tool", mappedBy="name", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Tool", mappedBy="category")
      */
     private $tools;
 
@@ -62,7 +62,7 @@ class Category
     {
         if (!$this->tools->contains($tool)) {
             $this->tools[] = $tool;
-            $tool->setName($this);
+            $tool->setCategory($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Category
         if ($this->tools->contains($tool)) {
             $this->tools->removeElement($tool);
             // set the owning side to null (unless already changed)
-            if ($tool->getName() === $this) {
-                $tool->setName(null);
+            if ($tool->getCategory() === $this) {
+                $tool->setCategory(null);
             }
         }
 

@@ -17,24 +17,40 @@ class Tool
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tools")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tools")
+     */
+    private $category;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?Category
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function setName(?Category $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

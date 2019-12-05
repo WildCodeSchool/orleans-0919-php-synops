@@ -16,3 +16,12 @@ footer {
     display: flex;
     justify-content: flex-end;
 }
+
+.infos {
+    align-items: center;
+
+    p {
+        text-align: center;
+        color:$light-color;
+    }
+}

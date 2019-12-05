@@ -1,5 +1,5 @@
 footer {
-    background-color: #4F4D4E;
+    background-color: $secondary-color;
     width: 100%;
     height: 50%;
 }
@@ -12,5 +12,5 @@ address {
     padding-top: 2rem;
     padding-bottom: 2rem;
     border-bottom: 0;
-    border-bottom: solid 1px white;
+    border-bottom: solid 1px $light-color;
 }

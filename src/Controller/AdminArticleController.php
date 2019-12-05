@@ -73,7 +73,7 @@ class AdminArticleController extends AbstractController
         }
 
         return $this->render('admin_article/edit.html.twig', [
-            'admin_article' => $article,
+            'article' => $article,
             'form' => $form->createView(),
         ]);
     }

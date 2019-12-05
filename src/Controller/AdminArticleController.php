@@ -54,7 +54,7 @@ class AdminArticleController extends AbstractController
     public function show(Article $article): Response
     {
         return $this->render('admin_article/show.html.twig', [
-            'admin_article' => $article,
+            'article' => $article,
         ]);
     }
 
@@ -73,7 +73,7 @@ class AdminArticleController extends AbstractController
         }
 
         return $this->render('admin_article/edit.html.twig', [
-            'admin_article' => $article,
+            'article' => $article,
             'form' => $form->createView(),
         ]);
     }

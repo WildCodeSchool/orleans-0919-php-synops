@@ -5,13 +5,14 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
 @import "vars";
+@import "navbar_style";
 @import "carousel";
 @import "home";
-
 @import "footer";
 
-@import "admin/admin_article";
+@import "~rfs/scss";
 
+@import "admin/admin_article";
 
 body {
     p {
@@ -20,4 +21,8 @@ body {
         font-size: $primary-font-size;
         text-align: justify;
     }
+}
+
+a:focus {
+    outline:0;
 }

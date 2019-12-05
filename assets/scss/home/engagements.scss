@@ -1,0 +1,40 @@
+.engagements {
+    .card {
+        border: none;
+        padding-bottom: 3rem;
+    }
+
+    .col-md-8 {
+        display: flex;
+        align-items: center;
+    }
+
+    $shadow-size : -15px;
+
+    .picture {
+        background-color: $primary-color;
+        box-shadow: $shadow-size $shadow-size 0px $warm-color;
+    }
+
+    svg {
+        font-size: 5rem;
+        margin: 1rem;
+    }
+
+    .card-text {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-body {
+        width: 90%;
+    }
+}
+
+.engagement-title {
+    border-left: solid 5px $warm-color;
+    padding-left: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+
+}

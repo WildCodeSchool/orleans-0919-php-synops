@@ -4,20 +4,15 @@ footer {
     height: 50%;
 }
 
-.infos {
-    align-items: center;
-
-    p {
-        text-align: center;
-        color: $light-color;
-    }
-}
-
 .footer {
     .row {
         padding-top: 2rem;
         padding-bottom: 2rem;
         border-top: solid 1px $light-color;
+    }
+    
+    p {
+        color: $light-color;
     }
 }
 

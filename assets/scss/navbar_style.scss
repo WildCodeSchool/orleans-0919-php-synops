@@ -1,0 +1,123 @@
+.navbar-brand {
+    padding: 0.4rem;
+}
+
+.nav-link {
+    font-size: calc(15px + 6 * ((100vw - 320px) / 700));
+    color: $light-color;
+}
+
+.logo-fb, .logo-in {
+    font-size: calc(28px + 6 * ((100vw - 320px) / 680));
+    padding: 10px;
+}
+
+.nav-link:hover {
+    color: $nav-hover-color;
+}
+
+.logo-navbar {
+    height: 8vw;
+    width: 8vw;
+}
+
+.custom-toggler.navbar-toggler {
+    border: none;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url(
+    "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(237, 181, 45)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    height: calc(3rem + 3.3vw);
+    width: calc(3rem + 3.3vw);
+}
+
+.navbar-toggler {
+    border-color: $warm-color;
+}
+
+.navbar {
+    padding: 0;
+    background-color: $nav-background-color;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    margin: 0;
+    width: 100%;
+    background-color: $nav-background-color;
+}
+
+.dropdown-item {
+    font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+    white-space: normal;
+    color: $light-color;
+    padding: 10px;
+}
+
+.dropdown-item:hover {
+    background-color: transparent;
+    color: $nav-hover-color;
+}
+
+.navbar-toggler:focus {
+    outline: 0;
+}
+
+@media screen and (min-width: 992px) {
+
+    //Hover Effects
+
+    .dropdown {
+        .dropdown-menu {
+            transition: all 0.3s;
+            transform-origin: top center;
+            transform: scale(1, 0);
+            display: block;
+        }
+
+        &:hover {
+            .dropdown-menu {
+                transform: scale(1);
+            }
+        }
+    }
+
+    .nav-effect {
+        position: relative;
+    }
+
+    .nav-effect::before, .nav-effect::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background-color: $warm-color;
+        transform: scaleX(0);
+        transition: transform 0.5s ease;
+    }
+
+    .nav-effect::before {
+        top: 0;
+        transform-origin: center right;
+    }
+
+    .nav-effect:hover::before {
+        transform-origin: center left;
+        transform: scaleX(1);
+    }
+
+    .nav-effect::after {
+        bottom: 0;
+        transform-origin: center left;
+    }
+
+    .nav-effect:hover::after {
+        transform-origin: center right;
+        transform: scaleX(1);
+    }
+}

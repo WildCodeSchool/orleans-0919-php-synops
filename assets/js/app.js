@@ -12,6 +12,11 @@ require('@fortawesome/fontawesome-free/css/all.min.css');
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('@fortawesome/fontawesome-free/js/all.js');
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('@fortawesome/fontawesome-free/css/all.min.css');
+// eslint-disable-next-line import/no-extraneous-dependencies
+require('@fortawesome/fontawesome-free/js/all.js');
+
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // eslint-disable-next-line import/no-extraneous-dependencies
 

@@ -2,22 +2,35 @@
 
 namespace App\Controller;
 
+use App\Entity\Tool;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-    /**
-     * @Route ("/category", name="category")
-     */
-
+/**
+ * @Route ("/", name="offres")
+ */
 class ToolController extends AbstractController
 {
     /**
-     * @Route ("/tool", name="tool")
+     * @Route ("/", name="tool")
+     * @return Response A response instance
      */
 
-    public function tool(): Response
+    public function index(): Response
     {
-        return $this->render('offres.html.twig');
+        $tools = $this->getDoctrine()
+            ->getRepository(Tool::class)
+            ->findAll();
+
+        if (!$tools) {
+            throw $this->createNotFoundException('No program found in program\'s table.');
+        }
+
+        return $this->render(
+            'home/index.html.twig',
+            ['tools' => $tools]
+        );
     }
 }

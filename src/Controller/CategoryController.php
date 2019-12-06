@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Tool;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,9 +29,14 @@ class CategoryController extends AbstractController
             throw $this->createNotFoundException('No program found in program\'s table.');
         }
 
+        $tools = $this->getDoctrine()
+            ->getRepository(Tool::class)
+            ->findBy(['categories' => $categories]);
+
         return $this->render(
             'home/index.html.twig',
-            ['categories' => $categories]
+            ['categories' => $categories,
+            'tools' => $tools]
         );
     }
 }

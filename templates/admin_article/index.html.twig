@@ -28,7 +28,7 @@
                 <td>
                     <div class="d-flex justify-content-around">
                         <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                        <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+                        <a href="{{ path('article_edit', {'id': article.id}) }}"><i class="fas fa-pen"></i></a>
                         {% include 'admin_article/_delete_form.html.twig' %}
                     </div>
 

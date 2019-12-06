@@ -1,7 +1,9 @@
 .team-card {
     width: 43rem;
     max-width: 90%;
-    margin: 3vw;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-bottom: 5vw;
 }
 
 .team-name {
@@ -12,18 +14,4 @@
 
 .team-container {
     padding: 0;
-}
-
-.square {
-    z-index: 1000;
-    height: 15rem;
-    width: 15rem;
-    background-color: $warm-color;
-    position: relative;
-    top: 12rem;
-    left: 10rem;
-}
-
-.picture {
-    z-index: 1001;
 }

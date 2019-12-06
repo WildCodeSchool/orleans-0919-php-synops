@@ -1,0 +1,35 @@
+{% extends 'layout_admin.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Modifier une actualité{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="m-5">Modifier une actualité</h1>
+    <div class="AdminForm">
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.content) }}
+        {{ form_row(form.date) }}
+        <div class="d-flex justify-content-center">
+            <div class="adminUpdateButton">
+                {{ include('admin_article/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+            </div>
+        </div>
+        <hr/>
+        <div class="d-flex justify-content-center">
+            <div class="adminDeleteButtonArticle">
+                {{ include('admin_article/_delete_form.html.twig') }}
+            </div>
+        </div>
+        <hr/>
+        {{ form_end(form) }}
+        <div class="d-flex justify-content-end">
+            <div class="adminButtonBack">
+                <a href="{{ path('article_index') }}">
+                    <button type="button" class="btn btn-dark">Revenir à la page de création d'un article</button>
+                </a>
+            </div>
+        </div>
+{% endblock %}

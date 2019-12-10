@@ -12,9 +12,9 @@ class PartnerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('link')
-            ->add('logo')
+            ->add('name', null, ['label' => 'Nom'])
+            ->add('link', null, ['label' => 'Lien'])
+            ->add('logo', null, ['label' => 'Logo'])
         ;
     }
 

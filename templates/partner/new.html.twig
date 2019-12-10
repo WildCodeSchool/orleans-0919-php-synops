@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
-{% block title %}New Partner{% endblock %}
+{% block title %}Ajouter un Partenaire{% endblock %}
 
 {% block body %}
     <h1 class="title">Ajouter un Partenaire</h1>
@@ -8,6 +8,8 @@
 
         {{ include('partner/_form.html.twig') }}
 
-        <a href="{{ path('partner_index') }}">back to list</a>
+        <a href="{{ path('partner_index') }}">
+            <button class="btn btn-secondary">Retour aux partenaires</button>
+        </a>
     </div>
 {% endblock %}

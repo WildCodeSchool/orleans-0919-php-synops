@@ -1,0 +1,25 @@
+<div class="container-fluid container-title">
+    <div class="row no-gutters">
+        <div class="col-lg-12 col-xs-1">
+            <h1 class="title">Nos dernières actualités </h1>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class="d-flex justify-content-around">
+
+        {% for article in articles %}
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.content }}</p>
+                    <p class="card-text">{{ article.date|date('Y-m-d H:i:s') }}</p>
+                    <a href="#" class="card-link btn btn-primary">Lien vers l'article complet</a>
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+</div>

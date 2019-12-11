@@ -11,8 +11,7 @@ use App\Repository\ArticleRepository;
 class HomeController extends AbstractController
 {
     const LIMIT = 3;
-    const LIMIT_PARTNERS = 5;
-
+    
     /**
      * @Route("/", name="index")
      */

@@ -5,16 +5,15 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+@import "~rfs/scss";
 
 
 @import "navbar_style";
 @import "carousel";
-@import "home";
 @import "footer";
 
-@import "~rfs/scss";
-
-@import "admin/admin_article";
+@import "home";
+@import "admin";
 
 body {
     p {
@@ -26,5 +25,5 @@ body {
 }
 
 a:focus {
-    outline:0;
+    outline: 0;
 }

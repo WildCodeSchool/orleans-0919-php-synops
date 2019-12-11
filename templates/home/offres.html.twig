@@ -1,13 +1,12 @@
+{% for category in categories %}
 <div class="dropdown">
-    {% for category in categories %}
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {{category.sector}}
     </button>
-    {% endfor %}
-
-    {% for category in categories %}
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">{{tool.name}}</a>
-    </div>
-    {% endfor %}
+        {% for tool in category.tools %}
+             <a class="dropdown-item" href="#">{{tool.name}}</a>
+        {% endfor %}
+     </div>
 </div>
+{% endfor %}

@@ -6,22 +6,27 @@
     </div>
 </div>
 
-<div class="article">
-    <div class="d-flex justify-content-around">
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <div class="col-lg-12 col-xs-1">
 
-        {% for article in articles %}
+            <div class="justify-content-around d-flex flex-wrap">
 
-            <div class="card" style="width: 20rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ article.title }}</h5>
-                    <img src="{{ article.picture }}" class="card-img-top" alt="article picture">
-                    <p class="card-text">{{ article.content }}</p>
-                    <p class="card-text">{{ article.date|date('Y-m-d H:i:s') }}</p>
-                    <a href="#" class="card-link btn btn-primary">Lien vers l'article complet</a>
-                </div>
+                {% for article in articles %}
+
+                    <div class="card" style="width: 30rem;">
+                        <div class="card-body">
+                            <img src="{{ article.picture }}" class="card-img-top" alt="article picture">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text">{{ article.content|truncate(250,true) }}</p>
+                            <p class="date card-text">{{ article.date|date('d/m/Y H:i') }}</p>
+                            <a href="#" class="card-link btn">Lire l'article complet</a>
+                        </div>
+                    </div>
+
+                {% endfor %}
             </div>
 
-        {% endfor %}
+        </div>
     </div>
 </div>
-

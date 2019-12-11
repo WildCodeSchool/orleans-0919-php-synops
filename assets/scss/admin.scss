@@ -1,2 +1,24 @@
 @import "admin/admin_article";
 @import "admin/index";
+
+.admin-container {
+    .btn-light {
+        background-color: $secondary-color;
+        color: $light-color;
+        margin-bottom: 3rem;
+    }
+
+    .btn-light:hover {
+        background-color: lighten($secondary-color, 20%);
+    }
+
+    .btn-success {
+        background-color: $warm-color;
+        color: darken($secondary-color, 20%);
+        border: 0;
+    }
+
+    .btn-success:hover {
+        background-color: lighten($warm-color, 20%);
+    }
+}

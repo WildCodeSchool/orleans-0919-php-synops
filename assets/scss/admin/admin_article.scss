@@ -1,21 +1,6 @@
-.adminAddButton {
-
-    .btn-primary {
-        background-color: $primary-color;
-  }
-}
-
-.adminButtonBack {
-
-    .btn-light {
-        background-color: $secondary-color;
-        text-decoration: none;
-  }
-}
-
-.addFormAdminSave {
+.admin-articles {
     .btn-success {
-        background-color: $warm-color;
-  }
-}
+        display: none;
+    }
 
+}

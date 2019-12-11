@@ -14,10 +14,11 @@ class ArticleFixtures extends Fixture
         $faker = Faker\Factory::create('fr_FR');
 
         for ($i = 0; $i < 10; $i++) {
-            $article = New Article();
+            $article = new Article();
             $article->setTitle($faker->realText(50));
             $article->setContent($faker->paragraph);
             $article->setDate($faker->dateTime);
+            $article->setPicture($faker->imageUrl(200,200));
             $manager->persist($article);
         }
 

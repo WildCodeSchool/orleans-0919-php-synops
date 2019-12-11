@@ -1,0 +1,17 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Ajouter un Partenaire{% endblock %}
+
+{% block body %}
+    <h1 class="title">Ajouter un Partenaire</h1>
+
+    <div class="container mb-5">
+        <a href="{{ path('partner_index') }}">
+            <button class="btn btn-secondary">Retour aux partenaires</button>
+        </a>
+    </div>
+
+    <div class="container">
+        {{ include('admin_partner/_form.html.twig') }}
+    </div>
+{% endblock %}

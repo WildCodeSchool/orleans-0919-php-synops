@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,5 +31,4 @@ class ArticleController extends AbstractController
             'articles' => $articles,
         ]);
     }
-
 }

@@ -1,19 +1,20 @@
+@import "vars";
+
 @import "~bootstrap/scss/bootstrap";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+@import "~rfs/scss";
 
-@import "vars";
+
 @import "navbar_style";
 @import "carousel";
-@import "home";
 @import "footer";
 @import "article";
 
-@import "~rfs/scss";
-
-@import "admin/admin_article";
+@import "home";
+@import "admin";
 
 body {
     p {
@@ -25,5 +26,14 @@ body {
 }
 
 a:focus {
-    outline:0;
+    outline: 0;
+}
+
+.btn-primary {
+    background-color: $primary-color;
+    border: 0;
+}
+
+.btn-primary:hover {
+    background-color: lighten($primary-color, 20%);
 }

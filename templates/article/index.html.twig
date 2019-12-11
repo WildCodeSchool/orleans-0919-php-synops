@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid articles">
         <div class="row no-gutters">
             <div class="col-lg-12 col-xs-1">
                 <div class="row-article justify-content-around d-flex flex-wrap">
@@ -16,12 +16,10 @@
                         <div class="card" style="width: 30rem;">
                             <div class="card-body">
                                 <img src="https://via.placeholder.com/640x360" class="card-img-top" alt="article image">
-                                <h2 class="card-title">{{ article.title }}</h2>
+                                <h5 class="card-title">{{ article.title }}</h5>
                                 <p class="card-text">{{ article.content }}</p>
-                                <p class="card-text">
-                                    <small class="text-muted">
-                                        {{ article.date ? article.date|date('d/m/Y H:i') : '' }}
-                                    </small>
+                                <p class="card-text date">
+                                    {{ article.date ? article.date|date('d/m/Y H:i') : '' }}
                                 </p>
                                 <a href="#" class="btn btn-primary">Lire l'article</a>
                             </div>
@@ -33,7 +31,7 @@
     </div>
 
     <div class="btn-retour">
-        <a href="/{{ path('index') }}">
+        <a href="{{ path('index') }}">
             <button type="button" class="btn btn-dark btn-lg m-5"> Retour Accueil</button>
         </a>
     </div>

@@ -8,7 +8,7 @@
 
         <h1 class="title">Liste des articles</h1>
 
-        <div class="container-fluid admin-articles">
+        <div class="container-fluid admin-container admin-articles">
             <table class="table">
                 <thead>
                 <tr>
@@ -26,11 +26,10 @@
                         <td>{{ article.id }}</td>
                         <td><img src="{{ article.picture }}" alt="image de l'article" class="img-article"></td>
                         <td>{{ article.title }}</td>
-                        <td>{{ article.content }}</td>
+                        <td>{{ article.content|truncate(200) }}</td>
                         <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>
                         <td>
                             <div class="d-flex justify-content-around align-items-center">
-                                <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
                                 <a href="{{ path('article_edit', {'id': article.id}) }}"><i class="fas fa-pen"></i></a>
                                 {% include 'admin_article/_delete_form.html.twig' %}
                             </div>
@@ -46,11 +45,9 @@
             </table>
 
             <div class="m-5 d-flex justify-content-start">
-                <div class="adminAddButton">
-                    <a href="{{ path('article_new') }}">
-                        <button class="btn btn-primary">Créer un nouvel article</button>
-                    </a>
-                </div>
+                <a href="{{ path('article_new') }}">
+                    <button class="btn btn-primary">Créer un nouvel article</button>
+                </a>
             </div>
         </div>
 

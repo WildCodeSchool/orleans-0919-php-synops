@@ -3,7 +3,7 @@
 {% block title %}Liste des articles{% endblock %}
 
 {% block body %}
-    <div class="container-fluid">
+    <div class="container-fluid admin-articles">
         <h1 class="m-5">Liste des articles</h1>
 
         <table class="table">
@@ -23,7 +23,7 @@
                     <td>{{ article.id }}</td>
                     <td>{{ article.title }}</td>
                     <td>{{ article.content }}</td>
-                    <td>{{ article.picture }}</td>
+                    <td><img src="{{ article.picture }}" alt="image de l'article" class="img-article"></td>
                     <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>
                     <td>
                         <div class="d-flex justify-content-around align-items-center">

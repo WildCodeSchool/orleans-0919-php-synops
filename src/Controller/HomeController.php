@@ -20,7 +20,7 @@ class HomeController extends AbstractController
     public function index(ArticleRepository $articleRepository, PartnerRepository $partnerRepository)
     {
         $articles = $articleRepository->findBy([], ['date' => 'DESC'], self::LIMIT, 0);
-        $partners = $partnerRepository->findBy([], ['id'], self::LIMIT_PARTNERS, 0);
+        $partners = $partnerRepository->findBy([], ['id' => 'ASC'], self::LIMIT_PARTNERS, 0);
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,

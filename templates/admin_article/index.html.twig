@@ -10,9 +10,9 @@
             <thead>
             <tr>
                 <th>Id</th>
+                <th>Photo</th>
                 <th>Titre</th>
                 <th>Contenu</th>
-                <th>Photo</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
@@ -21,9 +21,9 @@
             {% for article in articles %}
                 <tr>
                     <td>{{ article.id }}</td>
+                    <td><img src="{{ article.picture }}" alt="image de l'article" class="img-article"></td>
                     <td>{{ article.title }}</td>
                     <td>{{ article.content }}</td>
-                    <td><img src="{{ article.picture }}" alt="image de l'article" class="img-article"></td>
                     <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>
                     <td>
                         <div class="d-flex justify-content-around align-items-center">

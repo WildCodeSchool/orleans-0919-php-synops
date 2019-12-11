@@ -14,10 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     /**
-     *  @Route("/", name="index")
+     *  @Route("/", name="list")
      * @return  Response
      */
-    public function show():Response
+    public function list():Response
     {
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
@@ -27,7 +27,7 @@ class ArticleController extends AbstractController
                 'No Articles found in program\'s table.'
             );
         }
-        return $this->render('article/index.html.twig', [
+        return $this->render('article/list.html.twig', [
             'articles' => $articles,
         ]);
     }

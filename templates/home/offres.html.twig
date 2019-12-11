@@ -1,12 +1,21 @@
-{% for category in categories %}
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{category.sector}}
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {% for tool in category.tools %}
-             <a class="dropdown-item" href="#">{{tool.name}}</a>
+<h2 class="title">NOTRE OFFRE</h2>
+<div class="accordion row justify-content-center " id="accordionDeals">
+    <div class="category_card col-xs-12 col-md-8">
+        {% for category in categories %}
+            <div class="card-header category_card " id="headingOne">
+                <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
+                        data-target="#collapse{{ category.id }}"
+                        aria-expanded="false" aria-controls="collapseOne"><h2>{{ category.sector }}</h2>
+                </button>
+            </div>
+            {% for tool in category.tools %}
+                <div id="collapse{{ category.id }}" class="collapse" aria-labelledby="headingOne"
+                     data-parent="#accordionDeals">
+                    <div class="card-body tool_card ml-5">
+                        {{ tool.name }}
+                    </div>
+                </div>
+            {% endfor %}
         {% endfor %}
-     </div>
+    </div>
 </div>
-{% endfor %}

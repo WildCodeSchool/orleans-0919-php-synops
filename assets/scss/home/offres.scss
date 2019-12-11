@@ -1,0 +1,27 @@
+.category_button {
+    border-left: solid 5px $warm-color;
+    padding-left: 1rem;
+    letter-spacing: 0.3rem;
+    text-align: start;
+}
+
+.category_card {
+    border: none;
+    background-color: $light-color;
+}
+
+.btn-link {
+    color: $secondary-color;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.btn-link:hover {
+    text-decoration: none;
+    color: $primary-color;
+}
+
+.card-body {
+    font-size: $primary-font-size;
+    list-style-type: inside;
+}

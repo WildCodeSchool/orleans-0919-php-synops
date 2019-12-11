@@ -22,7 +22,7 @@ class Partner
      * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Ce lien ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Ce lien ne peut pas faire plus de {{ limit }} caractères."
      * )
      */
     private $logo;
@@ -32,7 +32,7 @@ class Partner
      * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Ce lien ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Ce lien ne peut pas faire plus de {{ limit }} caractères."
      * )
      */
     private $name;
@@ -42,7 +42,7 @@ class Partner
      * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Ce nom ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Ce nom ne peut pas faire plus de {{ limit }} caractères."
      * )
      */
     private $link;

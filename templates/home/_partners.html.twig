@@ -1,9 +1,9 @@
 <div class="container-fluid">
-
-    {% for partner in partners %}
-        <a href="{{ partner.link }}">
-            <img src="{{ partner.logo }}" alt="Logo de l'entreprise {{ partner.name }}">
-        </a>
-    {% endfor %}
-
+    <div class="row">
+        {% for partner in partners %}
+            <a href="{{ partner.link }}">
+                <img src="{{ partner.logo }}" alt="Logo de l'entreprise {{ partner.name }}">
+            </a>
+        {% endfor %}
+    </div>
 </div>

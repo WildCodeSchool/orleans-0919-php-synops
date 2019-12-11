@@ -1,3 +1,5 @@
+@import "vars";
+
 @import "~bootstrap/scss/bootstrap";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/regular';
@@ -5,7 +7,7 @@
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import "~rfs/scss";
 
-@import "vars";
+
 @import "navbar_style";
 @import "carousel";
 @import "footer";

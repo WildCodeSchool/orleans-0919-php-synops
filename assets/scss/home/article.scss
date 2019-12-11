@@ -1,0 +1,24 @@
+.articles {
+
+    .btn {
+        background-color: $warm-color;
+        text-decoration: none;
+    }
+
+    h5 {
+        margin-top: 1em;
+        font-size: 2em;
+        color: $primary-color;
+        font-weight: bold;
+    }
+
+    p {
+        line-height: 30px;
+    }
+
+    .date {
+        font-style: italic;
+        margin-left: 11em;
+        color: $primary-color;
+    }
+}

@@ -11,16 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/partner")
+ * @Route("/admin/partner")
  */
-class PartnerController extends AbstractController
+class AdminPartnerController extends AbstractController
 {
     /**
      * @Route("/", name="partner_index", methods={"GET"})
      */
     public function index(PartnerRepository $partnerRepository): Response
     {
-        return $this->render('partner/index.html.twig', [
+        return $this->render('admin_partner/index.html.twig', [
             'partners' => $partnerRepository->findAll(),
         ]);
     }
@@ -42,8 +42,8 @@ class PartnerController extends AbstractController
             return $this->redirectToRoute('partner_index');
         }
 
-        return $this->render('partner/new.html.twig', [
-            'partner' => $partner,
+        return $this->render('admin_partner/new.html.twig', [
+            'admin_partner' => $partner,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +53,8 @@ class PartnerController extends AbstractController
      */
     public function show(Partner $partner): Response
     {
-        return $this->render('partner/show.html.twig', [
-            'partner' => $partner,
+        return $this->render('admin_partner/show.html.twig', [
+            'admin_partner' => $partner,
         ]);
     }
 
@@ -72,8 +72,8 @@ class PartnerController extends AbstractController
             return $this->redirectToRoute('partner_index');
         }
 
-        return $this->render('partner/edit.html.twig', [
-            'partner' => $partner,
+        return $this->render('admin_partner/edit.html.twig', [
+            'admin_partner' => $partner,
             'form' => $form->createView(),
         ]);
     }

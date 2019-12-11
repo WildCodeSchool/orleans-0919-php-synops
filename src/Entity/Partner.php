@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
@@ -18,16 +19,31 @@ class Partner
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Ce lien ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $logo;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Ce lien ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Ce nom ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $link;
 

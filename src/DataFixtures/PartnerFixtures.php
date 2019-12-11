@@ -56,7 +56,6 @@ class PartnerFixtures extends Fixture
             $partner->setLogo($data['logo']);
             $partner->setLink($data['link']);
             $manager->persist($partner);
-
         }
 
 

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+
+    <button class="navbar-toggler custom-toggler" data-toggle="collapse" data-target="#collapse_target">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapse_target">
+        <a class="navbar-brand d-none d-lg-block" href="{{path('index')}}">
+            <img src="{{ asset('build/images/LOGO_CARRE_BLANC.png') }}" class="logo-navbar d-inline-block align-middle"
+                 alt="logo synops">
+        </a>
+
+        <ul class="navbar-nav d-flex justify-content-around w-100">
+            <li class="nav-item d-flex align-self-center">
+                <a href="#" class="nav-link"><span class="nav-effect">PARTENAIRES</span></a>
+            </li>
+            <li class="nav-item d-flex align-self-center">
+                <a href="#" class="nav-link"><span class="nav-effect">BOÎTE À OUTILS</span></a>
+            </li>
+            </li>
+            <li class="nav-item d-flex align-self-center">
+                <a href="#" class="nav-link"><span class="nav-effect">MEMBRES</span></a>
+            </li>
+            <li class="nav-item d-flex align-self-center">
+                <a href="{{ path('article_index') }}" class="nav-link"><span class="nav-effect">ACTUS</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

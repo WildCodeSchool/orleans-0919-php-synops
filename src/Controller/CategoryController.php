@@ -15,13 +15,16 @@ class CategoryController extends AbstractController
      * @Route ("/", name="category")
      * @return Response
      */
-
     public function category(): Response
     {
-
         $categories = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findAll();
+
+        if (!$categories) {
+            throw $this
+                ->createNotFoundException("Aucune catégorie trouvé dans le tableau des catégories");
+        }
 
         return $this->render(
             'home/index.html.twig',
@@ -35,10 +38,15 @@ class CategoryController extends AbstractController
      */
     public function tool(): Response
     {
-
         $tools = $this->getDoctrine()
             ->getRepository(Tool::class)
             ->findAll();
+
+        if (!$tools) {
+            throw $this
+                ->createNotFoundException("Aucun outil trouvé dans le tableau des catégories");
+        }
+
 
         return $this->render(
             'home/index.html.twig',

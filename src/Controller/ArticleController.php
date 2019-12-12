@@ -22,11 +22,6 @@ class ArticleController extends AbstractController
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
             ->findAll();
-        if (!$articles) {
-            throw $this->createNotFoundException(
-                'No Articles found in program\'s table.'
-            );
-        }
         return $this->render('article/list.html.twig', [
             'articles' => $articles,
         ]);

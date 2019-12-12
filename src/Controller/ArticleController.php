@@ -26,4 +26,19 @@ class ArticleController extends AbstractController
             'articles' => $articles,
         ]);
     }
+
+    /**
+     *  @Route("/show/{slug}", name="show")
+     * @return  Response
+     */
+    public function show(?string $slug):Response
+    {
+        $article = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findOneBy(['title' => $slug]);
+        return $this->render('article/show.html.twig', [
+            'article' => $article,
+            'slug' => $slug
+        ]);
+    }
 }

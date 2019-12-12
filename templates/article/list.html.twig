@@ -21,7 +21,7 @@
                                 <p class="card-text date">
                                     {{ article.date ? article.date|date('d/m/Y H:i') : '' }}
                                 </p>
-                                <a href="#" class="btn btn-primary">Lire l'article</a>
+                                <a href="{{ path('article_show', {'slug': article.title}) }}" class="btn btn-primary">Lire l'article</a>
                             </div>
                         </div>
                         {% else %}

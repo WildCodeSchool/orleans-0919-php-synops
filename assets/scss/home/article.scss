@@ -21,4 +21,17 @@
         text-align: right;
         color: $primary-color;
     }
+
+    .card {
+        margin-top:2rem;
+    }
+
+    .btn btn-dark {
+        background-color: $secondary-color;
+    }
+}
+
+.all-articles {
+    display:flex;
+    justify-content:center;
 }

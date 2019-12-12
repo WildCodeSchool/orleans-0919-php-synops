@@ -9,7 +9,7 @@ use App\Repository\ArticleRepository;
 
 class HomeController extends AbstractController
 {
-    const LIMIT=3;
+    const LIMIT = 3;
 
     /**
      * @Route("/", name="index")

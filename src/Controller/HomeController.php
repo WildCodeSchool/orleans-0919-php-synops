@@ -18,8 +18,12 @@ class HomeController extends AbstractController
      * @Route("/", name="index")
      */
 
-    public function index(ArticleRepository $articleRepository, PartnerRepository $partnerRepository, CategoryRepository $categoryRepository, ToolRepository $toolRepository)
-    {
+    public function index(
+        ArticleRepository $articleRepository,
+        PartnerRepository $partnerRepository,
+        CategoryRepository $categoryRepository,
+        ToolRepository $toolRepository
+    ) {
         $articles = $articleRepository->findBy([], ['date' => 'DESC'], self::LIMIT, 0);
         $partners = $partnerRepository->findAll();
         $categories = $categoryRepository->findAll();

@@ -3,12 +3,12 @@
 }
 
 .nav-link {
-    font-size: calc(15px + 6 * ((100vw - 320px) / 700));
+    @include font-size(26px);
     color: $light-color;
 }
 
 .logo-fb, .logo-in {
-    font-size: calc(28px + 6 * ((100vw - 320px) / 680));
+    @include font-size(36px);
     padding: 10px;
 }
 
@@ -41,21 +41,14 @@
     background-color: $nav-background-color;
 }
 
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-
 .dropdown-menu {
     margin: 0;
-    width: 100%;
     background-color: $nav-background-color;
 }
 
 .dropdown-item {
-    font-size: calc(14px + 6 * ((100vw - 320px) / 680));
-    white-space: normal;
+    @include font-size(25px);
     color: $light-color;
-    padding: 10px;
 }
 
 .dropdown-item:hover {
@@ -69,22 +62,7 @@
 
 @media screen and (min-width: 992px) {
 
-    //Hover Effects
-
-    .dropdown {
-        .dropdown-menu {
-            transition: all 0.3s;
-            transform-origin: top center;
-            transform: scale(1, 0);
-            display: block;
-        }
-
-        &:hover {
-            .dropdown-menu {
-                transform: scale(1);
-            }
-        }
-    }
+    //Hover Effect
 
     .nav-effect {
         position: relative;

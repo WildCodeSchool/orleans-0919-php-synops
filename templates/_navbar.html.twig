@@ -1,40 +1,39 @@
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-xl fixed-top">
 
     <button class="navbar-toggler custom-toggler" data-toggle="collapse" data-target="#collapse_target">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="collapse_target">
-        <a class="navbar-brand d-none d-lg-block" href="#">
+        <a class="navbar-brand d-none d-xl-block" href="#">
             <img src="{{ asset('build/images/LOGO_CARRE_BLANC.png') }}" class="logo-navbar d-inline-block align-middle" alt="logo synops">
         </a>
 
-        <ul class="navbar-nav d-flex justify-content-around w-100">
-            <li class="nav-item d-flex align-self-center">
+        <ul class="navbar-nav d-flex justify-content-around align-items-center w-100">
+            <li class="nav-item d-flex ">
                 <a href="#" class="nav-link"><span class="nav-effect">NOTRE OFFRE</span></a>
             </li>
             <li class="nav-item d-flex align-self-center">
+                <a href="#team" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
+            </li>
+            <li class="nav-item d-flex">
                 <a href="#" class="nav-link"><span class="nav-effect">ESPACE CLIENT</span></a>
             </li>
-            <li class="nav-item dropdown d-flex flex-column mt-auto mb-auto">
-                <div class="align-self-center">
-                    <a href="#" class="nav-link dropdown" data-toggle="dropdown"
-                       data-target="dropdown_target"><span class="nav-effect">BOITE À OUTILS</span></a>
-                </div>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown text-center" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="nav-effect">BOITE À OUTILS <i class="fas fa-1x fa-chevron-down align-middle"></i></span>
+                </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                    <a href="" class="dropdown-item">Conduite et gestion de projets</a>
+                    <a href="" class="dropdown-item px-5">Conduite et gestion de projets</a>
+                    <div class="dropdown-divider px-5"></div>
+                    <a href="" class="dropdown-item px-5 align-middle">Accompagnement RH</a>
+                    <div class="dropdown-divider px-5"></div>
+                    <a href="" class="dropdown-item px-5">Marketing & communication</a>
                     <div class="dropdown-divider"></div>
-                    <a href="" class="dropdown-item">Accompagnement RH</a>
+                    <a href="" class="dropdown-item px-5">Appui commercial</a>
                     <div class="dropdown-divider"></div>
-                    <a href="" class="dropdown-item">Marketing & communication</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="" class="dropdown-item">Appui commercial</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="" class="dropdown-item">Formation</a>
+                    <a href="" class="dropdown-item px-5">Formation</a>
                 </div>
-            </li>
-            <li class="nav-item d-flex align-self-center">
-                <a href="#" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
             </li>
             <li class="nav-item d-flex align-self-center">
                 <a href="#" class="nav-link"><span class="nav-effect">CONNEXION</span></a>

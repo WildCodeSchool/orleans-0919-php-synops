@@ -2,18 +2,28 @@
 
 namespace App\Controller;
 
+use App\Repository\PartnerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\ArticleRepository;
 
 class HomeController extends AbstractController
 {
+    const LIMIT = 3;
+    
     /**
      * @Route("/", name="index")
      */
 
-    public function index() : Response
+    public function index(ArticleRepository $articleRepository, PartnerRepository $partnerRepository)
     {
-        return $this->render('home/index.html.twig');
+        $articles = $articleRepository->findBy([], ['date' => 'DESC'], self::LIMIT, 0);
+        $partners = $partnerRepository->findAll();
+
+        return $this->render('home/index.html.twig', [
+            'articles' => $articles,
+            'partners' => $partners
+        ]);
     }
 }

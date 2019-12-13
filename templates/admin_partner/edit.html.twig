@@ -1,13 +1,21 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
-{% block title %}Edit Partner{% endblock %}
+{% block title %}Éditer Partenaire{% endblock %}
 
 {% block body %}
-    <h1>Edit Partner</h1>
+    <div class="container-content">
+        <h1 class="title">Éditer {{ partner.name }}</h1>
 
-    {{ include('admin_partner/_form.html.twig', {'button_label': 'Update'}) }}
+        <div class="container mb-5">
+            <a href="{{ path('partner_index') }}">
+                <button class="btn btn-secondary">Retour aux partenaires</button>
+            </a>
+        </div>
 
-    <a href="{{ path('partner_index') }}">back to list</a>
+        <div class="container">
+            {{ include('admin_partner/_form.html.twig') }}
 
-    {{ include('admin_partner/_delete_form.html.twig') }}
+            {{ include('admin_partner/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

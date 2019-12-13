@@ -4,6 +4,11 @@
 @import "home/adn";
 @import "home/engagements";
 @import "home/team";
+@import "home/partners";
+
+html {
+    scroll-behavior: smooth;
+}
 
 .title {
     display: flex;

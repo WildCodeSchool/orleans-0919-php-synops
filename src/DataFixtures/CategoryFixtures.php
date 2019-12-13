@@ -13,7 +13,7 @@ class CategoryFixtures extends Fixture
     {
         $faker = Faker\Factory::create();
 
-        for ($i=0; $i<5 ; $i++){
+        for ($i=0; $i<5; $i++) {
             $category = new Category();
             $category->setSector($faker->realText(50));
             $this->addReference('category_' . $i, $category);

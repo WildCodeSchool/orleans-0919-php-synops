@@ -3,12 +3,12 @@
 }
 
 .nav-link {
-    @include font-size(26px);
+    @include font-size(25px);
     color: $light-color;
 }
 
 .logo-fb, .logo-in {
-    @include font-size(36px);
+    @include font-size(37px);
     padding: 10px;
 }
 
@@ -17,8 +17,7 @@
 }
 
 .logo-navbar {
-    height: 8vw;
-    width: 8vw;
+    height: 7.5vw;
 }
 
 .custom-toggler.navbar-toggler {
@@ -38,7 +37,7 @@
 
 .navbar {
     padding: 0;
-    background-color: $nav-background-color;
+    background-color: $primary-color;
 }
 
 .dropdown-menu {

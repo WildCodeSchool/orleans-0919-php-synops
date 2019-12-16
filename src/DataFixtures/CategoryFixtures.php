@@ -5,18 +5,25 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker;
 
 class CategoryFixtures extends Fixture
 {
+    const CATEGORIES = [
+        'Conduite et gestion de projets',
+        'Appui marketing & communication',
+        'Formation',
+        'Accompagnement RH',
+        'Appui commercial'
+    ];
+
     public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create();
-
-        for ($i=0; $i<5; $i++) {
+        $loop = 0;
+        foreach (self::CATEGORIES as $sector) {
             $category = new Category();
-            $category->setSector($faker->realText(50));
-            $this->addReference('category_' . $i, $category);
+            $category->setSector($sector);
+            $this->addReference('category_' . $loop, $category);
+            $loop++;
             $manager->persist($category);
         }
 

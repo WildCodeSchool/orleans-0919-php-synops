@@ -18,12 +18,10 @@ class CategoryFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $loop = 0;
-        foreach (self::CATEGORIES as $sector) {
+        foreach (self::CATEGORIES as $key => $sector) {
             $category = new Category();
             $category->setSector($sector);
-            $this->addReference('category_' . $loop, $category);
-            $loop++;
+            $this->addReference('categories_' . $key, $category);
             $manager->persist($category);
         }
 

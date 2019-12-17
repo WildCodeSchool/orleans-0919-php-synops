@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Nous contacter{% endblock %}
+
+{% block body %}
+
+    <div class="ContactForm mt-5 container">
+        {{ form_start(our_form) }}
+        {{ form_widget(our_form) }}
+        <button type="submit" name="btnSearch">Envoyer</button>
+        {{ form_end(our_form) }}
+    </div>
+
+{% endblock %}

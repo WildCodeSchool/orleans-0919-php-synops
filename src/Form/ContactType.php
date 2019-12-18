@@ -17,10 +17,14 @@ class ContactType extends AbstractType
         $builder
             ->add('lastname', TextType::class, ['label' => 'Votre nom'])
             ->add('firstname', TextType::class, ['label' => 'Votre prénom'])
-            ->add('email', EmailType::class)
-            ->add('enterprise', TextType::class, ['label' => 'Votre entreprise'])
+            ->add('email', EmailType::class, ['label' => 'Votre email'])
+            ->add('enterprise', TextType::class, ['label' => 'Le nom de votre entreprise'])
             ->add('activity', TextType::class, ['label' => 'Votre secteur d\'activité'])
-            ->add('message', TextareaType::class, ['label' => 'Votre message']);
+            ->add('message', TextareaType::class, [
+                'label' => 'Votre message',
+                'attr' => [
+                    'rows' => 5,
+            ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

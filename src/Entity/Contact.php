@@ -18,31 +18,50 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Votre prénom ne peut pas faire plus de {{ limit }} caractères"
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Votre nom ne peut pas faire plus de {{ limit }} caractères"
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Votre email ne peut pas faire plus de {{ limit }} caractères"
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Le nom de votre entreprise ne peut pas faire plus de {{ limit }} caractères"
      */
     private $enterprise;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Votre domaine d'activité ne peut pas faire plus de {{ limit }} caractères"
      */
     private $activity;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      */
     private $message;
 

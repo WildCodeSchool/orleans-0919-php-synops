@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class ContactController extends AbstractController
 {
     /**
@@ -18,7 +17,6 @@ class ContactController extends AbstractController
     public function index(Request $request)
     {
         $contact = new Contact();
-        $form = $this->createForm(ContactType::class);
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

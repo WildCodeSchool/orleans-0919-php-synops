@@ -24,7 +24,7 @@ class ContactType extends AbstractType
                 'label' => 'Votre message',
                 'attr' => [
                     'rows' => 5,
-            ]]);
+                    ]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

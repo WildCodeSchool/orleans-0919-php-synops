@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+
+    {% include 'home/_carousel.html.twig' %}
+
+    <section class="articles" id="articles">
+        {% include 'home/_article.html.twig' %}
+    </section>
+
+    <section class="call" id="call">
+        {% include 'home/_call.html.twig' %}
+    </section>
+
+    <section class="concretely"  id="concretely">
+        {% include 'home/_concretely.html.twig' %}
+    </section>
+
+    <section class="adn"  id="adn">
+        {% include 'home/_adn.html.twig' %}
+    </section>
+
+    <section class="engagements"  id="engagements">
+        {% include 'home/_engagements.html.twig' %}
+    </section>
+
+    <section class="deal" id="deal">
+        {% include 'home/_deal.html.twig' %}
+    </section>
+
+    <section class="team"  id="team">
+        {% include 'home/_team.html.twig' %}
+    </section>
+
+    <section class="partners"  id="partners">
+        {% include 'home/_partners.html.twig' %}
+    </section>
+
+{% endblock %}
+

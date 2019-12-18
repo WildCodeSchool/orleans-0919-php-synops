@@ -1,0 +1,30 @@
+.call {
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .card {
+        border: 0;
+    }
+
+    .card-body {
+        padding-top: 0;
+        padding-bottom: 0;
+        border-left: $primary-color solid 10px;
+  }
+}
+
+$pic-size: 15rem;
+
+.picture {
+    border: 7px solid $primary-color;
+    height: $pic-size;
+    width: $pic-size;
+}
+
+.picture-align {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}

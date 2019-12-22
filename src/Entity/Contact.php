@@ -2,66 +2,59 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\ContactRepository")
- */
 class Contact
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Votre prénom ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Votre prénom {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Votre nom ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Votre nom {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $lastname;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
+     * @Assert\Email()
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Votre email ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Votre email {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Le nom de votre entreprise ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Le nom de votre entreprise {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $enterprise;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Length(
      *     max = 255,
-     *     maxMessage = "Votre domaine d'activité ne peut pas faire plus de {{ limit }} caractères"
+     *     maxMessage = "Votre activité {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $activity;
 
     /**
-     * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
      */
     private $message;
 

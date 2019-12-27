@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="Cet email est déjà utilisé.")
  */
 class User implements UserInterface
 {
@@ -19,6 +22,11 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="Veuillez remplir ce champs.")
+     * @Assert\Length(max="180", maxMessage="Cet email est trop long."))
+     * @Assert\Email(
+     *     message = "L' email '{{ value }}' n'est pas valide."
+     * )
      */
     private $email;
 
@@ -30,6 +38,8 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Veuillez remplir ce champs.")
+     * @Assert\Length(max="180", maxMessage="Ce mot de passe est trop long."))
      */
     private $password;
 

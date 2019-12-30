@@ -12,6 +12,7 @@
 @import "carousel";
 @import "footer";
 @import "article";
+@import "login";
 
 @import "home";
 @import "admin";
@@ -27,7 +28,7 @@ body {
     }
 }
 
-a:focus {
+a:focus, img:focus {
     outline: 0;
 }
 

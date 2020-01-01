@@ -24,15 +24,10 @@
                     <span class="nav-effect">BOITE À OUTILS <i class="fas fa-1x fa-chevron-down align-middle"></i></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                    <a href="" class="dropdown-item px-5">Conduite et gestion de projets</a>
-                    <div class="dropdown-divider px-5"></div>
-                    <a href="" class="dropdown-item px-5 align-middle">Accompagnement RH</a>
-                    <div class="dropdown-divider px-5"></div>
-                    <a href="" class="dropdown-item px-5">Marketing & communication</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="" class="dropdown-item px-5">Appui commercial</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="" class="dropdown-item px-5">Formation</a>
+                    {% for category in categories %}
+                        <a href="{{ path('tool', {'slug': category.slug }) }}" class="dropdown-item px-5">{{ category.sector }}</a>
+                        <div class="dropdown-divider px-5"></div>
+                    {% endfor %}
                 </div>
             </li>
 

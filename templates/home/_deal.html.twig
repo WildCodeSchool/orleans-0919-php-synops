@@ -9,8 +9,7 @@
                 </button>
             </div>
             {% for tool in category.tools %}
-                <div id="collapse{{ category.id }}" class="collapse" aria-labelledby="headingOne"
-                     data-parent="#accordionDeals">
+                <div id="collapse{{ category.id }}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionDeals">
                     <div class="card-body tool_card ml-3">
                         <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ tool.name }}
                     </div>

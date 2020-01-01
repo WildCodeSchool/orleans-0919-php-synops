@@ -1,3 +1,13 @@
 {% extends 'layout.html.twig' %}
 
-<h1 class="title">{{ tool.name }}</h1>
+{% block title %}Boîte à outils{% endblock %}
+
+{% block body %}
+
+    <h1 class="title container-content">{{ category.sector }}</h1>
+
+    {% for tool in category.tools %}
+        <h2>{{ tool.name }}</h2>
+    {% endfor %}
+
+{% endblock %}

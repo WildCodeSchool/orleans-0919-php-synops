@@ -12,11 +12,14 @@
 @import "carousel";
 @import "footer";
 @import "article";
+@import "login";
 
 @import "home";
 @import "admin";
+@import "contact";
 
 body {
+
     p {
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -25,7 +28,7 @@ body {
     }
 }
 
-a:focus {
+a:focus, img:focus {
     outline: 0;
 }
 

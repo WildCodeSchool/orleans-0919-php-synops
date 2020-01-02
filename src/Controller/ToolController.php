@@ -19,7 +19,7 @@ class ToolController extends AbstractController
     /**
      * @Route("/", name="tool_index", methods={"GET"})
      */
-    public function index(ToolRepository $toolRepository,  CategoryRepository $categoryRepository): Response
+    public function index(ToolRepository $toolRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('tool/index.html.twig', [
             'tools' => $toolRepository->findAll(),

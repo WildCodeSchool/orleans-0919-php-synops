@@ -6,7 +6,8 @@
 
     <div class="collapse navbar-collapse" id="collapse_target">
         <a class="navbar-brand d-none d-xl-block">
-            <img src="{{ asset('build/images/LOGO_CARRE_BLANC.png') }}" class="logo-navbar d-inline-block align-middle" alt="logo synops">
+            <img src="{{ asset('build/images/LOGO_CARRE_BLANC.png') }}" class="logo-navbar d-inline-block align-middle"
+                 alt="logo synops">
         </a>
 
         <ul class="navbar-nav d-flex justify-content-around align-items-center w-100">
@@ -14,18 +15,21 @@
                 <a href="#" class="nav-link"><span class="nav-effect">NOTRE OFFRE</span></a>
             </li>
             <li class="nav-item d-flex align-self-center">
-                <a href="/#team" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
+                <a href="#team" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
             </li>
             <li class="nav-item d-flex">
                 <a href="#" class="nav-link"><span class="nav-effect">ESPACE CLIENT</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown text-center" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="nav-effect">BOITE À OUTILS <i class="fas fa-1x fa-chevron-down align-middle"></i></span>
+                <a class="nav-link dropdown text-center" href="#" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    <span class="nav-effect">BOITE À OUTILS <i
+                                class="fas fa-1x fa-chevron-down align-middle"></i></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown_target">
                     {% for category in categories %}
-                        <a href="{{ path('tool', {'slug': category.slug }) }}" class="dropdown-item px-5">{{ category.sector }}</a>
+                        <a href="{{ path('tool', {'slug': category.slug }) }}"
+                           class="dropdown-item px-5">{{ category.sector }}</a>
                         <div class="dropdown-divider px-5"></div>
                     {% endfor %}
                 </div>

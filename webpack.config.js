@@ -13,6 +13,12 @@ Encore
         // optional target path, relative to the output dir
         to: 'images/[path][name].[ext]',
 
+        // eslint-disable-next-line no-dupe-keys
+        from: './assets/PDF',
+        // optional target path, relative to the output dir
+        // eslint-disable-next-line no-dupe-keys
+        to: 'PDF/[path][name].[ext]',
+
         // if versioning is enabled, add the file hash too
         // to: 'images/[path][name].[hash:8].[ext]',
 

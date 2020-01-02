@@ -1,11 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
-{% block title %}New Tool{% endblock %}
+{% block title %}Ajouter un outil{% endblock %}
 
 {% block body %}
-    <h1>Create new Tool</h1>
+    <div class="container-content">
+        <h1>Ajouter un outil</h1>
 
-    {{ include('tool/_form.html.twig') }}
+        <div class="container">
+            {{ include('tool/_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('tool_index') }}">back to list</a>
+        <div class="container mb-5">
+            <a href="{{ path('tool_index') }}"> <button class="btn btn-secondary">Retour aux outils</button></a>
+        </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,52 @@
+.admin_deal {
+    .category_button {
+        border-left: solid 5px $warm-color;
+        padding-left: 1rem;
+        letter-spacing: 0.2rem;
+        text-align: start;
+    }
+
+    .card{
+        border: none;
+    }
+
+    .card_button {
+        background-color: $light-color;
+    }
+
+    .btn-link {
+        color: $secondary-color;
+        font-size: 2rem;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    .btn-link:hover {
+        text-decoration: none;
+        color: $primary-color;
+    }
+
+    .card-body {
+        font-size: $primary-font-size;
+    }
+
+    .fa-chevron-down:hover, .fa-chevron-up:hover{
+        color: $warm-color;
+    }
+
+    h3 {
+        font-size: calc(22px + 6 * ((100vw - 320px) / 700));
+    }
+
+    button[aria-expanded=true] .fa-chevron-down {
+        display: none;
+    }
+
+    button[aria-expanded=false] .fa-chevron-up {
+        display: none;
+    }
+
+    .pointer{
+        cursor:pointer;
+    }
+}

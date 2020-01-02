@@ -28,9 +28,15 @@ class Category
      */
     private $tools;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="categories")
+     */
+    private $users;
+
     public function __construct()
     {
         $this->tools = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -76,6 +82,34 @@ class Category
             if ($tool->getCategory() === $this) {
                 $tool->setCategory(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->contains($user)) {
+            $this->users->removeElement($user);
+            $user->removeCategory($this);
         }
 
         return $this;

@@ -3,15 +3,15 @@
 {% block title %}Outils : {{ category.sector }}{% endblock %}
 
 {% block body %}
-
     <h1 class="title container-content">{{ category.sector }}</h1>
 
-    <div class="container deal">
+    <div class="container-fluid deal tools">
         <div id="accordion">
             {% for tool in category.tools %}
                 <div class="card">
                     <div class="card-header card_button" id="headingOne">
-                        <button class="btn btn-link mb-3 text-left category_button" type="button" data-toggle="collapse"
+                        <button class="btn btn-link mb-3 text-left category_button" type="button"
+                                data-toggle="collapse"
                                 data-target="#collapse{{ tool.id }}"
                                 aria-expanded="false" aria-controls="collapseOne">
                             <h2>{{ tool.name }} <i class="fas fa-chevron-down ml-5"></i><i
@@ -22,15 +22,44 @@
                     <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
                          data-parent="#accordion">
                         <div class="card-body">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto eaque fuga pariatur
-                            quam
-                            vitae! Ab distinctio dolore non placeat quasi! Eaque enim, facilis inventore porro repellat
-                            ullam. Doloremque nobis, sed!
+                            <div class="d-flex">
+                                <div class="icon">
+                                    <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                                </div>
+                                <p class="ml-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+                                    eaque
+                                    fuga pariatur
+                                    quam vitae! Ab distinctio dolore non placeat quasi! Eaque enim, facilis inventore
+                                    porro
+                                    repellat ullam. Doloremque nobis, sed!</p>
+                            </div>
+                            <div class="d-flex">
+                                <div class="icon">
+                                    <i class="fas fa-file-word fa-3x text-primary"></i>
+                                </div>
+                                <p class="ml-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+                                    eaque
+                                    fuga pariatur
+                                    quam vitae! Ab distinctio dolore non placeat quasi! Eaque enim, facilis inventore
+                                    porro
+                                    repellat ullam. Doloremque nobis, sed!</p>
+                            </div>
+                            <div class="d-flex">
+                                <div class="icon">
+                                    <i class="fas fa-file-excel fa-3x text-success"></i>
+                                </div>
+                                <p class="ml-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+                                    eaque
+                                    fuga pariatur
+                                    quam vitae! Ab distinctio dolore non placeat quasi! Eaque enim, facilis inventore
+                                    porro
+                                    repellat ullam. Doloremque nobis, sed!</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             {% endfor %}
         </div>
     </div>
-
 {% endblock %}

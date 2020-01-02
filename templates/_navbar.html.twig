@@ -5,17 +5,18 @@
     </button>
 
     <div class="collapse navbar-collapse" id="collapse_target">
-        <a class="navbar-brand d-none d-xl-block">
+
+        <a class="navbar-brand d-none d-xl-block" href="{{ path('index') }}">
             <img src="{{ asset('build/images/LOGO_CARRE_BLANC.png') }}" class="logo-navbar d-inline-block align-middle"
                  alt="logo synops">
         </a>
 
         <ul class="navbar-nav d-flex justify-content-around align-items-center w-100">
             <li class="nav-item d-flex ">
-                <a href="#" class="nav-link"><span class="nav-effect">NOTRE OFFRE</span></a>
+                <a href="{{ path('index') }}#deal" class="nav-link"><span class="nav-effect">NOTRE OFFRE</span></a>
             </li>
             <li class="nav-item d-flex align-self-center">
-                <a href="#team" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
+                <a href="{{ path('index') }}#team" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
             </li>
             <li class="nav-item d-flex">
                 <a href="#" class="nav-link"><span class="nav-effect">ESPACE CLIENT</span></a>
@@ -47,7 +48,7 @@
                     <a href="#" class="nav-link logo-in p-2"><i class="fab fa-linkedin"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link logo-fb p-2"><i class="fab fa-facebook-square"></i></a>
+                    <a href="/contact" class="nav-link logo-fb p-2"><i class="fas fa-envelope-square"></i></a>
                 </li>
 
             </div>

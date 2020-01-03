@@ -12,16 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/tool")
+ * @Route("/admin_tool")
  */
-class ToolController extends AbstractController
+class AdminToolController extends AbstractController
 {
     /**
      * @Route("/", name="tool_index", methods={"GET"})
      */
     public function index(ToolRepository $toolRepository, CategoryRepository $categoryRepository): Response
     {
-        return $this->render('tool/index.html.twig', [
+        return $this->render('admin_tool/index.html.twig', [
             'tools' => $toolRepository->findAll(),
             'categories' => $categoryRepository->findAll()
         ]);
@@ -44,8 +44,8 @@ class ToolController extends AbstractController
             return $this->redirectToRoute('tool_index');
         }
 
-        return $this->render('tool/new.html.twig', [
-            'tool' => $tool,
+        return $this->render('admin_tool/new.html.twig', [
+            'admin_tool' => $tool,
             'form' => $form->createView(),
         ]);
     }
@@ -55,8 +55,8 @@ class ToolController extends AbstractController
      */
     public function show(Tool $tool): Response
     {
-        return $this->render('tool/show.html.twig', [
-            'tool' => $tool,
+        return $this->render('admin_tool/show.html.twig', [
+            'admin_tool' => $tool,
         ]);
     }
 
@@ -74,8 +74,8 @@ class ToolController extends AbstractController
             return $this->redirectToRoute('tool_index');
         }
 
-        return $this->render('tool/edit.html.twig', [
-            'tool' => $tool,
+        return $this->render('admin_tool/edit.html.twig', [
+            'admin_tool' => $tool,
             'form' => $form->createView(),
         ]);
     }

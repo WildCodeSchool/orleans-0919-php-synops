@@ -21,6 +21,7 @@ $pic-size: 15rem;
     border: 7px solid $primary-color;
     height: $pic-size;
     width: $pic-size;
+    object-fit: cover;
 }
 
 .picture-align {

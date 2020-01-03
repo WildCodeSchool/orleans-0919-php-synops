@@ -40,6 +40,7 @@ class AdminToolController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tool);
             $entityManager->flush();
+            $this->addFlash('success', 'L\'outil a été créé');
 
             return $this->redirectToRoute('tool_index');
         }
@@ -70,6 +71,7 @@ class AdminToolController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'L\'outil a été modifié');
 
             return $this->redirectToRoute('tool_index');
         }
@@ -89,6 +91,7 @@ class AdminToolController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($tool);
             $entityManager->flush();
+            $this->addFlash('danger', 'L\'outil a été supprimé');
         }
 
         return $this->redirectToRoute('tool_index');

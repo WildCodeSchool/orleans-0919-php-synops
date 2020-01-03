@@ -4,14 +4,15 @@
 
 {% block body %}
     <div class="container-content">
-        <h1>Ajouter un outil</h1>
+        <h1 class="title">Ajouter un outil</h1>
+
+        <div class="container mb-5">
+            <a href="{{ path('tool_index') }}"> <button class="btn btn-secondary">Retour aux outils</button></a>
+        </div>
 
         <div class="container">
             {{ include('tool/_form.html.twig') }}
         </div>
 
-        <div class="container mb-5">
-            <a href="{{ path('tool_index') }}"> <button class="btn btn-secondary">Retour aux outils</button></a>
-        </div>
     </div>
 {% endblock %}

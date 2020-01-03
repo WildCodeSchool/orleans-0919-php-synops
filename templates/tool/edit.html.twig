@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container-content">
-        <h1>Éditer un outil</h1>
+        <h1 class="title">Éditer un outil</h1>
 
         <div class="container mb-5">
             <a href="{{ path('tool_index') }}">
@@ -12,10 +12,8 @@
             </a>
         </div>
 
-        <div class="container">
-            {{ include('tool/_form.html.twig', {'button_label': 'Update'}) }}
-
-            {{ include('tool/_delete_form.html.twig') }}
+        <div class="container adminUpdateButton">
+            {{ include('tool/_form.html.twig', {'button_label': 'Mise à jour'}) }}
         </div>
     </div>
 {% endblock %}

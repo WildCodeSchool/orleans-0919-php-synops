@@ -5,8 +5,7 @@
  * (and its CSS file) in your base layout (base.html.twig).
  */
 
-// any CSS you require will output into a single css file (app.css in this case)
-require('../scss/app.scss');
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('@fortawesome/fontawesome-free/css/all.min.css');
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -27,6 +26,8 @@ const $ = require('jquery');
 // eslint-disable-next-line import/no-extraneous-dependencies
 require('bootstrap');
 
+// any CSS you require will output into a single css file (app.css in this case)
+require('../scss/app.scss');
 // or you can include specific pieces
 // require('bootstrap/js/dist/tooltip');
 // require('bootstrap/js/dist/popover');

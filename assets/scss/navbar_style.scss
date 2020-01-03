@@ -3,7 +3,7 @@
 }
 
 .nav-link {
-    @include font-size(25px);
+    @include font-size(24px);
     color: $light-color;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .logo-navbar {
-    height: 7.5vw;
+    height: 7.3vw;
 }
 
 .custom-toggler.navbar-toggler {

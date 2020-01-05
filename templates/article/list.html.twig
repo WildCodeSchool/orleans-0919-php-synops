@@ -16,8 +16,8 @@
                         <div class="card" style="width: 30rem;">
                             <div class="card-body">
                                 <img src="https://via.placeholder.com/640x360" class="card-img-top" alt="article image">
-                                <h5 class="card-title">{{ article.title }}</h5>
-                                <p class="card-text">{{ article.content }}</p>
+                                <h5 class="card-title">{{ article.title|raw }}</h5>
+                                <p class="card-text">{{ article.content|raw }}</p>
                                 <p class="card-text date">
                                     {{ article.date ? article.date|date('d/m/Y H:i') : '' }}
                                 </p>

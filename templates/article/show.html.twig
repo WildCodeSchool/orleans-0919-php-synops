@@ -4,7 +4,7 @@
     <div class="container-fluid container-title container-article">
         <div class="row no-gutters">
             <div class="col-lg-12 col-xs-1">
-                <h1 class="title"> {{ article.title }}</h1>
+                <h1 class="title"> {{ article.title|raw }}</h1>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
         <div class="card mb-3 border-none">
             <img src="https://via.placeholder.com/640x200" class="card-img-top" alt="article image">
             <div class="card-body">
-                <p class="card-text">{{ article.content }}</p>
+                <p class="card-text">{{ article.content|raw }}</p>
             </div>
         </div>
     </div>

@@ -15,3 +15,15 @@
 .team-container {
     padding: 0;
 }
+
+.team-square {
+    height: 200px;
+    width: 200px;
+    position: relative;
+    right: 50px;
+    bottom: 30px;
+}
+
+.rounded-circle {
+    position: absolute;
+}

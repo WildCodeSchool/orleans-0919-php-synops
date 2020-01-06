@@ -1,0 +1,13 @@
+.sticky-top {
+    position: sticky;
+    top: calc(100vh - 100px);
+}
+
+$circle-size: 3rem;
+
+.circle {
+    background-color: $light-color;
+    width: $circle-size;
+    height: $circle-size;
+    text-align:center;
+}

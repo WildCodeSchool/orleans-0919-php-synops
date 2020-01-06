@@ -1,8 +1,20 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Syn'ops{% endblock %}
+
 {% block body %}
 
+    <div id="top"></div>
+
     {% include 'home/_carousel.html.twig' %}
+
+    <div class="sticky-top d-flex justify-content-end mr-4">
+        <div class="circle rounded-circle">
+            <a href="#top">
+                <i class="fas fa-angle-up fa-3x"></i>
+            </a>
+        </div>
+    </div>
 
     <section class="articles" id="articles">
         {% include 'home/_article.html.twig' %}
@@ -12,15 +24,15 @@
         {% include 'home/_call.html.twig' %}
     </section>
 
-    <section class="concretely"  id="concretely">
+    <section class="concretely" id="concretely">
         {% include 'home/_concretely.html.twig' %}
     </section>
 
-    <section class="adn"  id="adn">
+    <section class="adn" id="adn">
         {% include 'home/_adn.html.twig' %}
     </section>
 
-    <section class="engagements"  id="engagements">
+    <section class="engagements" id="engagements">
         {% include 'home/_engagements.html.twig' %}
     </section>
 
@@ -28,11 +40,11 @@
         {% include 'home/_deal.html.twig' %}
     </section>
 
-    <section class="team"  id="team">
+    <section class="team" id="team">
         {% include 'home/_team.html.twig' %}
     </section>
 
-    <section class="partners"  id="partners">
+    <section class="partners" id="partners">
         {% include 'home/_partners.html.twig' %}
     </section>
 

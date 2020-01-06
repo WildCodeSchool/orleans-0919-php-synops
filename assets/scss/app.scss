@@ -11,6 +11,7 @@
 @import "navbar_style";
 @import "home/carousel";
 @import "footer";
+
 @import "pages/article";
 @import "pages/login";
 
@@ -18,6 +19,15 @@
 @import "admin";
 @import "pages/contact";
 @import "pages/tools";
+
+@import "article";
+@import "login";
+@import "register";
+
+@import "home";
+@import "admin";
+@import "contact";
+@import "arrow";
 
 body {
 

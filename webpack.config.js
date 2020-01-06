@@ -1,7 +1,7 @@
 const Encore = require('@symfony/webpack-encore');
 
 Encore
-    // directory where compiled assets will be stored
+// directory where compiled assets will be stored
     .setOutputPath('public/build/')
     // public path used by the web server to access the output path
     .setPublicPath('/build')
@@ -12,6 +12,18 @@ Encore
         from: './assets/images',
         // optional target path, relative to the output dir
         to: 'images/[path][name].[ext]',
+
+        // if versioning is enabled, add the file hash too
+        // to: 'images/[path][name].[hash:8].[ext]',
+
+        // only copy files matching this pattern
+        // pattern: /\.(png|jpg|jpeg)$/
+    })
+
+    .copyFiles({
+        from: './assets/PDF',
+        // optional target path, relative to the output dir
+        to: 'PDF/[path][name].[ext]',
 
         // if versioning is enabled, add the file hash too
         // to: 'images/[path][name].[hash:8].[ext]',
@@ -63,19 +75,44 @@ Encore
     // enables Sass/SCSS support
     .enableSassLoader()
 
-// uncomment if you use TypeScript
-// .enableTypeScriptLoader()
+    // uncomment if you use TypeScript
+    // .enableTypeScriptLoader()
 
-// uncomment to get integrity="..." attributes on your script & link tags
-// requires WebpackEncoreBundle 1.4 or higher
-// .enableIntegrityHashes()
+    // uncomment to get integrity="..." attributes on your script & link tags
+    // requires WebpackEncoreBundle 1.4 or higher
+    // .enableIntegrityHashes()
 
-// uncomment if you're having problems with a jQuery plugin
-// .autoProvidejQuery()
+    // uncomment if you're having problems with a jQuery plugin
+    // .autoProvidejQuery()
 
-// uncomment if you use API Platform Admin (composer req api-admin)
-// .enableReactPreset()
-// .addEntry('admin', './assets/js/admin.js')
+    // uncomment if you use API Platform Admin (composer req api-admin)
+    // .enableReactPreset()
+    // .addEntry('admin', './assets/js/admin.js')
+
+    .copyFiles([
+        {
+            from: './node_modules/ckeditor/',
+            to: 'ckeditor/[path][name].[ext]',
+            pattern: /\.(js|css)$/,
+            includeSubdirectories: false
+        },
+        {
+            from: './node_modules/ckeditor/adapters',
+            to: 'ckeditor/adapters/[path][name].[ext]'
+        },
+        {
+            from: './node_modules/ckeditor/lang',
+            to: 'ckeditor/lang/[path][name].[ext]'
+        },
+        {
+            from: './node_modules/ckeditor/plugins',
+            to: 'ckeditor/plugins/[path][name].[ext]'
+        },
+        {
+            from: './node_modules/ckeditor/skins',
+            to: 'ckeditor/skins/[path][name].[ext]'
+        }
+    ])
 ;
 
 module.exports = Encore.getWebpackConfig();

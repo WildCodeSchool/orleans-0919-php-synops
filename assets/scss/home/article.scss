@@ -5,7 +5,7 @@
         text-decoration: none;
     }
 
-    h5 {
+    .card-title {
         margin-top: 1em;
         font-size: 2em;
         color: $primary-color;
@@ -23,15 +23,15 @@
     }
 
     .card {
-        margin-top:2rem;
+        margin-top: 2rem;
+        width: 30rem;
     }
 
     .btn btn-dark {
         background-color: $secondary-color;
     }
-}
 
-.all-articles {
-    display:flex;
-    justify-content:center;
+    .all-articles {
+        text-align: center;
+    }
 }

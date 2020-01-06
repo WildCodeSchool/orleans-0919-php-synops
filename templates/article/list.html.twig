@@ -1,31 +1,29 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid container-title container-article">
-        <div class="row no-gutters">
-            <div class="col-lg-12 col-xs-1">
-                <h1 class="title">Liste des articles</h1>
-            </div>
-        </div>
+    <div class="container-content">
+        <h1 class="title">Liste des articles</h1>
     </div>
+
     <div class="container-fluid articles">
         <div class="row no-gutters">
             <div class="col-lg-12 col-xs-1">
-                <div class="row-article justify-content-around d-flex flex-wrap">
+                <div class="row justify-content-around d-flex flex-wrap">
                     {% for article in articles %}
-                        <div class="card" style="width: 30rem;">
+                        <div class="card">
                             <div class="card-body">
-                                <img src="https://via.placeholder.com/640x360" class="card-img-top" alt="article image">
-                                <h5 class="card-title">{{ article.title }}</h5>
-                                <p class="card-text">{{ article.content }}</p>
+                                <img src="https://via.placeholder.com/640x360" class="card-img-top" alt="image de l'article">
+                                <h2 class="card-title">{{ article.title }}</h2>
+                                <p class="card-text">{{ article.content|truncate(500,true)|raw }}</p>
                                 <p class="card-text date">
                                     {{ article.date ? article.date|date('d/m/Y H:i') : '' }}
                                 </p>
-                                <a href="{{ path('article_show', {'slug': article.slug}) }}" class="btn btn-primary">Lire l'article complet</a>
+                                <a href="{{ path('article_show', {'slug': article.slug}) }}" class="btn btn-primary">Lire
+                                    l'article complet</a>
                             </div>
                         </div>
-                        {% else %}
-                            Pas d'actualités pour le moment.
+                    {% else %}
+                        Pas d'actualités pour le moment.
                     {% endfor %}
                 </div>
             </div>

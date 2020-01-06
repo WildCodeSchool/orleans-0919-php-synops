@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,11 +19,17 @@ class Tool
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
+     * @Assert\Length(
+     *     max = 255,
+     *     maxMessage = "Votre nom {{ value }} ne peut pas faire plus de {{ limit }} caractères"
+     * )
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tools")
+     * @Assert\NotBlank(message="Veuillez sélectionner un champ")
      */
     private $category;
 

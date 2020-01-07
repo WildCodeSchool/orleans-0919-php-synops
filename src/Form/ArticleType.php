@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ArticleType extends AbstractType
 {
@@ -18,12 +19,7 @@ class ArticleType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre de l\'article',
             ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Contenu de l\'article',
-                'attr' => [
-                    'rows' => 15,
-                ]
-            ])
+            ->add('content', CKEditorType::class, [])
             ->add('date', DateTimeType::class, [
                 'label' => 'Date de publication'
             ])

@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,14 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     /**
-     *  @Route("/", name="list")
+     *  @Route("s", name="list")
      * @return  Response
      */
-    public function list():Response
+    public function list(ArticleRepository $articleRepository):Response
     {
-        $articles = $this->getDoctrine()
-            ->getRepository(Article::class)
-            ->findAll();
+        $articles = $articleRepository->findAll();
+
         return $this->render('article/list.html.twig', [
             'articles' => $articles,
         ]);

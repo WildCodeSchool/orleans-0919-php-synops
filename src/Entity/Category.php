@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CategoryRepository")
@@ -29,9 +30,16 @@ class Category
     private $tools;
 
     /**
+
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="categories")
      */
     private $users;
+
+     * @Gedmo\Slug(fields={"sector"})
+     * @ORM\Column(length=255, unique=true)
+     */
+    private $slug;
+
 
     public function __construct()
     {
@@ -87,6 +95,7 @@ class Category
         return $this;
     }
 
+
     /**
      * @return Collection|User[]
      */
@@ -111,6 +120,16 @@ class Category
             $this->users->removeElement($user);
             $user->removeCategory($this);
         }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
 
         return $this;
     }

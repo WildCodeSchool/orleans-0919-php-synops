@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Repository\CategoryRepository;
 use App\Repository\DocumentRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\ToolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

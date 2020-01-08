@@ -65,11 +65,6 @@ class User implements UserInterface
     private $phone;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="users")
-     */
-    private $categories;
-
-    /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez remplir ce champ.")
      * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))

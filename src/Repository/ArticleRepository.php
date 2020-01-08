@@ -2,9 +2,13 @@
 
 namespace App\Repository;
 
+use App\Controller\ArticleController;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+use InvalidArgumentException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,5 +21,34 @@ class ArticleRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Article::class);
+    }
+
+    /**
+     * @param int $page
+     */
+    public function findAllPagineEtTrie($page = null): array
+    {
+//        if (!is_numeric($page)) {
+//            throw new InvalidArgumentException('Cette page n\'existe pas.');
+//        }
+//
+//        if ($page < 1 OR $page > $nbPerPage) {
+//            throw new NotFoundHttpException('Cette page n\'existe pas');
+//        }
+//
+//        if (!is_numeric($nbPerPage)) {
+//            throw new InvalidArgumentException('Cette page n\'existe pas');
+//        }
+
+        $qb = $this->createQueryBuilder('a')
+            ->where('CURRENT_DATE() >= a.date')
+            ->orderBy('a.date', 'DESC');
+
+        if ($page !== null) {
+            $firstResult = ($page - 1) * ArticleController::NB_MAX_ARTICLES_PER_PAGE;
+            $qb->setFirstResult($firstResult)->setMaxResults(ArticleController::NB_MAX_ARTICLES_PER_PAGE);
+        }
+
+        return $qb->getQuery()->getResult();
     }
 }

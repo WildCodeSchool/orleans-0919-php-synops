@@ -19,6 +19,7 @@
                         </button>
                     </div>
 
+                    {% for document in tool.documents %}
                     <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
                          data-parent="#accordion">
                         <div class="card-body">
@@ -30,6 +31,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             {% endfor %}
         </div>

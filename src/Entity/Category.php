@@ -30,12 +30,12 @@ class Category
     private $tools;
 
     /**
-
      * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="categories")
      */
     private $users;
 
-     * @Gedmo\Slug(fields={"sector"})
+    /**
+     * @Gedmo\Slug(fields={sector"})
      * @ORM\Column(length=255, unique=true)
      */
     private $slug;
@@ -120,6 +120,7 @@ class Category
             $this->users->removeElement($user);
             $user->removeCategory($this);
         }
+    }
 
     public function getSlug(): ?string
     {

@@ -23,10 +23,19 @@ class UserFixtures extends Fixture
         $member->setRoles(['ROLE_MEMBER']);
         $member->setPassword($this->passwordEncoder->encodePassword(
             $member,
-            'memberpassword'
+            'memberpass'
+        ));
+
+        $admin = new User();
+        $admin->setEmail('admin@gmail.com');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setPassword($this->passwordEncoder->encodePassword(
+            $admin,
+            'adminpass'
         ));
 
         $manager->persist($member);
+        $manager->persist($admin);
         $manager->flush();
     }
 }

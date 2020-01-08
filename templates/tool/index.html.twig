@@ -34,4 +34,19 @@
             {% endfor %}
         </div>
     </div>
+
+    <h1 class="title">Commentaires</h1>
+
+    <div class="container">
+
+        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">Ajouter un commentaire</h2>
+        {{ include('comment/_form.html.twig') }}
+
+        {% for comment in comments %}
+            <div class="comment">
+                {{ comment.author.email }}
+                {{ comment.comment }}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -46,12 +46,12 @@ class Document
         return $this;
     }
 
-    public function getTool(): ?self
+    public function getTool(): ?Tool
     {
         return $this->tool;
     }
 
-    public function setTool(?self $tool): self
+    public function setTool(?Tool $tool): self
     {
         $this->tool = $tool;
 

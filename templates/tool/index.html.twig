@@ -39,9 +39,10 @@
 
     <div class="container">
 
-        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">Ajouter un commentaire</h2>
+        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
         {{ include('comment/_form.html.twig') }}
 
+        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">tous les avis</h2>
         {% for comment in comments %}
             <div class="comment">
                 {{ comment.author.email }}

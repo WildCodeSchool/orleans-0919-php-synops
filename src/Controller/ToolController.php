@@ -9,6 +9,7 @@ use App\Entity\Tool;
 use App\Form\CommentType;
 use App\Repository\CategoryRepository;
 use App\Repository\ToolRepository;
+use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +36,7 @@ class ToolController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $comment->setDate(new \DateTime());
+            $comment->setDate(new DateTime());
             $comment->setAuthor($this->getUser());
             $comment->setCategory($category);
 

@@ -19,24 +19,27 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank(message="Veuillez remplir ce champs.")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
      */
     private $comment;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
      */
     private $category;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Date(message="Veuillez saisir un format de date valide.")
      */
     private $date;
 

@@ -40,8 +40,8 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Veuillez remplir ce champs.")
-     * @Assert\Length(max="180", maxMessage="Ce mot de passe est trop long."))
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="180", maxMessage="Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $password;
 
@@ -52,11 +52,15 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $company;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $phone;
 
@@ -67,21 +71,29 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $function;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $field;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $lastname;
 

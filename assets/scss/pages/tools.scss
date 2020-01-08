@@ -14,3 +14,12 @@
 .title-comment {
     border-left: 5px solid $warm-color;
 }
+
+.comments {
+    border-bottom: 3px solid $primary-color;
+}
+
+.comment {
+    background-color: $background-comment;
+    overflow: auto;
+}

@@ -40,13 +40,25 @@
     <div class="container">
 
         <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
-        {{ include('comment/_form.html.twig') }}
+        {% if is_granted('ROLE_MEMBER') %}
+            {{ include('comment/_form.html.twig') }}
+        {% else %}
+            Vous devez être membre pour laisser un avis.
+            <a href="{{ path('app_login') }}">
+                <button class="btn btn-warm-color">Se connecter</button>
+            </a>
+        {% endif %}
 
-        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">tous les avis</h2>
+        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5 mt-5">tous les avis</h2>
+
         {% for comment in comments %}
-            <div class="comment">
-                {{ comment.author.email }}
-                {{ comment.comment }}
+            <div class="comments mt-5 mb-5">
+                <p>{{ comment.author.firstname }}<br>
+                    <span class="font-italic">{{ comment.author.function }} chez {{ comment.author.company }}</span></p>
+                <p class="comment p-4 text-left">
+                    <i class="fas fa-angle-double-left"></i> {{ comment.comment }}
+                    <i class="fas fa-angle-double-right"></i>
+                </p>
             </div>
         {% endfor %}
     </div>

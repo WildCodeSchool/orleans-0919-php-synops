@@ -53,11 +53,6 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $company;
 
     /**
@@ -69,6 +64,26 @@ class User implements UserInterface
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="users")
      */
     private $categories;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $function;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $field;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastname;
 
     public function __construct()
     {
@@ -173,18 +188,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
     public function getCompany(): ?string
     {
         return $this->company;
@@ -245,6 +248,54 @@ class User implements UserInterface
         if ($this->categories->contains($category)) {
             $this->categories->removeElement($category);
         }
+
+        return $this;
+    }
+
+    public function getFunction(): ?string
+    {
+        return $this->function;
+    }
+
+    public function setFunction(string $function): self
+    {
+        $this->function = $function;
+
+        return $this;
+    }
+
+    public function getField(): ?string
+    {
+        return $this->field;
+    }
+
+    public function setField(string $field): self
+    {
+        $this->field = $field;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
 
         return $this;
     }

@@ -24,27 +24,50 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $member = new User();
         $member->setEmail('member@gmail.com');
         $member->setRoles(['ROLE_MEMBER']);
-        $member->setName('memberName');
-        $member->setCompany('memberCompany');
-        $member->setPhone('memberPhone');
+        $member->setFirstname('John');
+        $member->setLastname('Doe');
+        $member->setFunction('Employé');
+        $member->setField('Tertiaire');
+        $member->setCompany('Member Company');
+        $member->setPhone('06 00 00 00 00');
         $member->setPassword($this->passwordEncoder->encodePassword(
             $member,
-            'memberpassword'
+            'memberpass'
         ));
+
+        $admin = new User();
+        $admin->setEmail('admin@gmail.com');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setFirstname('Alexandre');
+        $admin->setLastname('COULON');
+        $admin->setFunction('Élève');
+        $admin->setField('Developpement Web');
+        $admin->setCompany('Wild Code School');
+        $admin->setPhone('07 00 00 00 00');
+        $admin->setPassword($this->passwordEncoder->encodePassword(
+            $admin,
+            'adminpass'
+        ));
+
         $manager->persist($member);
+        $manager->persist($admin);
 
         $faker = Faker\Factory::create('fr,FR');
         for ($i = 0; $i < 10; $i++) {
             $user = new User();
-            $user->setName($faker->name);
             $user->setCompany($faker->company);
+            $user->setFirstname($faker->firstName);
+            $user->setLastname($faker->lastName);
             $user->setEmail($faker->email);
+            $user->setField($faker->word);
+            $user->setFunction($faker->word);
             $user->setPassword($faker->password);
             $user->setPhone($faker->phoneNumber);
             $user->setRoles(['ROLE_MEMBER']);
             $user->addCategory($this->getReference('categories_'.rand(0, 4)));
             $manager->persist($user);
         }
+
         $manager->flush();
     }
 
@@ -53,7 +76,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
      */
     public function getDependencies()
     {
-        // TODO: Implement getDependencies() method.
         return [CategoryFixtures::class];
     }
 }

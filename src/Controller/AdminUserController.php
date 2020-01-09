@@ -10,16 +10,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/user")
+ * @Route("/admin")
  */
 class AdminUserController extends AbstractController
 {
     /**
-     * @Route("/", name="admin_user_index", methods={"GET"})
+     * @Route("/membres", name="admin_member_index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function indexMember(UserRepository $userRepository): Response
     {
-        return $this->render('admin_user/index.html.twig', [
+        return $this->render('admin_member/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
     }
@@ -36,6 +36,6 @@ class AdminUserController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_user_index');
+        return $this->redirectToRoute('admin_member_index');
     }
 }

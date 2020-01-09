@@ -94,7 +94,6 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
 
@@ -219,24 +218,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
-    }
-
-    public function addCategory(Category $category): self
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-        }
-
-        return $this;
-    }
-
-
     public function removeComment(Comment $comment): self
     {
         if ($this->comments->contains($comment)) {
@@ -248,15 +229,6 @@ class User implements UserInterface
 
             return $this;
         }
-    }
-
-    public function removeCategory(Category $category): self
-    {
-        if ($this->categories->contains($category)) {
-            $this->categories->removeElement($category);
-        }
-
-        return $this;
     }
 
     public function getFunction(): ?string

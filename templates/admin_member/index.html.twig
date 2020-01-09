@@ -26,7 +26,14 @@
                         <p>{{ user.phone }}</p>
                     </div>
 
-                </div>
+                    <div class="col-lg-3 ml-3 d-flex flex-column">
+
+{#                        Todo: à faire sur une autre branche ! S04US39_Admin_edit_member #}
+{#                        <button class="btn btn-secondary w-50 m-2">Révoquer l'accès</button>#}
+                        {{ include('admin_member/_delete_form.html.twig') }}
+                    </div>
+
+                    </div>
             </div>
 
         {% else %}

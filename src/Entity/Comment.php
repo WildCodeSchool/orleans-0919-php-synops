@@ -26,12 +26,14 @@ class Comment
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
      */
     private $author;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
      */
     private $category;
 

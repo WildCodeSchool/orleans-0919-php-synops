@@ -9,10 +9,10 @@
         <div class="container">
             <div class="card mb-3 border-none">
                 <div class="card-header bg-transparent border-dark">
-                    <h2>Entreprise - {{ user.company }}</h2>
+                    <h2>Entreprise - {{ user.company }} ({{ user.field }})</h2>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ user.name }}</h5>
+                    <h5 class="card-title">{{ user.firstname }} {{ user.lastname }}, <i>{{ user.function }}</i></h5>
                     <p class="card-text"> {{ user.email }}</p>
                     <p class="card-text"> {{ user.phone }}</p>
                 </div>

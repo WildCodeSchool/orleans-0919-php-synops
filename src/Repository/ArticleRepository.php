@@ -25,21 +25,11 @@ class ArticleRepository extends ServiceEntityRepository
 
     /**
      * @param int $page
+     * @return array
      */
+
     public function findAllPagineEtTrie($page = null): array
     {
-//        if (!is_numeric($page)) {
-//            throw new InvalidArgumentException('Cette page n\'existe pas.');
-//        }
-//
-//        if ($page < 1 OR $page > $nbPerPage) {
-//            throw new NotFoundHttpException('Cette page n\'existe pas');
-//        }
-//
-//        if (!is_numeric($nbPerPage)) {
-//            throw new InvalidArgumentException('Cette page n\'existe pas');
-//        }
-
         $qb = $this->createQueryBuilder('a')
             ->where('CURRENT_DATE() >= a.date')
             ->orderBy('a.date', 'DESC');

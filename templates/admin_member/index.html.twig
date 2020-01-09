@@ -4,7 +4,12 @@
 
 {% block body %}
     <div class="admin-member">
-        <h1 class="title">Membres en Attente</h1>
+
+        {% for user in users %}
+            {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
+                <h1 class="title">Membres en Attente</h1>
+            {% endif %}
+        {% endfor %}
 
         <div class="container">
             {% for user in users %}

@@ -26,7 +26,6 @@ class Comment
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
      */
     private $author;
 
@@ -38,6 +37,7 @@ class Comment
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\Date(message="Veuillez saisir un format de date valide.")
      */
     private $date;
 

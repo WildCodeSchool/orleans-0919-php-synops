@@ -51,7 +51,8 @@ class SecurityController extends AbstractController
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
         GuardAuthenticatorHandler $guardHandler,
-        LoginFormAuthentificator $authenticator
+        LoginFormAuthentificator $authenticator,
+        CategoryRepository $categoryRepository
     ): Response {
 
         $user = new User();
@@ -82,6 +83,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'categories' => $categoryRepository->findAll()
         ]);
     }
 }

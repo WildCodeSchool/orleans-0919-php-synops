@@ -38,4 +38,18 @@ class AdminUserController extends AbstractController
 
         return $this->redirectToRoute('admin_member_index');
     }
+
+    /**
+     * @Route("/valider-membre/{id}", name="admin_validate_member", methods={"POST"})
+     */
+    public function validateMember(User $user): Response
+    {
+        $user->setRoles(['ROLE_MEMBER']);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_member_index');
+    }
 }

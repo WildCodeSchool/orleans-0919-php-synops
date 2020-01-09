@@ -1,17 +1,17 @@
-.container-article {
+.show-article {
+    .card-img-top {
+        max-height: 70rem;
+        object-fit: cover;
+    }
 
-    .title {
-        margin-top: 10rem;
+    .container {
+        .card {
+            border: none;
+        }
     }
 }
 
 .btn-retour {
     display: flex;
     justify-content: center
-}
-
-.container {
-    .card {
-        border: none;
-    }
 }

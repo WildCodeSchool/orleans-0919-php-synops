@@ -28,7 +28,7 @@ class ArticleRepository extends ServiceEntityRepository
      * @return array
      */
 
-    public function findAllPagineEtTrie($page = null): array
+    public function findAllPaginateAndSort($page = null): array
     {
         $qb = $this->createQueryBuilder('a')
             ->where('CURRENT_DATE() >= a.date')

@@ -30,8 +30,8 @@ class ArticleController extends AbstractController
     ): Response {
         $categories = $categoryRepository->findAll();
 
-        $articles = $articleRepository->findAllPagineEtTrie($page);
-        $nbArticles = count($articleRepository->findAllPagineEtTrie());
+        $articles = $articleRepository->findAllPaginateAndSort($page);
+        $nbArticles = count($articleRepository->findAllPaginateAndSort());
 
         return $this->render('article/list.html.twig', [
             'articles' => $articles,

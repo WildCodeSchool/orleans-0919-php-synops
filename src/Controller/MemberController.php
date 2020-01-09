@@ -19,12 +19,10 @@ class MemberController extends AbstractController
      * @IsGranted("ROLE_USER")
      * @return  Response
      */
-    public function show(CategoryRepository $categoryRepository): Response
+    public function show(): Response
     {
-        $categories = $categoryRepository->findAll();
         return $this->render('user/show.html.twig', [
             'user' => $this->getUser(),
-            'categories' => $categories,
         ]);
     }
 }

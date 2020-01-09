@@ -36,4 +36,11 @@ class HomeController extends AbstractController
             'tools' => $tools
         ]);
     }
+
+    public function navbar(CategoryRepository $categoryRepository)
+    {
+        $categories = $categoryRepository->findAll();
+
+        return $this->render('_categories_in_nav.html.twig', ['categories' => $categories]);
+    }
 }

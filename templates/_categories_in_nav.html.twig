@@ -1,0 +1,5 @@
+{% for category in categories %}
+    <a href="{{ path('tool', {'slug': category.slug }) }}"
+       class="dropdown-item px-5">{{ category.sector }}</a>
+    <div class="dropdown-divider px-5"></div>
+{% endfor %}

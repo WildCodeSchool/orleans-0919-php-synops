@@ -3,7 +3,6 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
 use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,6 +19,7 @@ class CustomerSpaceController extends AbstractController
     public function show(CategoryRepository $categoryRepository): Response
     {
         $categories = $categoryRepository->findAll();
+
         return $this->render('user/show.html.twig', [
             'user' => $this->getUser(),
             'categories' => $categories

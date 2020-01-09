@@ -39,7 +39,7 @@ class HomeController extends AbstractController
 
     public function navbar(CategoryRepository $categoryRepository)
     {
-        $categories = $categoryRepository->findAll();
+        $categories = $categoryRepository->findBy([], ['sector' => 'ASC']);
 
         return $this->render('_categories_in_nav.html.twig', ['categories' => $categories]);
     }

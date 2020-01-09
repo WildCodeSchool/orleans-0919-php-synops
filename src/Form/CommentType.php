@@ -2,25 +2,27 @@
 
 namespace App\Form;
 
-use App\Entity\Tool;
+use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ToolType extends AbstractType
+class CommentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', null, ['choice_label' => 'sector'])
-            ->add('name')
-            ->add('description');
+            ->add('comment', TextareaType::class, [
+                'label' => 'Commentaire',
+                'attr' => ['rows' => 5]
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Tool::class,
+            'data_class' => Comment::class,
         ]);
     }
 }

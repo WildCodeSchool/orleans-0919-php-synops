@@ -1,0 +1,30 @@
+.tools {
+    width: 80%;
+
+    .card-body  {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+}
+
+.icon {
+    align-self: center;
+}
+
+.title-comment {
+    border-left: 5px solid $warm-color;
+}
+
+.comments {
+    border-bottom: 3px solid $primary-color;
+}
+
+.comment {
+    background-color: $background-comment;
+    overflow: auto;
+}
+
+.author-infos {
+    font-size: 1.3rem;
+    color: $secondary-color;
+}

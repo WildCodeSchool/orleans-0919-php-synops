@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\ContactType;
 use App\Entity\Contact;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -21,8 +22,10 @@ class ContactController extends AbstractController
      * @return Response
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function index(Request $request, MailerInterface $mailer): Response
+    public function index(Request $request, MailerInterface $mailer, CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
+
         $form = $this->createForm(ContactType::class);
 
         $form->handleRequest($request);
@@ -35,7 +38,7 @@ class ContactController extends AbstractController
                 ->to($this->getParameter('mailer_from'))
                 ->subject("Vous avez un message")
                 ->html($this->renderView('contact/email/notification.html.twig', [
-                    'contactFormData' => $contactFormData
+                    'contactFormData' => $contactFormData,
                 ]));
 
             $mailer->send($email);
@@ -46,6 +49,7 @@ class ContactController extends AbstractController
         }
         return $this->render('contact/index.html.twig', [
             'our_form' => $form->createView(),
+            'categories' => $categories,
         ]);
     }
 }

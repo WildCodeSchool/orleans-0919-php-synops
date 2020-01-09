@@ -1,0 +1,68 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Outils : {{ category.sector }}{% endblock %}
+
+{% block body %}
+    <h1 class="title container-content">{{ category.sector }}</h1>
+
+    <div class="container-fluid deal tools">
+        <div id="accordion">
+            {% for tool in category.tools %}
+                <div class="card">
+                    <div class="card-header card_button" id="headingOne">
+                        <button class="btn btn-link mb-3 text-left category_button" type="button"
+                                data-toggle="collapse"
+                                data-target="#collapse{{ tool.id }}"
+                                aria-expanded="false" aria-controls="collapseOne">
+                            <h2>{{ tool.name }} <i class="fas fa-chevron-down ml-5"></i><i
+                                        class="fas fa-chevron-up ml-5"></i></h2>
+                        </button>
+                    </div>
+
+                    <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
+                         data-parent="#accordion">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="icon">
+                                    <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                                </div>
+                                <p class="ml-5">{{ tool.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <h1 class="title">Commentaires</h1>
+
+    <div class="container">
+
+        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
+        {% if is_granted('ROLE_MEMBER') %}
+            {{ include('comment/_form.html.twig') }}
+        {% else %}
+            Vous devez être membre pour laisser un avis.
+            <a href="{{ path('app_login') }}">
+                <button class="btn btn-warm-color">Se connecter</button>
+            </a>
+        {% endif %}
+
+        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5 mt-5">tous les avis</h2>
+
+        {% for comment in comments %}
+            <div class="comments mt-5 mb-5">
+                <p><span class="font-weight-bold text-primary">{{ comment.author.firstname }}</span> <span class="float-right font-italic">Le {{ comment.date|date("d/m/Y") }}</span><br>
+                    <span class="font-italic author-infos">
+                        {{ comment.author.function }} chez {{ comment.author.company }}
+                    </span>
+                </p>
+                <p class="comment p-4 text-left">
+                    <i class="fas fa-angle-double-left mr-2 text-primary align-middle"></i> {{ comment.comment }}
+                    <i class="fas fa-angle-double-right ml-2 text-primary align-middle"></i>
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

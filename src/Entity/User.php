@@ -40,34 +40,61 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Veuillez remplir ce champs.")
-     * @Assert\Length(max="180", maxMessage="Ce mot de passe est trop long."))
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="180", maxMessage="Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="author", orphanRemoval=true)
      */
-    private $name;
+    private $comments;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $company;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
     private $phone;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="users")
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
      */
-    private $categories;
+    private $function;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
+     */
+    private $field;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
+     */
+    private $firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez remplir ce champ.")
+     * @Assert\Length(max="255", maxMessage = "Ce champ autorise au maximum {{ limit }} caractères."))
+     */
+    private $lastname;
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,7 +121,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string)$this->email;
     }
 
     /**
@@ -121,7 +148,7 @@ class User implements UserInterface
      */
     public function getPassword(): string
     {
-        return (string) $this->password;
+        return (string)$this->password;
     }
 
     public function setPassword(string $password): self
@@ -148,14 +175,21 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getName(): ?string
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
     {
-        return $this->name;
+        return $this->comments;
     }
 
-    public function setName(string $name): self
+    public function addComment(Comment $comment): self
     {
-        $this->name = $name;
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setAuthor($this);
+        }
 
         return $this;
     }
@@ -184,28 +218,63 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Category[]
-     */
-    public function getCategories(): Collection
+    public function removeComment(Comment $comment): self
     {
-        return $this->categories;
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getAuthor() === $this) {
+                $comment->setAuthor(null);
+            }
+
+            return $this;
+        }
     }
 
-    public function addCategory(Category $category): self
+    public function getFunction(): ?string
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories[] = $category;
-        }
+        return $this->function;
+    }
+
+    public function setFunction(string $function): self
+    {
+        $this->function = $function;
 
         return $this;
     }
 
-    public function removeCategory(Category $category): self
+    public function getField(): ?string
     {
-        if ($this->categories->contains($category)) {
-            $this->categories->removeElement($category);
-        }
+        return $this->field;
+    }
+
+    public function setField(string $field): self
+    {
+        $this->field = $field;
+
+        return $this;
+    }
+
+    public function getFirstname(): ?string
+    {
+        return $this->firstname;
+    }
+
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
 
         return $this;
     }

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/article", name="article_")
+ * @Route("/actualite", name="article_")
  */
 class ArticleController extends AbstractController
 {
@@ -21,6 +21,7 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("s/{page}", name="list", requirements={"page" = "\d+"}, methods={"GET"}, defaults={"page" = 1})
+     * @return  Response
      */
     public function list(
         int $page,
@@ -41,7 +42,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/show/{slug}", name="show")
+     * @Route("/{slug}", name="show")
      * @param Article $article
      * @return  Response
      */

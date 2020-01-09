@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/article", name="article_")
+ * @Route("/actualite", name="article_")
  */
 class ArticleController extends AbstractController
 {
     /**
-     *  @Route("/", name="list")
+     *  @Route("s", name="list")
      * @return  Response
      */
     public function list():Response
@@ -28,7 +28,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/show/{slug}", name="show")
+     * @Route("/{slug}", name="show")
      * @param Article $article
      * @return  Response
      */

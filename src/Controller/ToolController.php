@@ -9,6 +9,7 @@ use App\Entity\Tool;
 use App\Form\CommentType;
 use App\Repository\CategoryRepository;
 use App\Repository\ToolRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +20,8 @@ class ToolController extends AbstractController
 {
     /**
      * @Route("outils/{slug}", name="tool")
+     * @IsGranted("ROLE_USER")
+     * @return Response
      */
 
     public function index(

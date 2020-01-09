@@ -12,9 +12,12 @@
                     <h2>Entreprise - {{ user.company }}</h2>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ user.name }}</h5>
+                    <h5 class="card-title">{{ user.firstname }}</h5>
+                    <h5 class="card-title">{{ user.lastname }}</h5>
                     <p class="card-text"> {{ user.email }}</p>
                     <p class="card-text"> {{ user.phone }}</p>
+                    <p class="card-text"> {{ user.function }}</p>
+                    <p class="card-text"> {{ user.field }}</p>
                 </div>
             </div>
             <div class="card mb-3 border-none">

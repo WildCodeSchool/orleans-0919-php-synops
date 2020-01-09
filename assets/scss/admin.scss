@@ -1,5 +1,6 @@
 @import "admin/index";
 @import "admin/admin_tool";
+@import "admin/admin_members";
 @import "admin/admin_article";
 
 .admin-container {
@@ -22,8 +23,13 @@
     .btn-success:hover {
         background-color: lighten($warm-color, 20%);
     }
+
+    img {
+        height: 10rem;
+        display: block;
+    }
 }
 
 .container-content {
-    margin-top:12rem;
+    margin-top: 12rem;
 }

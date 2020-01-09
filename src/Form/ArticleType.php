@@ -11,15 +11,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('pictureFile', FileType::class, [
+            ->add('pictureFile', VichImageType::class, [
                 'label' => 'Image',
-                'required' => 'true'
+                'required' => 'true',
+                'delete_label' => 'Supprimer l\'image ?',
+                'download_label' => 'Agrandir l\'image'
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titre de l\'article',

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -14,7 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
- * @UniqueEntity("title")
+ * @UniqueEntity("title"), message="Titre déjà existant")
  * @Vich\Uploadable()
  */
 class Article
@@ -50,6 +51,16 @@ class Article
 
     /**
      * @var File|null
+     * @Assert\Image(
+     *     mimeTypes={
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *      }
+     * )
+     * @Assert\File(
+     *     maxSize="5M",
+     * )
      * @Vich\UploadableField(mapping="article_image", fileNameProperty="filename")
      */
     private $pictureFile;
@@ -166,7 +177,7 @@ class Article
         $this->pictureFile = $pictureFile;
 
         if ($this->pictureFile instanceof UploadedFile) {
-            $this->updatedAt = new \DateTime('now');
+            $this->updatedAt = new DateTime('now');
         }
         return $this;
     }

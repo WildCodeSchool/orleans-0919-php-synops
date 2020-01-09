@@ -12,8 +12,9 @@
                     {% for article in articles %}
                         <div class="card">
                             <div class="card-body">
-                                <img src="https://via.placeholder.com/640x360" class="card-img-top"
-                                     alt="image de l'article">
+                                {% if article.filename %}
+                                    <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article" class="card-img-top">
+                                {% endif %}
                                 <h2 class="card-title">{{ article.title }}</h2>
                                 <p class="card-text">{{ article.content|truncate(500,true)|raw }}</p>
                                 <p class="card-text date">

@@ -21,6 +21,20 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
+        $user = new User();
+        $user->setEmail('user@gmail.com');
+        $user->setRoles(['ROLE_USER']);
+        $user->setFirstname('Bob');
+        $user->setLastname('Doe');
+        $user->setFunction('Employé');
+        $user->setField('Développement');
+        $user->setCompany('Sensio Lab');
+        $user->setPhone('06 00 00 00 00');
+        $user->setPassword($this->passwordEncoder->encodePassword(
+            $user,
+            'userpass'
+        ));
+
         $member = new User();
         $member->setEmail('member@gmail.com');
         $member->setRoles(['ROLE_MEMBER']);
@@ -49,6 +63,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             'adminpass'
         ));
 
+        $manager->persist($user);
         $manager->persist($member);
         $manager->persist($admin);
 
@@ -64,7 +79,6 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user->setPassword($faker->password);
             $user->setPhone($faker->phoneNumber);
             $user->setRoles(['ROLE_MEMBER']);
-            $user->addCategory($this->getReference('categories_'.rand(0, 4)));
             $manager->persist($user);
         }
 

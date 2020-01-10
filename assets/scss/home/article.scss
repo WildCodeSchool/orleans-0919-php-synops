@@ -46,3 +46,26 @@
         }
     }
 }
+
+.pagination {
+    margin: 2rem;
+
+    .buttons {
+        .btn {
+            width:8rem;
+        }
+    }
+}
+
+.btn-inactive {
+    background-color: $secondary-color;
+    color:$light-color;
+    cursor: default;
+    border:none;
+}
+
+.btn-inactive:hover {
+    color:$light-color;
+}
+
+

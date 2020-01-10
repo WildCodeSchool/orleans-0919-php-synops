@@ -4,39 +4,80 @@
 
 {% block body %}
     <div class="admin-member">
-        <h1 class="title container-content">Membres en Attente</h1>
-
-
-        <h2 class="title">Membres</h2>
 
         {% for user in users %}
-            <div class="container">
-
-                <div class="row member-row mt-5 mb-5">
-
-                    <div class="col-lg-4 text-center ml-2">
-                        <p class="font-weight-bold">{{ user.company }}</p>
-                        <p class="text-secondary font-italic">{{ user.field }}</p>
-                        <p>{{ user.email }}</p>
-                    </div>
-
-                    <div class="col-lg-4 ml-3">
-                        <p>{{ user.firstname }} {{ user.lastname }}</p>
-                        <p>{{ user.function }}</p>
-                        <p>{{ user.phone }}</p>
-                    </div>
-
-                    <div class="col-lg-3 ml-3 d-flex flex-column">
-                        {{ include('admin_member/_delete_form.html.twig') }}
-                    </div>
-
-                    </div>
-            </div>
-
-        {% else %}
-
-            <p>Aucun Utilisateur en base de donnée.</p>
-
+            {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
+                <h1 class="title container-content">Membres en Attente</h1>
+            {% endif %}
         {% endfor %}
+
+        <div class="container">
+            {% for user in users %}
+
+                {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
+
+                    <div class="row member-row mt-5 mb-5">
+
+                        <div class="col-lg-4 text-center ml-2">
+                            <p class="font-weight-bold">{{ user.company }}</p>
+                            <p class="text-secondary font-italic">{{ user.field }}</p>
+                            <p>{{ user.email }}</p>
+                        </div>
+
+                        <div class="col-lg-4 ml-3">
+                            <p>{{ user.firstname }} {{ user.lastname }}</p>
+                            <p>{{ user.function }}</p>
+                            <p>{{ user.phone }}</p>
+                        </div>
+
+                        <div class="col-lg-3 ml-3 d-flex flex-column">
+                            <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
+                                <button class="btn btn-warm-color w-50 m-2" type="submit">
+                                    Valider le membre
+                                </button>
+                            </form>
+                            {{ include('admin_member/_delete_form.html.twig') }}
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+        </div>
+
+        <h2 class="title container-content">Membres</h2>
+
+        <div class="container">
+            {% for user in users %}
+
+                {% if "ROLE_MEMBER" in user.roles and "ROLE_ADMIN" not in user.roles %}
+                    <div class="row member-row mt-5 mb-5">
+
+                        <div class="col-lg-4 text-center ml-2">
+                            <p class="font-weight-bold">{{ user.company }}</p>
+                            <p class="text-secondary font-italic">{{ user.field }}</p>
+                            <p>{{ user.email }}</p>
+                        </div>
+
+                        <div class="col-lg-4 ml-3">
+                            <p>{{ user.firstname }} {{ user.lastname }}</p>
+                            <p>{{ user.function }}</p>
+                            <p>{{ user.phone }}</p>
+                        </div>
+
+                        <div class="col-lg-3 ml-3 d-flex flex-column">
+                            {{ include('admin_member/_delete_form.html.twig') }}
+                        </div>
+
+                    </div>
+
+                {% endif %}
+            {% else %}
+                <p>Aucun Utilisateur en base de donnée.</p>
+
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}

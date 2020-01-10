@@ -21,9 +21,8 @@ class SecurityController extends AbstractController
     /**
      * @Route("/connexion", name="app_login")
      */
-    public function login(AuthenticationUtils $authenticationUtils, CategoryRepository $categoryRepository): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $categories = $categoryRepository->findAll();
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -31,7 +30,6 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error' => $error,
-            'categories' => $categories
         ]);
     }
 
@@ -51,7 +49,8 @@ class SecurityController extends AbstractController
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
         GuardAuthenticatorHandler $guardHandler,
-        LoginFormAuthentificator $authenticator
+        LoginFormAuthentificator $authenticator,
+        CategoryRepository $categoryRepository
     ): Response {
 
         $user = new User();
@@ -82,6 +81,7 @@ class SecurityController extends AbstractController
 
         return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'categories' => $categoryRepository->findAll()
         ]);
     }
 }

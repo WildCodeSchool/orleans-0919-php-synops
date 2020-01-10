@@ -25,12 +25,10 @@ class ToolController extends AbstractController
      */
 
     public function index(
-        CategoryRepository $categoryRepository,
         Category $category,
         ToolRepository $toolRepository,
         Request $request
     ): Response {
-        $categories = $categoryRepository->findAll();
         $tools = $toolRepository->findAll();
         $comments = $category->getComments();
         $comment = new Comment();
@@ -49,7 +47,6 @@ class ToolController extends AbstractController
 
         return $this->render('tool/index.html.twig', [
             'category' => $category,
-            'categories' => $categories,
             'tools' => $tools,
             'comments' => $comments,
             'form' => $form->createView()

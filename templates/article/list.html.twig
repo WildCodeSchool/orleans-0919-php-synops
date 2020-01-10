@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Toutes nos actualités{% endblock %}
+
 {% block body %}
 
     {% include '_backToTop.html.twig' %}
@@ -15,9 +17,12 @@
                     {% for article in articles %}
                         <div class="card">
                             <div class="card-body">
+
                                 {% if article.filename %}
-                                    <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article" class="card-img-top">
+                                    <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
+                                         class="card-img-top">
                                 {% endif %}
+
                                 <h2 class="card-title">{{ article.title }}</h2>
                                 <p class="card-text">{{ article.content|truncate(500,true)|raw }}</p>
                                 <p class="card-text date">
@@ -35,9 +40,36 @@
         </div>
     </div>
 
-    <div class="btn-retour">
+    <div class="pagination d-flex flex-column align-items-center">
+
         <a href="{{ path('index') }}">
-            <button type="button" class="btn btn-dark btn-lg m-5"> Retour Accueil</button>
+            <button type="button" class="btn btn-dark btn-lg m-3">Retour à l'accueil</button>
         </a>
+
+        <p><small>Vous êtes sur la <b>page {{ page }}</b></small></p>
+
+        <div class="buttons">
+            {% if page <= 1 %}
+                <div class="btn btn-inactive m-2">
+                    <i class="fas fa-angle-double-left"></i> Précédent
+                </div>
+            {% else %}
+                <a href="{{ path('article_list', {'page': page-1 }) }}" class="btn btn-primary m-1">
+                    <i class="fas fa-angle-double-left"></i> Précédent
+                </a>
+            {% endif %}
+
+            {% if page < nbPages %}
+                <a href="{{ path('article_list', {'page': page+1 }) }}" class="btn btn-primary m-1">
+                    Suivant <i class="fas fa-angle-double-right"></i>
+                </a>
+            {% else %}
+                <div class="btn btn-inactive">
+                    Suivant <i class="fas fa-angle-double-right"></i>
+                </div>
+            {% endif %}
+        </div>
+
     </div>
+
 {% endblock %}

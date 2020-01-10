@@ -1,13 +1,13 @@
 {% extends 'layout_admin.html.twig' %}
 
-{% block title %}Admin Membres{% endblock %}
+{% block title %}Membres{% endblock %}
 
 {% block body %}
     <div class="admin-member">
 
         {% for user in users %}
             {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
-                <h1 class="title">Membres en Attente</h1>
+                <h1 class="title container-content">Membres en Attente</h1>
             {% endif %}
         {% endfor %}
 
@@ -32,7 +32,7 @@
 
                         <div class="col-lg-3 ml-3 d-flex flex-column">
                             <form action="{{ url('admin_validate_member', { id: user.id }) }}" method="post">
-                                <button class="btn btn-warm-color border-primary w-50 m-2" type="submit">
+                                <button class="btn btn-warm-color w-50 m-2" type="submit">
                                     Valider le membre
                                 </button>
                             </form>
@@ -46,7 +46,7 @@
             {% endfor %}
         </div>
 
-        <h2 class="title">Membres</h2>
+        <h2 class="title container-content">Membres</h2>
 
         <div class="container">
             {% for user in users %}

@@ -3,13 +3,13 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
+use App\Repository\CategoryRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MemberController extends AbstractController
+class CustomerSpaceController extends AbstractController
 {
     /**
      * @Route("/espace-client", name="customer_space")
@@ -19,7 +19,7 @@ class MemberController extends AbstractController
     public function show(): Response
     {
         return $this->render('user/show.html.twig', [
-            'user' => $this->getUser(),
+            'user' => $this->getUser()
         ]);
     }
 }

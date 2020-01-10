@@ -33,7 +33,9 @@
                 {% for article in articles %}
                     <tr>
                         <td>{{ article.id }}</td>
-                        <td><img src="{{ article.picture }}" alt="image de l'article" class="img-article"></td>
+                        <td> {% if article.filename %}
+                                <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article" class="img-article">
+                            {% endif %}</td>
                         <td>{{ article.title }}</td>
                         <td>{{ article.content|truncate(200) }}</td>
                         <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>

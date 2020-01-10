@@ -22,10 +22,8 @@ class ContactController extends AbstractController
      * @return Response
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function index(Request $request, MailerInterface $mailer, CategoryRepository $categoryRepository): Response
+    public function index(Request $request, MailerInterface $mailer): Response
     {
-        $categories = $categoryRepository->findAll();
-
         $form = $this->createForm(ContactType::class);
 
         $form->handleRequest($request);
@@ -49,7 +47,6 @@ class ContactController extends AbstractController
         }
         return $this->render('contact/index.html.twig', [
             'our_form' => $form->createView(),
-            'categories' => $categories,
         ]);
     }
 }

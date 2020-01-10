@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 
+{% block title %}Espace membre{% endblock %}
+
 {% block body %}
     <div class="container-content">
         <h1 class="title">Espace membre</h1>
@@ -7,36 +9,36 @@
 
     <div class="costumer-space">
         <div class="container">
-            <div class="card mb-3 border-none">
-                <div class="card-header bg-transparent border-dark">
-                    <h2>Entreprise - {{ user.company }}</h2>
+
+            <div class="card mb-3 border-0">
+                <div class="card-header bg-transparent">
+                    <h2 class="engagement-title">Entreprise - {{ user.company }} ({{ user.field }})</h2>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">{{ user.name }}</h5>
-                    <p class="card-text"> {{ user.email }}</p>
-                    <p class="card-text"> {{ user.phone }}</p>
-                </div>
-            </div>
-            <div class="card mb-3 border-none">
-                <div class="card-header bg-transparent border-dark">
-                    <h2>Mes Outils</h2>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        {% for category in user.categories %}
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-                                <label class="form-check-label" for="inlineCheckbox3">{{ category.sector }}</label>
-                            </div>
-                        {% endfor %}
-                    </p>
+
+                <div class="card-body m-4">
+                    <h5 class="card-title"><i class="fas fa-user mr-3"></i>
+                        <b>{{ user.firstname }} {{ user.lastname }}</b>,
+                        <i>{{ user.function }}</i></h5>
+                    <p class="card-text"><i class="fas fa-at mr-3"></i> {{ user.email }}</p>
+                    <p class="card-text"><i class="fas fa-phone mr-3"></i> {{ user.phone }}</p>
                 </div>
             </div>
+
+            <div class="card mb-3 border-0">
+                <div class="card-header bg-transparent">
+                    <h2 class="engagement-title">Mes Outils</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Lien vers la plateforme externe de partage de fichiers : </p>
+                </div>
+            </div>
+
         </div>
     </div>
+
     <div class="btn-retour">
         <a href="{{ path('index') }}">
-            <button type="button" class="btn btn-dark btn-lg m-5"> Retour</button>
+            <button type="button" class="btn btn-dark btn-lg m-5">Retour</button>
         </a>
     </div>
 {% endblock %}

@@ -30,21 +30,21 @@ class Category
     private $tools;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="categories")
-     */
-    private $users;
-
-    /**
      * @Gedmo\Slug(fields={"sector"})
      * @ORM\Column(length=255, unique=true)
      */
     private $slug;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="category", orphanRemoval=true)
+     */
+    private $comments;
+
 
     public function __construct()
     {
         $this->tools = new ArrayCollection();
-        $this->users = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,33 +95,6 @@ class Category
         return $this;
     }
 
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addCategory($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->contains($user)) {
-            $this->users->removeElement($user);
-            $user->removeCategory($this);
-        }
-    }
-
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -131,6 +104,37 @@ class Category
     {
         $this->slug = $slug;
 
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getCategory() === $this) {
+                $comment->setCategory(null);
+            }
+        }
 
         return $this;
     }

@@ -5,13 +5,6 @@
         text-decoration: none;
     }
 
-    .card-title {
-        margin-top: 1em;
-        font-size: 2em;
-        color: $primary-color;
-        font-weight: bold;
-    }
-
     p {
         line-height: 30px;
     }
@@ -27,6 +20,18 @@
         width: 30rem;
     }
 
+    .card-img-top {
+        height: 20rem;
+        object-fit: cover;
+    }
+
+    .card-title {
+        margin-top: 1em;
+        font-size: 2em;
+        color: $primary-color;
+        font-weight: bold;
+    }
+
     .btn btn-dark {
         background-color: $secondary-color;
     }
@@ -34,4 +39,33 @@
     .all-articles {
         text-align: center;
     }
+
+    p {
+        img {
+            display: none;
+        }
+    }
 }
+
+.pagination {
+    margin: 2rem;
+
+    .buttons {
+        .btn {
+            width:8rem;
+        }
+    }
+}
+
+.btn-inactive {
+    background-color: $secondary-color;
+    color:$light-color;
+    cursor: default;
+    border:none;
+}
+
+.btn-inactive:hover {
+    color:$light-color;
+}
+
+

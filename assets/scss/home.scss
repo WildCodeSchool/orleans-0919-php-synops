@@ -1,14 +1,16 @@
+@import "home/carousel";
 @import "home/article";
 @import "home/call";
 @import "home/concretely";
 @import "home/adn";
 @import "home/engagements";
-@import "home/team";
 @import "home/deal";
+@import "home/team";
 @import "home/partners";
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .title {

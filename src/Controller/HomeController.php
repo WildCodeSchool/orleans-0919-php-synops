@@ -40,4 +40,11 @@ class HomeController extends AbstractController
             'documents' => $documents
         ]);
     }
+
+    public function navbar(CategoryRepository $categoryRepository)
+    {
+        $categories = $categoryRepository->findBy([], ['sector' => 'ASC']);
+
+        return $this->render('_categories_in_nav.html.twig', ['categories' => $categories]);
+    }
 }

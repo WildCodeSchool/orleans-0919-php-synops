@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
@@ -18,7 +19,8 @@ class ArticleFixtures extends Fixture
             $article->setTitle($faker->realText(50));
             $article->setContent($faker->paragraph(15));
             $article->setDate($faker->dateTime);
-            $article->setPicture($faker->imageUrl(200, 200));
+            $article->setUpdatedAt(new DateTime());
+            $article->setFilename('placeholder.png');
             $manager->persist($article);
         }
 

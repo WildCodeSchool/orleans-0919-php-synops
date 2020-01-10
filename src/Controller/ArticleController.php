@@ -4,35 +4,49 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Repository\ArticleRepository;
+use App\Repository\CategoryRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/article", name="article_")
+ * @Route("/actualite", name="article_")
  */
 class ArticleController extends AbstractController
 {
+    const NB_MAX_ARTICLES_PER_PAGE = 9;
+
     /**
-     *  @Route("/", name="list")
+     * @Route("s/{page}", name="list", requirements={"page" = "\d+"}, methods={"GET"}, defaults={"page" = 1})
      * @return  Response
      */
-    public function list():Response
-    {
-        $articles = $this->getDoctrine()
-            ->getRepository(Article::class)
-            ->findAll();
+    public function list(
+        int $page,
+        ArticleRepository $articleRepository,
+        CategoryRepository $categoryRepository
+    ): Response {
+        $categories = $categoryRepository->findAll();
+
+        $articles = $articleRepository->findAllPaginateAndSort($page);
+        $nbArticles = count($articleRepository->findAllPaginateAndSort());
+
         return $this->render('article/list.html.twig', [
             'articles' => $articles,
+            'page' => $page,
+            'nbPages' => ceil($nbArticles / self::NB_MAX_ARTICLES_PER_PAGE),
+            'categories' => $categories
         ]);
     }
 
     /**
-     * @Route("/show/{slug}", name="show")
+     * @Route("/{slug}", name="show")
      * @param Article $article
      * @return  Response
      */
-    public function show(Article $article):Response
+    public function show(Article $article): Response
     {
         return $this->render('article/show.html.twig', [
             'article' => $article,

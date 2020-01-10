@@ -13,13 +13,13 @@
 
         <ul class="navbar-nav d-flex justify-content-around align-items-center w-100">
             <li class="nav-item d-flex ">
-                <a href="{{ path('index') }}#deal" class="nav-link"><span class="nav-effect">NOTRE OFFRE</span></a>
+                <a href="{{ path('index') }}#offre" class="nav-link"><span class="nav-effect">NOTRE OFFRE</span></a>
             </li>
             <li class="nav-item d-flex align-self-center">
-                <a href="{{ path('index') }}#team" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
+                <a href="{{ path('index') }}#equipe" class="nav-link"><span class="nav-effect">L'ÉQUIPE</span></a>
             </li>
             <li class="nav-item d-flex">
-                <a href="#" class="nav-link"><span class="nav-effect">ESPACE CLIENT</span></a>
+                <a href="{{ path('customer_space') }}" class="nav-link"><span class="nav-effect">ESPACE MEMBRE</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown text-center" href="#" data-toggle="dropdown" aria-haspopup="true"
@@ -28,11 +28,9 @@
                                 class="fas fa-1x fa-chevron-down align-middle"></i></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                    {% for category in categories %}
-                        <a href="{{ path('tool', {'slug': category.slug }) }}"
-                           class="dropdown-item px-5">{{ category.sector }}</a>
-                        <div class="dropdown-divider px-5"></div>
-                    {% endfor %}
+                    {{ render(controller(
+                        'App\\Controller\\HomeController::navbar'
+                    )) }}
                 </div>
             </li>
 

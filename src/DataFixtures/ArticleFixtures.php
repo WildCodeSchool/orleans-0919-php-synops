@@ -20,7 +20,7 @@ class ArticleFixtures extends Fixture
             $article->setContent($faker->paragraph(15));
             $article->setDate($faker->dateTime);
             $article->setUpdatedAt(new DateTime());
-            $article->setFilename('5e17091a7985f704659466.jpg');
+            $article->setFilename('placeholder.png');
             $manager->persist($article);
         }
 

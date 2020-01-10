@@ -8,7 +8,7 @@
         {% set inWaiting = 'false' %}
 
         {% for user in users %}
-            {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
+            {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles and "ROLE_ACCES_REMOVED" not in user.roles %}
                 {% set inWaiting = 'true' %}
             {% endif %}
         {% endfor %}
@@ -20,33 +20,34 @@
         <div class="container">
             {% for user in users %}
 
-                {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
+                {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles and "ROLE_ACCES_REMOVED" not in user.roles %}
+                    {% if "ROLE_ACCES_DENIED" not in user.roles %}
 
-                    <div class="row member-row mt-5 mb-5">
+                        <div class="row member-row mt-5 mb-5">
 
-                        <div class="col-lg-4 text-center ml-2">
-                            <p class="font-weight-bold">{{ user.company }}</p>
-                            <p class="text-secondary font-italic">{{ user.field }}</p>
-                            <p>{{ user.email }}</p>
+                            <div class="col-lg-4 text-center ml-2">
+                                <p class="font-weight-bold">{{ user.company }}</p>
+                                <p class="text-secondary font-italic">{{ user.field }}</p>
+                                <p>{{ user.email }}</p>
+                            </div>
+
+                            <div class="col-lg-4 ml-3">
+                                <p>{{ user.firstname }} {{ user.lastname }}</p>
+                                <p>{{ user.function }}</p>
+                                <p>{{ user.phone }}</p>
+                            </div>
+
+                            <div class="col-lg-3 ml-3 d-flex flex-column">
+                                <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
+                                    <button class="btn btn-warm-color w-50 m-2" type="submit">
+                                        Valider le membre
+                                    </button>
+                                </form>
+                                {{ include('admin_member/_delete_form.html.twig') }}
+                            </div>
+
                         </div>
-
-                        <div class="col-lg-4 ml-3">
-                            <p>{{ user.firstname }} {{ user.lastname }}</p>
-                            <p>{{ user.function }}</p>
-                            <p>{{ user.phone }}</p>
-                        </div>
-
-                        <div class="col-lg-3 ml-3 d-flex flex-column">
-                            <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
-                                <button class="btn btn-warm-color w-50 m-2" type="submit">
-                                    Valider le membre
-                                </button>
-                            </form>
-                            {{ include('admin_member/_delete_form.html.twig') }}
-                        </div>
-
-                    </div>
-
+                    {% endif %}
                 {% endif %}
 
             {% endfor %}
@@ -73,6 +74,9 @@
                         </div>
 
                         <div class="col-lg-3 ml-3 d-flex flex-column">
+                            <form action="{{ path('admin_remove_acces', { id: user.id }) }}" method="post">
+                                <button class="btn btn-secondary w-50 m-2">Retirer les accès</button>
+                            </form>
                             {{ include('admin_member/_delete_form.html.twig') }}
                         </div>
 

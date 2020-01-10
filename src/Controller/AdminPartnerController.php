@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/partner")
+ * @Route("/admin/partenaire")
  */
 class AdminPartnerController extends AbstractController
 {
     /**
-     * @Route("/", name="partner_index", methods={"GET"})
+     * @Route("s", name="partner_index", methods={"GET"})
      */
     public function index(PartnerRepository $partnerRepository): Response
     {
@@ -26,7 +26,7 @@ class AdminPartnerController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="partner_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="partner_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -59,7 +59,7 @@ class AdminPartnerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="partner_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="partner_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Partner $partner): Response
     {

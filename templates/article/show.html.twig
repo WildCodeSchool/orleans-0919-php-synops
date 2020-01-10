@@ -1,28 +1,29 @@
 {% extends 'layout.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid container-title container-article">
-        <div class="row no-gutters">
-            <div class="col-lg-12 col-xs-1">
-                <h1 class="title"> {{ article.title }}</h1>
+    <div class="show-article">
+        <div class="container-content">
+            <h1 class="title"> {{ article.title }}</h1>
+        </div>
+        <div class="container">
+            <p class="card-text date">
+                {{ article.date ? article.date|localizeddate('long','short') }}
+            </p>
+            <div class="card mb-3 border-none">
+                {% if article.filename %}
+                    <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
+                         class="card-img-top">
+                {% endif %}
+                <div class="card-body">
+                    <p class="card-text">{{ article.content|raw }}</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container">
-        <p class="card-text date">
-            {{ article.date ? article.date|localizeddate('long','short') }}
-        </p>
-        <div class="card mb-3 border-none">
-            <img src="https://via.placeholder.com/640x200" class="card-img-top" alt="article image">
-            <div class="card-body">
-                <p class="card-text">{{ article.content|raw }}</p>
-            </div>
-        </div>
-    </div>
 
-    <div class="btn-retour">
-        <a href="{{ path('article_list') }}">
-            <button type="button" class="btn btn-dark btn-lg m-5"> Retour</button>
-        </a>
+        <div class="btn-retour">
+            <a href="{{ path('article_list') }}">
+                <button type="button" class="btn btn-dark btn-lg m-5"> Retour</button>
+            </a>
+        </div>
     </div>
 {% endblock %}

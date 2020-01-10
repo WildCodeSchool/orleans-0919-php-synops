@@ -54,9 +54,9 @@ class AdminUserController extends AbstractController
     }
 
     /**
-     * @Route("/retirer-access/{id}", name="admin_remove_access", methods={"POST"})
+     * @Route("/retirer-acces/{id}", name="admin_remove_access", methods={"POST"})
      */
-    public function removeAcces(User $user): Response
+    public function removeAccess(User $user): Response
     {
         $user->setRoles(['ROLE_ACCESS_REMOVED']);
 

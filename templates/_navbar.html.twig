@@ -28,11 +28,9 @@
                                 class="fas fa-1x fa-chevron-down align-middle"></i></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdown_target">
-                    {% for category in categories %}
-                        <a href="{{ path('tool', {'slug': category.slug }) }}"
-                           class="dropdown-item px-5">{{ category.sector }}</a>
-                        <div class="dropdown-divider px-5"></div>
-                    {% endfor %}
+                    {{ render(controller(
+                        'App\\Controller\\HomeController::navbar'
+                    )) }}
                 </div>
             </li>
 

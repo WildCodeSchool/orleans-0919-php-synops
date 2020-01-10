@@ -5,11 +5,17 @@
 {% block body %}
     <div class="admin-member">
 
+        {% set inWaiting = 'false' %}
+
         {% for user in users %}
             {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
-                <h1 class="title container-content">Membres en Attente</h1>
+                {% set inWaiting = 'true' %}
             {% endif %}
         {% endfor %}
+
+        {% if inWaiting == 'true' %}
+            <h1 class="title container-content">Membres en Attente</h1>
+        {% endif %}
 
         <div class="container">
             {% for user in users %}

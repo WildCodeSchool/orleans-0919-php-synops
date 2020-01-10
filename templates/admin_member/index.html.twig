@@ -31,7 +31,7 @@
                         </div>
 
                         <div class="col-lg-3 ml-3 d-flex flex-column">
-                            <form action="{{ url('admin_validate_member', { id: user.id }) }}" method="post">
+                            <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
                                 <button class="btn btn-warm-color w-50 m-2" type="submit">
                                     Valider le membre
                                 </button>

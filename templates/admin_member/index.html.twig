@@ -95,9 +95,7 @@
         {% set previousMembers = 'false' %}
 
         {% for user in users %}
-            {% if "ROLE_MEMBER" not in user.roles
-                and "ROLE_ADMIN" not in user.roles
-                and "ROLE_ACCES_REMOVED" not in user.roles %}
+            {% if "ROLE_ACCESS_REMOVED" in user.roles %}
                 {% set previousMembers = 'true' %}
             {% endif %}
         {% endfor %}

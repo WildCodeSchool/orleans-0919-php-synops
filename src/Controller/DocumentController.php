@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/document")
+ * @Route("/admin_document")
  */
 class DocumentController extends AbstractController
 {
@@ -20,7 +20,7 @@ class DocumentController extends AbstractController
      */
     public function index(DocumentRepository $documentRepository): Response
     {
-        return $this->render('document/index.html.twig', [
+        return $this->render('admin_document/index.html.twig', [
             'documents' => $documentRepository->findAll(),
         ]);
     }
@@ -42,8 +42,8 @@ class DocumentController extends AbstractController
             return $this->redirectToRoute('tool_index');
         }
 
-        return $this->render('document/new.html.twig', [
-            'document' => $document,
+        return $this->render('admin_document/new.html.twig', [
+            'admin_document' => $document,
             'form' => $form->createView(),
         ]);
     }
@@ -53,8 +53,8 @@ class DocumentController extends AbstractController
      */
     public function show(Document $document): Response
     {
-        return $this->render('document/show.html.twig', [
-            'document' => $document,
+        return $this->render('admin_document/show.html.twig', [
+            'admin_document' => $document,
         ]);
     }
 
@@ -72,8 +72,8 @@ class DocumentController extends AbstractController
             return $this->redirectToRoute('document_index');
         }
 
-        return $this->render('document/edit.html.twig', [
-            'document' => $document,
+        return $this->render('admin_document/edit.html.twig', [
+            'admin_document' => $document,
             'form' => $form->createView(),
         ]);
     }

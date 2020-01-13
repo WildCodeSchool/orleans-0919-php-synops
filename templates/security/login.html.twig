@@ -4,11 +4,11 @@
 
 {% block body %}
     <div class="background-login bg-secondary">
-        <div class="login-index">
+        <div class="login-index pb-5">
 
             <h1 class="title">CONNEXION</h1>
 
-            <form method="post" class="container w-100 bg-primary text-light p-5 mb-5 d-flex flex-column align-items-center login-form">
+            <form method="post" class="container w-100 bg-primary text-light p-5 d-flex flex-column align-items-center login-form pb-5">
                 <div class="w-100">
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -39,6 +39,8 @@
                 </button>
 
                 <a href="{{ path('app_register') }}"><p class="text-light mb-0">S'inscrire</p></a>
+
+                <a href="{{ path('request_resetting') }}"><p class="text-light mb-0">Mot de passe oublié</p></a>
                 {% endif %}
             </form>
         </div>

@@ -11,6 +11,12 @@
             <div class="w-100">
                 {{ form_start(registrationForm) }}
                 {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.firstname) }}
+                {{ form_row(registrationForm.lastname) }}
+                {{ form_row(registrationForm.function) }}
+                {{ form_row(registrationForm.company) }}
+                {{ form_row(registrationForm.field) }}
+                {{ form_row(registrationForm.phone) }}
                 {{ form_row(registrationForm.password.first) }}
                 {{ form_row(registrationForm.password.second) }}
             </div>

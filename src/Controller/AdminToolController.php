@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Tool;
 use App\Form\ToolType;
 use App\Repository\CategoryRepository;
+use App\Repository\DocumentRepository;
 use App\Repository\ToolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,11 +20,15 @@ class AdminToolController extends AbstractController
     /**
      * @Route("/", name="tool_index", methods={"GET"})
      */
-    public function index(ToolRepository $toolRepository, CategoryRepository $categoryRepository): Response
-    {
+    public function index(
+        ToolRepository $toolRepository,
+        CategoryRepository $categoryRepository,
+        DocumentRepository $documentRepository
+    ): Response {
         return $this->render('admin_tool/index.html.twig', [
             'tools' => $toolRepository->findAll(),
-            'categories' => $categoryRepository->findAll()
+            'categories' => $categoryRepository->findAll(),
+            'documents' => $documentRepository->findAll()
         ]);
     }
 

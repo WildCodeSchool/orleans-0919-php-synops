@@ -2,25 +2,24 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Tool;
+use App\Entity\Document;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Faker;
 
-class ToolFixtures extends Fixture implements DependentFixtureInterface
+class DocumentFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
         $faker = Faker\Factory::create();
 
-        for ($i=0; $i<20; $i++) {
-            $tool = new Tool();
-            $tool->setName($faker->realText(100));
-            $tool->setCategory($this->getReference('categories_' . rand(0, 4)));
-            $this->addReference('tools_' . $i, $tool);
+        for ($i=0; $i<40; $i++) {
+            $document = new Document();
+            $document->setDescription($faker->realText(100));
+            $document->setTool($this->getReference('tools_' . rand(0, 19)));
 
-            $manager->persist($tool);
+            $manager->persist($document);
         }
 
         $manager->flush();
@@ -34,6 +33,6 @@ class ToolFixtures extends Fixture implements DependentFixtureInterface
      */
     public function getDependencies()
     {
-        return [CategoryFixtures::class];
+        return [ToolFixtures::class];
     }
 }

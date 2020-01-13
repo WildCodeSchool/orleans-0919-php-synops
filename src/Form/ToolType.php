@@ -13,8 +13,8 @@ class ToolType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', null, ['choice_label' => 'sector', 'label' => 'Le nom des catégories'])
-            ->add('name', TextType::class, ['label' => "Le nom de la catégorie"]);
+            ->add('category', null, ['choice_label' => 'sector', 'label' => 'Catégories'])
+            ->add('name', TextType::class, ['label' => "Sous-catégorie"]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -16,7 +16,7 @@ class DocumentType extends AbstractType
         $builder
             ->add('description', TextareaType::class, ['label' => "Description de l'outil"])
             ->add('tool', null, ['choice_label' => 'name',
-                'label' => 'Le nom des sous-catégories'])
+                'label' => 'Sous-catégories'])
         ;
     }
 

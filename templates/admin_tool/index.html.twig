@@ -44,10 +44,10 @@
                             </div>
                             {% for document in tool.documents %}
                                 <div class="card-body tool_card ml-5">
-                                    <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ document.description }}
+                                    <i class="fas fa-angle-right mr-3"></i>{{ document.description }}
                                     <a href="{{ path('document_edit', {'id': document.id}) }}">
                                         <button class="btn align-text-bottom text-primary"><i
-                                                    class="fas fa-pen fa-2x ml-5"></i>
+                                                    class="fas fa-pen fa-2x ml-5"></i>{{ include('admin_document/_delete_form.html.twig') }}
                                         </button>
                                     </a>
                                 </div>

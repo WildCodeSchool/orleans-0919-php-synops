@@ -10,7 +10,12 @@
         <div class="container">
             <div class="button_tool mr-5 mb-5 d-flex justify-content-start">
                 <a href="{{ path('tool_new') }}">
-                    <button class="btn btn-primary"><i class="fas fa-plus mr-2"></i>Ajouter</button>
+                    <button class="btn btn-primary"><i class="fas fa-plus mr-2"></i>Ajouter une sous-catégory</button>
+                </a>
+            </div>
+            <div class="button_tool mr-5 mb-5 d-flex justify-content-start">
+                <a href="{{ path('document_new') }}">
+                    <button class="btn btn-primary"><i class="fas fa-plus mr-2"></i>Ajouter un outil</button>
                 </a>
             </div>
         </div>
@@ -29,7 +34,7 @@
                     {% for tool in category.tools %}
                         <div id="collapse{{ category.id }}" class="collapse" aria-labelledby="headingOne"
                              data-parent="#accordionDeals">
-                            <div class="card-body tool_card ml-3">
+                            <div class="card-body tool_card ml-2">
                                 <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ tool.name }}
                                 <a href="{{ path('tool_edit', {'id': tool.id}) }}">
                                     <button class="btn align-text-bottom text-primary"><i
@@ -38,7 +43,7 @@
                                 </a>
                             </div>
                             {% for document in tool.documents %}
-                                <div class="card-body tool_card ml-3">
+                                <div class="card-body tool_card ml-5">
                                     <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ document.description }}
                                     <a href="{{ path('document_edit', {'id': document.id}) }}">edit</a>
                                 </div>

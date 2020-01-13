@@ -13,7 +13,7 @@ class DocumentType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('tool')
+            ->add('tool', null, ['choice_label' => 'name'])
         ;
     }
 

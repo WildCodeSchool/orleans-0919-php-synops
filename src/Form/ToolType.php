@@ -13,8 +13,7 @@ class ToolType extends AbstractType
     {
         $builder
             ->add('category', null, ['choice_label' => 'sector'])
-            ->add('name')
-            ->add('description');
+            ->add('name');
     }
 
     public function configureOptions(OptionsResolver $resolver)

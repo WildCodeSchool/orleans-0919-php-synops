@@ -1,11 +1,17 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
-{% block title %}New Document{% endblock %}
+{% block title %}Ajouter un outil{% endblock %}
 
 {% block body %}
-    <h1>Create new Document</h1>
+    <div class="container-content">
+        <h1 class="title">Ajouter un outil</h1>
 
-    {{ include('document/_form.html.twig') }}
+        <div class="container mb-5">
+            <a href="{{ path('tool_index') }}"> <button class="btn btn-secondary">Retour aux outils</button></a>
+        </div>
 
-    <a href="{{ path('document_index') }}">back to list</a>
+        <div class="container">
+            {{ include('document/_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

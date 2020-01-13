@@ -16,6 +16,10 @@
         box-shadow: $shadow-size $shadow-size 0px $warm-color;
     }
 
+    .card-img {
+        filter: grayscale(0);
+    }
+
     svg {
         font-size: 5rem;
         margin: 1rem;

@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin_document")
+ * @Route("/admin/document")
  */
-class DocumentController extends AbstractController
+class AdminDocumentController extends AbstractController
 {
     /**
      * @Route("/", name="document_index", methods={"GET"})
@@ -26,7 +26,7 @@ class DocumentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="document_new", methods={"GET","POST"})
+     * @Route("/nouveau", name="document_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {

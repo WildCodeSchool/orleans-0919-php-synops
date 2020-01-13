@@ -59,7 +59,7 @@ class AdminDocumentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/editer", name="document_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="document_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Document $document): Response
     {

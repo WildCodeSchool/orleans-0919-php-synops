@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Mot de passe oublié{% endblock %}
+
+{% block body %}
+    <h1 class="title container-content">Renouvellement du mot de passe</h1>
+
+    <div class="container mb-5">
+        {{ form_start(form) }}
+        {{ form_row(form.password.first) }}
+        {{ form_row(form.password.second) }}
+        <button class="btn btn-primary" type="submit">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

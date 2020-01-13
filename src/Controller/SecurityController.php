@@ -51,8 +51,7 @@ class SecurityController extends AbstractController
         GuardAuthenticatorHandler $guardHandler,
         LoginFormAuthentificator $authenticator,
         CategoryRepository $categoryRepository
-    ): Response
-    {
+    ): Response {
 
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);

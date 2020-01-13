@@ -2,25 +2,28 @@
 
 namespace App\Form;
 
-use App\Entity\Tool;
+use App\Entity\Document;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ToolType extends AbstractType
+class DocumentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('category', null, ['choice_label' => 'sector', 'label' => 'Catégorie'])
-            ->add('name', TextType::class, ['label' => "Sous-catégorie"]);
+            ->add('description', TextareaType::class, ['label' => "Description de l'outil"])
+            ->add('tool', null, ['choice_label' => 'name',
+                'label' => 'Sous-catégorie'])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Tool::class,
+            'data_class' => Document::class,
         ]);
     }
 }

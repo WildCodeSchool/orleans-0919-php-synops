@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\DocumentRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\ToolRepository;
@@ -22,18 +23,21 @@ class HomeController extends AbstractController
         ArticleRepository $articleRepository,
         PartnerRepository $partnerRepository,
         CategoryRepository $categoryRepository,
-        ToolRepository $toolRepository
+        ToolRepository $toolRepository,
+        DocumentRepository $documentRepository
     ) {
         $articles = $articleRepository->findBy([], ['date' => 'DESC'], self::LIMIT, 0);
         $partners = $partnerRepository->findAll();
         $categories = $categoryRepository->findAll();
         $tools = $toolRepository->findAll();
+        $documents = $documentRepository->findAll();
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'partners' => $partners,
             'categories' => $categories,
-            'tools' => $tools
+            'tools' => $tools,
+            'documents' => $documents
         ]);
     }
 

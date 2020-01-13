@@ -19,6 +19,7 @@
                         </button>
                     </div>
 
+                    {% for document in tool.documents %}
                     <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
                          data-parent="#accordion">
                         <div class="card-body">
@@ -26,10 +27,11 @@
                                 <div class="icon">
                                     <i class="fas fa-file-pdf fa-3x text-danger"></i>
                                 </div>
-                                <p class="ml-5">{{ tool.description }}</p>
+                                <p class="ml-5">{{ document.description }}</p>
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             {% endfor %}
         </div>

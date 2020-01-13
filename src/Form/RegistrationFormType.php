@@ -25,7 +25,7 @@ class RegistrationFormType extends AbstractType
             ->add('field', TextType::class, ['label' => 'Secteur'])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passes doivent être identiques.',
+                'invalid_message' => 'Les mots de passe doivent être identiques.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
                 'first_options'  => ['label' => 'Mot de passe'],

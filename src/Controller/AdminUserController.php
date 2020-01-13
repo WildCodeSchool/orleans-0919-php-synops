@@ -52,4 +52,18 @@ class AdminUserController extends AbstractController
 
         return $this->redirectToRoute('admin_member_index');
     }
+
+    /**
+     * @Route("/retirer-acces/{id}", name="admin_remove_access", methods={"POST"})
+     */
+    public function removeAccess(User $user): Response
+    {
+        $user->setRoles(['ROLE_ACCESS_REMOVED']);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_member_index');
+    }
 }

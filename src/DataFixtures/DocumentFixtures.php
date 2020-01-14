@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Document;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -18,6 +19,9 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
             $document = new Document();
             $document->setDescription($faker->realText(100));
             $document->setTool($this->getReference('tools_' . rand(0, 19)));
+            $document->setUpdatedAt(new DateTime());
+            $document->setFileName('');
+
 
             $manager->persist($document);
         }

@@ -2,15 +2,22 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Exception;
+use phpDocumentor\Reflection\Types\AbstractList;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
  *  @UniqueEntity("description")
+ * @Vich\Uploadable()
  */
 class Document
 {
@@ -36,6 +43,36 @@ class Document
      * @Assert\NotBlank(message="Veuillez sélectionner un champ")
      */
     private $tool;
+
+    /**
+     * @var File|null
+     * @Assert\Image(
+     *     mimeTypes={
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *      }
+     * )
+     * @Assert\File(
+     *     maxSize="5M",
+     * )
+     * @Vich\UploadableField(mapping="article_image", fileNameProperty="fileName")
+     *
+     */
+    private $file;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     */
+    private $fileName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
 
     public function getId(): ?int
@@ -65,5 +102,58 @@ class Document
         $this->tool = $tool;
 
         return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @param File|null $file
+     * @return Document
+     * @throws Exception
+     */
+    public function setFile(?File $file): Document
+    {
+        $this->file = $file;
+
+        if ($this->file instanceof UploadedFile) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getFile(): ?File
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string|null $fileName
+     * @return Document
+     */
+    public function setFileName(?string $fileName): Document
+    {
+        $this->fileName = $fileName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFileName(): ?string
+    {
+        return $this->fileName;
     }
 }

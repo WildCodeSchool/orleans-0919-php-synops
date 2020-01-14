@@ -51,16 +51,6 @@ class Article
 
     /**
      * @var File|null
-     * @Assert\Image(
-     *     mimeTypes={
-     *          "image/png",
-     *          "image/jpeg",
-     *          "image/jpg",
-     *      }
-     * )
-     * @Assert\File(
-     *     maxSize="5M",
-     * )
      * @Vich\UploadableField(mapping="article_image", fileNameProperty="filename")
      */
     private $pictureFile;

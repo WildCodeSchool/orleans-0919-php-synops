@@ -8,44 +8,18 @@
 
 <div class="team-container container-fluid d-flex flex-wrap justify-content-around">
 
-    <div class="team-card">
-
-        <div class="picture-align mt-5">
-            <div class="team-square bg-warm-color"></div>
-            <img src="{{ asset('build/images/anne.webp') }}" class="rounded-circle picture profile-picture" alt="...">
+    {% for team in teams %}
+        <div class="team-card">
+            <div class="picture-align mt-5">
+                <div class="team-square bg-{{ loop.index0 is even ? 'warm-color' : 'secondary' }}"></div>
+                <img src="{{ asset('build/images/'~ team.picture) }}" class="rounded-circle picture profile-picture" alt="...">
+            </div>
+            <h2 class="team-name m-5 d-flex justify-content-center">
+                {{ team.firstname }}  {{ team.lastname }}
+                <a href="{{ team.email }}"><i class="fab fa-linkedin ml-2"></i></a>
+            </h2>
+            <p>{{ team.description }}</p>
         </div>
-
-
-        <h2 class="team-name m-5 d-flex justify-content-center">Anne d'HERBIGNY
-            <a href="https://www.linkedin.com/in/anne-dherbigny/"><i class="fab fa-linkedin ml-2"></i></a>
-        </h2>
-
-        <p>Anne a une expérience d’une dizaine d’années notamment dans le BTP, la finance et l’industrie, sur des
-            fonctions supports clés.</p>
-        <p>Elle est titulaire d’une Maîtrise des Sciences Techniques, Comptables & Financières.</p>
-        <p>Experte dans l’appréhension des enjeux globaux des entreprises et l’impact des décisions stratégiques, elle
-            s’attache à placer l’Humain au cœur de toutes actions et privilégie un développement éthique.</p>
-        <p>Dotée d’une solide capacité d’écoute et d’un dynamisme communicatif, elle est mue par l’envie d’accompagner
-            les organisations dans le respect de chacun vers des réussites collectives !</p>
-    </div>
-
-    <div class="team-card">
-        <div class="picture-align mt-5">
-            <div class="team-square bg-secondary"></div>
-            <img src="{{ asset('build/images/quitterie.webp') }}" class="rounded-circle picture profile-picture" alt="...">
-        </div>
-
-        <h2 class="team-name m-5 d-flex justify-content-center">Quitterie BAURÈS
-            <a href="https://www.linkedin.com/in/quitterie-baurès-533547a8/"><i class="fab fa-linkedin ml-2"></i></a>
-        </h2>
-
-        <p>Quitterie a travaillé une dizaine d’années en TPE-PME & associations patronales.</p>
-        <p>De formation initiale Assistante de Direction, elle a par la suite occupé des fonctions commerciales et
-            managériales, en passant par le développement de compétences marketing/communication. </p>
-        <p> Elle a acquis une solide expertise dans l’accompagnement du dirigeant à la mise en place de son plan
-            d’action avec une approche transversale.</p>
-        <p>De nature impliquée, passionnée par les relations humaines, elle met en œuvre une approche responsable des
-            problématiques d’entreprise pour plus de bien-être et de performance !</p>
-    </div>
+    {% endfor %}
 
 </div>

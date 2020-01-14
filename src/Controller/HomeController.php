@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\CategoryRepository;
 use App\Repository\PartnerRepository;
+use App\Repository\TeamRepository;
 use App\Repository\ToolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,18 +23,21 @@ class HomeController extends AbstractController
         ArticleRepository $articleRepository,
         PartnerRepository $partnerRepository,
         CategoryRepository $categoryRepository,
-        ToolRepository $toolRepository
+        ToolRepository $toolRepository,
+        TeamRepository $teamRepository
     ) {
         $articles = $articleRepository->findBy([], ['date' => 'DESC'], self::LIMIT, 0);
         $partners = $partnerRepository->findAll();
         $categories = $categoryRepository->findAll();
         $tools = $toolRepository->findAll();
+        $team = $teamRepository->findAll();
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
             'partners' => $partners,
             'categories' => $categories,
-            'tools' => $tools
+            'tools' => $tools,
+            'team' => $team,
         ]);
     }
 

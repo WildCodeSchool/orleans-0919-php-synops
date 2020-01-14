@@ -24,7 +24,6 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
@@ -70,8 +69,6 @@ class SecurityController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                // do anything else you need here, like send an email
-
                 return $guardHandler->authenticateUserAndHandleSuccess(
                     $user,
                     $request,
@@ -85,5 +82,13 @@ class SecurityController extends AbstractController
             'registrationForm' => $form->createView(),
             'categories' => $categoryRepository->findAll()
         ]);
+    }
+
+    /**
+     * @Route("/termes-utilisation", name="terms")
+     */
+    public function terms(): Response
+    {
+        return $this->render('security/terms.html.twig');
     }
 }

@@ -59,7 +59,7 @@ class AdminDocumentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="document_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="document_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Document $document): Response
     {
@@ -69,7 +69,7 @@ class AdminDocumentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('document_index');
+            return $this->redirectToRoute('tool_index');
         }
 
         return $this->render('admin_document/edit.html.twig', [

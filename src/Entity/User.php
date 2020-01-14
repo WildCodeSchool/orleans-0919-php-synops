@@ -92,6 +92,13 @@ class User implements UserInterface
      */
     private $lastname;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -102,9 +109,9 @@ class User implements UserInterface
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
-        return $this->email;
+        return $this->email ?? '';
     }
 
     public function setEmail(string $email): self
@@ -276,6 +283,17 @@ class User implements UserInterface
     {
         $this->lastname = $lastname;
 
+        return $this;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    public function setToken($token)
+    {
+        $this->token = $token;
         return $this;
     }
 }

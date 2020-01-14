@@ -24,13 +24,32 @@ class AdminUserController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/export/membres", name="admin_member_export", methods={"GET"})
+     * @param UserRepository $userRepository
+     * @return Response
+     */
+    public function exportMember(UserRepository $userRepository): Response
+    {
+        $csv = $this->renderView('admin_member/export_user.csv.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
+
+        $response = new Response($csv);
+        $response->setStatusCode(200);
+
+        $response->headers->set('Content-Type', 'application/csv;charset=UTF-8');
+        $response->headers->set('Content-Disposition', 'attachment; filename="export_members.csv"');
+
+        return $response;
+    }
 
     /**
      * @Route("/{id}", name="admin_user_delete", methods={"DELETE"})
      */
     public function delete(Request $request, User $user): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();

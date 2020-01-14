@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\File\File;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
  *  @UniqueEntity("description")
- * @Vich\Uploadable()
+ * @Vich\Uploadable
  */
 class Document
 {
@@ -45,19 +45,8 @@ class Document
     private $tool;
 
     /**
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="fileName")
      * @var File|null
-     * @Assert\Image(
-     *     mimeTypes={
-     *          "image/png",
-     *          "image/jpeg",
-     *          "image/jpg",
-     *      }
-     * )
-     * @Assert\File(
-     *     maxSize="5M",
-     * )
-     * @Vich\UploadableField(mapping="article_image", fileNameProperty="fileName")
-     *
      */
     private $file;
 

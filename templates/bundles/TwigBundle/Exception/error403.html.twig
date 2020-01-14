@@ -1,0 +1,26 @@
+{% extends 'layout_errors.html.twig' %}
+{% block title %}{{ status_code }}{% endblock %}
+{% block body %}
+
+    <div class="error-page container-fluid d-flex flex-column align-items-center">
+
+        <h1 class="mb-5 display-4 text-light">Erreur {{ status_code }} - {{ status_text }}</h1>
+
+        <h2 class="text-light">L'accès à la page est refusé ou interdit...</h2>
+
+        <p class="text-light">
+            Ce problème peut se produire plusieurs raisons.
+            <br>
+            Vous pouvez rentrer à bon port en cliquant ici...
+        </p>
+
+        <a href="{{ path('index') }}">
+            <button type="button" class="mt-5 btn btn-success d-flex align-items-center"><i
+                        class="far fa-2x fa-compass mr-2"></i> Revenir à la page d'accueil
+            </button>
+        </a>
+
+    </div>
+
+{% endblock %}
+{% block footer %}{% endblock %}

@@ -89,6 +89,6 @@ class AdminDocumentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('document_index');
+        return $this->redirectToRoute('tool_index');
     }
 }

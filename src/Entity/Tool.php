@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
@@ -36,9 +38,14 @@ class Tool
     private $category;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="tool")
      */
-    private $description;
+    private $documents;
+
+    public function __construct()
+    {
+        $this->documents = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,14 +76,33 @@ class Tool
         return $this;
     }
 
-    public function getDescription(): ?string
+    /**
+     * @return Collection|Document[]
+     */
+    public function getDocuments(): Collection
     {
-        return $this->description;
+        return $this->documents;
     }
 
-    public function setDescription(?string $description): self
+    public function addDocument(Document $document): self
     {
-        $this->description = $description;
+        if (!$this->documents->contains($document)) {
+            $this->documents[] = $document;
+            $document->setTool($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDocument(Document $document): self
+    {
+        if ($this->documents->contains($document)) {
+            $this->documents->removeElement($document);
+            // set the owning side to null (unless already changed)
+            if ($document->getTool() === $this) {
+                $document->setTool(null);
+            }
+        }
 
         return $this;
     }

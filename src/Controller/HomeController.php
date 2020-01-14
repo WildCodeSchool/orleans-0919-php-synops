@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\DocumentRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\PartnerRepository;
 use App\Repository\TeamRepository;
@@ -17,6 +18,12 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/", name="index")
+     * @param ArticleRepository $articleRepository
+     * @param PartnerRepository $partnerRepository
+     * @param CategoryRepository $categoryRepository
+     * @param ToolRepository $toolRepository
+     * @param TeamRepository $teamRepository
+     * @param DocumentRepository $documentRepository
      */
 
     public function index(
@@ -24,13 +31,15 @@ class HomeController extends AbstractController
         PartnerRepository $partnerRepository,
         CategoryRepository $categoryRepository,
         ToolRepository $toolRepository,
-        TeamRepository $teamRepository
+        TeamRepository $teamRepository,
+        DocumentRepository $documentRepository
     ) {
         $articles = $articleRepository->findBy([], ['date' => 'DESC'], self::LIMIT, 0);
         $partners = $partnerRepository->findAll();
         $categories = $categoryRepository->findAll();
         $tools = $toolRepository->findAll();
         $team = $teamRepository->findAll();
+        $documents = $documentRepository->findAll();
 
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
@@ -38,6 +47,7 @@ class HomeController extends AbstractController
             'categories' => $categories,
             'tools' => $tools,
             'team' => $team,
+            'documents' => $documents
         ]);
     }
 

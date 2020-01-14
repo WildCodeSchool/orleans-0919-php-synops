@@ -8,17 +8,17 @@
 
 <div class="team-container container-fluid d-flex flex-wrap justify-content-around">
 
-    {% for oneTeam in team %}
+    {% for team in teams %}
         <div class="team-card">
             <div class="picture-align mt-5">
                 <div class="team-square bg-{{ loop.index0 is even ? 'warm-color' : 'secondary' }}"></div>
-                <img src="{{ asset('build/images/'~ oneTeam.picture) }}" class="rounded-circle picture profile-picture" alt="...">
+                <img src="{{ asset('build/images/'~ team.picture) }}" class="rounded-circle picture profile-picture" alt="...">
             </div>
             <h2 class="team-name m-5 d-flex justify-content-center">
-                {{ oneTeam.firstname }}  {{ oneTeam.lastname }}
-                <a href="{{ oneTeam.email }}"><i class="fab fa-linkedin ml-2"></i></a>
+                {{ team.firstname }}  {{ team.lastname }}
+                <a href="{{ team.email }}"><i class="fab fa-linkedin ml-2"></i></a>
             </h2>
-            <p>{{ oneTeam.description }}</p>
+            <p>{{ team.description }}</p>
         </div>
     {% endfor %}
 

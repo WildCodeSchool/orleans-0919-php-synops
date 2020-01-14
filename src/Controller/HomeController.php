@@ -38,7 +38,7 @@ class HomeController extends AbstractController
         $partners = $partnerRepository->findAll();
         $categories = $categoryRepository->findAll();
         $tools = $toolRepository->findAll();
-        $team = $teamRepository->findAll();
+        $teams = $teamRepository->findAll();
         $documents = $documentRepository->findAll();
 
         return $this->render('home/index.html.twig', [
@@ -46,7 +46,7 @@ class HomeController extends AbstractController
             'partners' => $partners,
             'categories' => $categories,
             'tools' => $tools,
-            'team' => $team,
+            'teams' => $teams,
             'documents' => $documents
         ]);
     }

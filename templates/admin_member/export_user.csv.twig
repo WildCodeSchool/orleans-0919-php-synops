@@ -1,0 +1,4 @@
+Identifiant,Prénom,Nom,Secteur,Entreprise,Fonction,Téléphone,Email
+{% for user in users if "ROLE_MEMBER" in user.roles and "ROLE_ADMIN" not in user.roles%}
+"{{ user.id }}","{{ user.firstname }}","{{ user.lastname }}","{{ user.field }}","{{ user.company }}","{{ user.function }}","{{ user.phone }}","{{ user.email }}"
+{% endfor %}

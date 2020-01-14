@@ -38,3 +38,7 @@ a:focus, img:focus {
 .btn-primary:hover {
     background-color: lighten($primary-color, 20%);
 }
+
+img {
+    filter: grayscale(1);
+}

@@ -25,6 +25,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Le profil a bien été modifié');
 
             return $this->redirectToRoute('customer_space');
         }

@@ -21,6 +21,11 @@
                         <i>{{ user.function }}</i></h5>
                     <p class="card-text"><i class="fas fa-at mr-3"></i> {{ user.email }}</p>
                     <p class="card-text"><i class="fas fa-phone mr-3"></i> {{ user.phone }}</p>
+
+                    <a href="{{ path('user_edit')}}" class="btn btn-primary mt-4">
+                        Modifier mon profil
+                    </a>
+
                 </div>
             </div>
 

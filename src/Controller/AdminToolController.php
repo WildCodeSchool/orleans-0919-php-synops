@@ -45,10 +45,11 @@ class AdminToolController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tool);
             $entityManager->flush();
-            $this->addFlash('success', 'L\'outil a été créé');
 
             return $this->redirectToRoute('tool_index');
         }
+
+        $this->addFlash('success', 'L\'outil a été créé');
 
         return $this->render('admin_tool/new.html.twig', [
             'admin_tool' => $tool,
@@ -92,7 +93,7 @@ class AdminToolController extends AbstractController
      */
     public function delete(Request $request, Tool $tool): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$tool->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $tool->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($tool);
             $entityManager->flush();

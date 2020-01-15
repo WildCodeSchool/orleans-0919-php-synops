@@ -43,18 +43,21 @@
                                 </a>
                             </div>
                             {% for document in tool.documents %}
-                                <div class="card-body tool_card ml-5">
-                                    <i class="fas fa-angle-right mr-3"></i>{{ document.description }}
+                                <div class="card-body tool_card ml-5 row justify-content-start">
+                                    <a href="{{ vich_uploader_asset(document,'file') }} ">
+                                        <i class="fas fa-file-pdf fa-5x mr-5 pb-5"></i>
+                                    </a>
+                                    <p>{{ document.description }}</p>
                                     <a href="{{ path('document_edit', {'id': document.id}) }}">
                                         <button class="btn align-text-bottom text-primary"><i
                                                     class="fas fa-pen fa-2x ml-5"></i>{{ include('admin_document/_delete_form.html.twig') }}
                                         </button>
                                     </a>
                                 </div>
-                                {% else %}
-                                    <tr>
-                                        <td colspan="3">Aucun outil à afficher actuellement.</td>
-                                    </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">Aucun outil à afficher actuellement.</td>
+                                </tr>
                             {% endfor %}
                         </div>
                     {% endfor %}

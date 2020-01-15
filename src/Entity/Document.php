@@ -46,6 +46,9 @@ class Document
 
     /**
      * @Vich\UploadableField(mapping="document_file", fileNameProperty="fileName")
+     * @Assert\File(
+     *     maxSize="2M",
+     * )
      * @var File|null
      */
     private $file;

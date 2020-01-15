@@ -26,10 +26,10 @@ class TeamType extends AbstractType
                 'label' => 'LinkedIn'
             ])
             ->add('description', CKEditorType::class, [
-                'label' => 'Description'
+                'label' => 'Carrière'
             ])
             ->add('picture', FileType::class, [
-                'label' => 'Image'
+                'label' => 'Photo'
             ])
         ;
     }

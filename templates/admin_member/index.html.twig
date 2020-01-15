@@ -60,11 +60,13 @@
 
         <div class="container">
 
-            <a class="btn btn-success" href="{{ path('admin_member_export') }}"><i class="fas fa-table fa-2x mr-2"></i>Télécharger la liste des membres</a>
+            <a class="btn btn-success" href="{{ path('admin_member_export') }}"><i class="fas fa-table fa-2x mr-2"></i>Télécharger
+                la liste des membres</a>
 
             {% for user in users %}
 
                 {% if "ROLE_MEMBER" in user.roles and "ROLE_ADMIN" not in user.roles %}
+
                     <div class="row member-row mt-5 mb-5">
 
                         <div class="col-lg-4 text-center ml-2">
@@ -107,37 +109,45 @@
         {% endif %}
 
         <div class="container">
-        {% for user in users %}
+            {% for user in users %}
 
-            {% if "ROLE_ACCESS_REMOVED" in user.roles %}
+                {% if "ROLE_ACCESS_REMOVED" in user.roles %}
 
-                <div class="row member-row mt-5 mb-5">
+                    <div class="row member-row mt-5 mb-5">
 
-                    <div class="col-lg-4 text-center ml-2">
-                        <p class="font-weight-bold">{{ user.company }}</p>
-                        <p class="text-secondary font-italic">{{ user.field }}</p>
-                        <p>{{ user.email }}</p>
+                        <div class="col-lg-4 text-center ml-2">
+                            <div class="notification-access text-danger">
+                                {% if user.isExpired %}
+                                    <i class="fas fa-info-circle"></i>
+                                    Les droits ont expiré depuis six mois
+                                {% else %}
+                                {% endif %}
+                            </div>
+
+                            <p class="font-weight-bold">{{ user.company }}</p>
+                            <p class="text-secondary font-italic">{{ user.field }}</p>
+                            <p>{{ user.email }}</p>
+                        </div>
+
+                        <div class="col-lg-4 ml-3 mt-4">
+                            <p>{{ user.firstname }} {{ user.lastname }}</p>
+                            <p>{{ user.function }}</p>
+                            <p>{{ user.phone }}</p>
+                        </div>
+
+                        <div class="col-lg-3 ml-3 d-flex flex-column mt-4">
+                            <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
+                                <button class="btn btn-warm-color w-50 m-2" type="submit">
+                                    Réaccorder les droits
+                                </button>
+                            </form>
+                            {{ include('admin_member/_delete_form.html.twig') }}
+                        </div>
                     </div>
 
-                    <div class="col-lg-4 ml-3">
-                        <p>{{ user.firstname }} {{ user.lastname }}</p>
-                        <p>{{ user.function }}</p>
-                        <p>{{ user.phone }}</p>
-                    </div>
+                {% endif %}
 
-                    <div class="col-lg-3 ml-3 d-flex flex-column">
-                        <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
-                            <button class="btn btn-warm-color w-50 m-2" type="submit">
-                                Réaccorder les droits
-                            </button>
-                        </form>
-                        {{ include('admin_member/_delete_form.html.twig') }}
-                    </div>
-
-                </div>
-            {% endif %}
-
-        {% endfor %}
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

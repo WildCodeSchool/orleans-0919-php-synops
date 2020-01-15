@@ -66,6 +66,12 @@ class Document
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
+     */
+    private $name;
+
 
     public function getId(): ?int
     {
@@ -147,5 +153,17 @@ class Document
     public function getFileName(): ?string
     {
         return $this->fileName;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
     }
 }

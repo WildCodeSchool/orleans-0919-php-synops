@@ -5,10 +5,12 @@ namespace App\Form;
 use App\Entity\Team;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class TeamType extends AbstractType
 {
@@ -27,13 +29,9 @@ class TeamType extends AbstractType
             ->add('description', CKEditorType::class, [
                 'label' => 'Carrière'
             ])
-            ->add('picture', VichImageType::class, [
-                'label' => 'Image',
-                'required' => 'true',
-                'delete_label' => 'Supprimer l\'image ?',
-                'download_label' => 'Agrandir l\'image'
-            ])
-        ;
+            ->add('picture', FileType::class, [
+                'label' => 'Photo'
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

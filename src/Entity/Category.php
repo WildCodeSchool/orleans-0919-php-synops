@@ -37,6 +37,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="category", orphanRemoval=true)
+     * @ORM\OrderBy({"id" = "DESC"})
      */
     private $comments;
 

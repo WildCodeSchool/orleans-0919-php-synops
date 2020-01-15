@@ -53,17 +53,6 @@
 
         <h2 class="title-comment text-uppercase text-primary pl-3 mb-5 mt-5">tous les avis</h2>
 
-        {% for label, messages in app.flashes %}
-            {% for message in messages %}
-                <div class="alert alert-{{ label }} alert-dismissible" role="alert">
-                    {{ message }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            {% endfor %}
-        {% endfor %}
-
         {% for comment in comments %}
             <div class="comments mt-5 mb-5">
                 <p><span class="font-weight-bold text-primary">{{ comment.author.firstname }}</span> <span

@@ -19,7 +19,9 @@ class DocumentType extends AbstractType
                 'label' => 'Sous-catégorie'])
             ->add('name', TextareaType::class, ['label' => "Nom de l'outil"])
             ->add('description', TextareaType::class, ['label' => "Description de l'outil"])
-            ->add('file', VichFileType::class)
+            ->add('file', VichFileType::class, [
+                'required' => false
+            ])
         ;
     }
 

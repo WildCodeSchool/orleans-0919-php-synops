@@ -5,8 +5,6 @@ namespace App\Entity;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Exception;
-use phpDocumentor\Reflection\Types\AbstractList;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -117,7 +115,7 @@ class Document
     /**
      * @param File|null $file
      * @return Document
-     * @throws Exception
+     * @throws \Exception
      */
     public function setFile(?File $file): Document
     {

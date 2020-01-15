@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout_admin.html.twig' %}
 
 {% block title %}Modifier un outil{% endblock %}
 
@@ -13,7 +13,8 @@
         </div>
 
         <div class="container adminUpdateButton">
-            {{ include('admin_document/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+            {{ include('admin_document/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
+
 {% endblock %}

@@ -18,7 +18,7 @@
                 {{ team.firstname }}  {{ team.lastname }}
                 <a href="{{ team.email }}"><i class="fab fa-linkedin ml-2"></i></a>
             </h2>
-            <p>{{ team.description }}</p>
+            <p>{{ team.description|raw }}</p>
         </div>
     {% endfor %}
 

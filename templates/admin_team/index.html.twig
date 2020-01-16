@@ -24,8 +24,8 @@
                     <th>Prénom</th>
                     <th>Nom</th>
                     <th>LinkedIn</th>
-                    <th>Description</th>
-                    <th>Image</th>
+                    <th>Carrière</th>
+                    <th>Photo</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -39,8 +39,10 @@
                         <td>{{ team.description }}</td>
                         <td>{{ team.picture }}</td>
                         <td>
-                            <a href="{{ path('team_edit', {'id': team.id}) }}"><i class="fas fa-pen"></i></a>
-                            <a href="{{ path('team_delete', {'id': team.id}) }}"><i class="fas fa-trash text-danger "></i></a>
+                            <div class="d-flex justify-content-around align-items-center">
+                                <a href="{{ path('team_edit', {'id': team.id}) }}"><i class="fas fa-pen"></i></a>
+                                {% include 'admin_team/_delete_form.html.twig' %}
+                            </div>
                         </td>
                     </tr>
                 {% else %}

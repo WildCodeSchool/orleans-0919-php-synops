@@ -59,7 +59,7 @@ class AdminTeamController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="team_edit", methods={"GET","POST"})
+     * @Route("/{id}/modifier", name="team_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Team $team): Response
     {
@@ -89,6 +89,6 @@ class AdminTeamController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_team_index');
+        return $this->redirectToRoute('team_index');
     }
 }

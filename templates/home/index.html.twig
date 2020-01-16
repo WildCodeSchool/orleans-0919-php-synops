@@ -8,6 +8,15 @@
 
     {% include '_backToTop.html.twig' %}
 
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="container-fluid w-100 d-flex justify-content-center">
+            <a href="{{ path('admin_index') }}" class="btn btn-warm-color">
+                Panneau d'administration
+            </a>
+        </div>
+
+    {% endif %}
+
     <section class="articles">
         {% include 'home/_article.html.twig' %}
     </section>

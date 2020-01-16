@@ -37,7 +37,7 @@
                         <td>{{ team.lastname }}</td>
                         <td>{{ team.email }}</td>
                         <td>{{ team.description }}</td>
-                        <td>{{ team.picture }}</td>
+                        <td>{{team.picture}}</td>
                         <td>
                             <a href="{{ path('team_edit', {'id': team.id}) }}"><i class="fas fa-pen"></i></a>
                             <a href="{{ path('team_delete', {'id': team.id}) }}"><i class="fas fa-trash text-danger "></i></a>

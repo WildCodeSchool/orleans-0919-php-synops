@@ -30,16 +30,15 @@ class Team
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $picture;
 
     /**
      * @ORM\Column(type="text")
      */
     private $description;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture;
 
     public function getId(): ?int
     {

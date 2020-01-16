@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -98,6 +100,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $token;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $removeAccessDate;
 
     public function __construct()
     {
@@ -295,5 +302,30 @@ class User implements UserInterface
     {
         $this->token = $token;
         return $this;
+    }
+
+    public function getRemoveAccessDate(): ?DateTime
+    {
+        return $this->removeAccessDate;
+    }
+
+    public function setRemoveAccessDate(?DateTimeInterface $removeAccessDate): self
+    {
+        $this->removeAccessDate = $removeAccessDate;
+
+        return $this;
+    }
+
+
+    public function isExpired(): bool
+    {
+        if (!$this->getRemoveAccessDate() instanceof DateTimeInterface) {
+            return false;
+        }
+
+        $actualDate = new DateTime();
+        $endingDate = $this->getRemoveAccessDate()->modify("+ 6 months");
+
+        return $endingDate < $actualDate;
     }
 }

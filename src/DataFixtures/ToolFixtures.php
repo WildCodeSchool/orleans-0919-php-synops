@@ -17,8 +17,8 @@ class ToolFixtures extends Fixture implements DependentFixtureInterface
         for ($i=0; $i<20; $i++) {
             $tool = new Tool();
             $tool->setName($faker->realText(100));
-            $tool->setDescription($faker->paragraph);
             $tool->setCategory($this->getReference('categories_' . rand(0, 4)));
+            $this->addReference('tools_' . $i, $tool);
 
             $manager->persist($tool);
         }

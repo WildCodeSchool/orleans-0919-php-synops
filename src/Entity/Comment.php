@@ -31,7 +31,6 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $category;
 
@@ -70,7 +69,10 @@ class Comment
         return $this;
     }
 
-    public function getCategory(): ?Category
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
     {
         return $this->category;
     }

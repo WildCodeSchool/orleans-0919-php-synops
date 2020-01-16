@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -92,6 +94,18 @@ class User implements UserInterface
      */
     private $lastname;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $token;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $removeAccessDate;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -102,9 +116,9 @@ class User implements UserInterface
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
-        return $this->email;
+        return $this->email ?? '';
     }
 
     public function setEmail(string $email): self
@@ -277,5 +291,41 @@ class User implements UserInterface
         $this->lastname = $lastname;
 
         return $this;
+    }
+
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    public function setToken($token)
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+    public function getRemoveAccessDate(): ?DateTime
+    {
+        return $this->removeAccessDate;
+    }
+
+    public function setRemoveAccessDate(?DateTimeInterface $removeAccessDate): self
+    {
+        $this->removeAccessDate = $removeAccessDate;
+
+        return $this;
+    }
+
+
+    public function isExpired(): bool
+    {
+        if (!$this->getRemoveAccessDate() instanceof DateTimeInterface) {
+            return false;
+        }
+
+        $actualDate = new DateTime();
+        $endingDate = $this->getRemoveAccessDate()->modify("+ 6 months");
+
+        return $endingDate < $actualDate;
     }
 }

@@ -1,0 +1,57 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Equipe{% endblock %}
+
+{% block body %}
+    <h1>Team index</h1>
+
+    <div class="container-content">
+
+        <h1 class="title">L'équipe</h1>
+
+        <div class="container-fluid admin-container admin-articles">
+
+            <div class="m-5 d-flex justify-content-start">
+                <a href="{{ path('team_new') }}">
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Nouveau membre de l'équipe</button>
+                </a>
+            </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>LinkedIn</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for team in teams %}
+                    <tr>
+                        <td>{{ team.id }}</td>
+                        <td>{{ team.firstname }}</td>
+                        <td>{{ team.lastname }}</td>
+                        <td>{{ team.email }}</td>
+                        <td>{{ team.description }}</td>
+                        <td>{{ team.picture }}</td>
+                        <td>
+                            <a href="{{ path('team_edit', {'id': team.id}) }}"><i class="fas fa-pen"></i></a>
+                            <a href="{{ path('team_delete', {'id': team.id}) }}"><i class="fas fa-trash text-danger "></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+{% endblock %}

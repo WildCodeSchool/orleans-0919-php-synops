@@ -43,6 +43,10 @@ class ToolController extends AbstractController
 
             $entityManager->persist($comment);
             $entityManager->flush();
+
+            $toolSlug = $comment->getCategory()->getSlug();
+
+            return $this->redirectToRoute('tool', ['slug' => $toolSlug, '_fragment' => 'comments']);
         }
 
         return $this->render('tool/index.html.twig', [

@@ -1,0 +1,20 @@
+{% extends 'layout_admin.html.twig' %}
+
+{% block title %}Modifier un outil{% endblock %}
+
+{% block body %}
+    <div class="container-content">
+        <h1 class="title">Modifier un outil</h1>
+
+        <div class="container mb-5">
+            <a href="{{ path('tool_index') }}">
+                <button class="btn btn-secondary">Retour aux outils</button>
+            </a>
+        </div>
+
+        <div class="container adminUpdateButton">
+            {{ include('admin_document/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        </div>
+    </div>
+
+{% endblock %}

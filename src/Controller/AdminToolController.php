@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Tool;
 use App\Form\ToolType;
 use App\Repository\CategoryRepository;
+use App\Repository\DocumentRepository;
 use App\Repository\ToolRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,11 +20,15 @@ class AdminToolController extends AbstractController
     /**
      * @Route("/", name="tool_index", methods={"GET"})
      */
-    public function index(ToolRepository $toolRepository, CategoryRepository $categoryRepository): Response
-    {
+    public function index(
+        ToolRepository $toolRepository,
+        CategoryRepository $categoryRepository,
+        DocumentRepository $documentRepository
+    ): Response {
         return $this->render('admin_tool/index.html.twig', [
             'tools' => $toolRepository->findAll(),
-            'categories' => $categoryRepository->findAll()
+            'categories' => $categoryRepository->findAll(),
+            'documents' => $documentRepository->findAll()
         ]);
     }
 
@@ -40,10 +45,11 @@ class AdminToolController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tool);
             $entityManager->flush();
-            $this->addFlash('success', 'L\'outil a été créé');
 
             return $this->redirectToRoute('tool_index');
         }
+
+        $this->addFlash('success', 'L\'outil a été créé');
 
         return $this->render('admin_tool/new.html.twig', [
             'admin_tool' => $tool,
@@ -87,7 +93,7 @@ class AdminToolController extends AbstractController
      */
     public function delete(Request $request, Tool $tool): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$tool->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $tool->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($tool);
             $entityManager->flush();

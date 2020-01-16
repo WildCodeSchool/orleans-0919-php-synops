@@ -8,7 +8,9 @@
         {% set inWaiting = 'false' %}
 
         {% for user in users %}
-            {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
+            {% if "ROLE_MEMBER" not in user.roles
+                and "ROLE_ACCESS_REMOVED" not in user.roles
+                and "ROLE_ADMIN" not in user.roles %}
                 {% set inWaiting = 'true' %}
             {% endif %}
         {% endfor %}
@@ -20,7 +22,9 @@
         <div class="container">
             {% for user in users %}
 
-                {% if "ROLE_MEMBER" not in user.roles and "ROLE_ADMIN" not in user.roles %}
+                {% if "ROLE_MEMBER" not in user.roles
+                    and "ROLE_ACCESS_REMOVED" not in user.roles
+                    and "ROLE_ADMIN" not in user.roles %}
 
                     <div class="row member-row mt-5 mb-5">
 
@@ -55,9 +59,14 @@
         <h2 class="title container-content">Membres</h2>
 
         <div class="container">
+
+            <a class="btn btn-success" href="{{ path('admin_member_export') }}"><i class="fas fa-table fa-2x mr-2"></i>Télécharger
+                la liste des membres</a>
+
             {% for user in users %}
 
                 {% if "ROLE_MEMBER" in user.roles and "ROLE_ADMIN" not in user.roles %}
+
                     <div class="row member-row mt-5 mb-5">
 
                         <div class="col-lg-4 text-center ml-2">
@@ -73,6 +82,9 @@
                         </div>
 
                         <div class="col-lg-3 ml-3 d-flex flex-column">
+                            <form action="{{ path('admin_remove_access', { id: user.id }) }}" method="post">
+                                <button class="btn btn-secondary w-50 m-2">Retirer les accès</button>
+                            </form>
                             {{ include('admin_member/_delete_form.html.twig') }}
                         </div>
 
@@ -80,10 +92,62 @@
 
                 {% endif %}
             {% else %}
-                <p>Aucun Utilisateur en base de donnée.</p>
-
+                <p>Aucun Utilisateur en base de données.</p>
             {% endfor %}
         </div>
 
+        {% set previousMembers = 'false' %}
+
+        {% for user in users %}
+            {% if "ROLE_ACCESS_REMOVED" in user.roles %}
+                {% set previousMembers = 'true' %}
+            {% endif %}
+        {% endfor %}
+
+        {% if previousMembers == 'true' %}
+            <h2 class="title container-content">Anciens Membres</h2>
+        {% endif %}
+
+        <div class="container">
+            {% for user in users %}
+
+                {% if "ROLE_ACCESS_REMOVED" in user.roles %}
+
+                    <div class="row member-row mt-5 mb-5">
+
+                        <div class="col-lg-4 text-center ml-2">
+                            <div class="notification-access text-danger">
+                                {% if user.isExpired %}
+                                    <i class="fas fa-info-circle"></i>
+                                    Les droits ont expiré depuis six mois
+                                {% else %}
+                                {% endif %}
+                            </div>
+
+                            <p class="font-weight-bold">{{ user.company }}</p>
+                            <p class="text-secondary font-italic">{{ user.field }}</p>
+                            <p>{{ user.email }}</p>
+                        </div>
+
+                        <div class="col-lg-4 ml-3 mt-4">
+                            <p>{{ user.firstname }} {{ user.lastname }}</p>
+                            <p>{{ user.function }}</p>
+                            <p>{{ user.phone }}</p>
+                        </div>
+
+                        <div class="col-lg-3 ml-3 d-flex flex-column mt-4">
+                            <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
+                                <button class="btn btn-warm-color w-50 m-2" type="submit">
+                                    Réaccorder les droits
+                                </button>
+                            </form>
+                            {{ include('admin_member/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+
+                {% endif %}
+
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

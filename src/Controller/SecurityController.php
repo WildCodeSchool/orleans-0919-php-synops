@@ -24,7 +24,6 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
@@ -58,30 +57,38 @@ class SecurityController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
+            if (true === $form['agreeTerms']->getData()) {
+                $user->setPassword(
+                    $passwordEncoder->encodePassword(
+                        $user,
+                        $form->get('password')->getData()
+                    )
+                );
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+
+                return $guardHandler->authenticateUserAndHandleSuccess(
                     $user,
-                    $form->get('password')->getData()
-                )
-            );
-
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // do anything else you need here, like send an email
-
-            return $guardHandler->authenticateUserAndHandleSuccess(
-                $user,
-                $request,
-                $authenticator,
-                'main' // firewall name in security.yaml
-            )?: new RedirectResponse('app_index');
+                    $request,
+                    $authenticator,
+                    'main' // firewall name in security.yaml
+                ) ?: new RedirectResponse('app_index');
+            }
         }
 
         return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
             'categories' => $categoryRepository->findAll()
         ]);
+    }
+
+    /**
+     * @Route("/termes-utilisation", name="terms")
+     */
+    public function terms(): Response
+    {
+        return $this->render('security/terms.html.twig');
     }
 }

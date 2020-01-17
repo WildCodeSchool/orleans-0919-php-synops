@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Partner;
+use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
@@ -16,8 +17,9 @@ class PartnerFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $partner = new Partner();
             $partner->setName(ucfirst($faker->word));
-            $partner->setLogo($faker->imageUrl());
             $partner->setLink($faker->url);
+            $partner->setUpdatedAt(new DateTime());
+            $partner->setFilenamePartner('5e207adac9f3b589597571.jpg');
             $manager->persist($partner);
         }
 

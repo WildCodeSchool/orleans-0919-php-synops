@@ -55,7 +55,7 @@ class ToolFixtures extends Fixture implements DependentFixtureInterface
     {
         $loop = 0;
 
-        foreach (self::SUBCATEGORIES as $category => $tools) {
+        foreach (self::SUBCATEGORIES as $tools) {
             foreach ($tools as $tool => $toolName) {
                 $tool = new Tool();
                 $tool->setName($toolName);

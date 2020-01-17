@@ -15,8 +15,8 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create();
 
-        foreach (ToolFixtures::SUBCATEGORIES as $category => $tools) {
-            foreach ($tools as $tool => $toolName) {
+        foreach (ToolFixtures::SUBCATEGORIES as $tools) {
+            foreach ($tools as $toolName) {
                 for ($i = 0; $i < 5; $i++) {
                     $document = new Document();
 

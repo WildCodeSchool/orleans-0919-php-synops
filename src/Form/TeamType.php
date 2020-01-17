@@ -28,7 +28,10 @@ class TeamType extends AbstractType
                 'label' => 'Carrière'
             ])
             ->add('imageFile', VichImageType::class, [
-                'label' => 'Photo'
+                'label' => 'Photo',
+                'required' => false,
+                'delete_label' => 'Supprimer l\'image ?',
+                'download_label' => 'Agrandir l\'image'
             ]);
     }
 

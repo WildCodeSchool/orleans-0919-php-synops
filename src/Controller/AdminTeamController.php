@@ -89,6 +89,6 @@ class AdminTeamController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_team_index');
+        return $this->redirectToRoute('team_index');
     }
 }

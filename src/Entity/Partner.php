@@ -2,13 +2,21 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Entity\File as EmbeddedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PartnerRepository")
  * @UniqueEntity("name", message="Ce nom de partenaire est dejà utilisé")
+ * @Vich\Uploadable()
  */
 class Partner
 {
@@ -19,15 +27,6 @@ class Partner
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message = "Ce champ ne doit pas être vide.")
-     * @Assert\Length(
-     *     max = 255,
-     *     maxMessage = "Ce lien ne peut pas faire plus de {{ limit }} caractères."
-     * )
-     */
-    private $logo;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -49,22 +48,80 @@ class Partner
      */
     private $link;
 
+    /**
+     * @var File|null
+     * @Assert\Image(
+     *     mimeTypes={
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *      }
+     * )
+     * @Assert\File(
+     *     maxSize="2M",
+     * )
+     * @Vich\UploadableField(mapping="partner_file", fileNameProperty="filenamePartner")
+     */
+    private $partnerFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     */
+    private $filenamePartner;
+
+    /**
+     * @return File|null
+     */
+    public function getPartnerFile(): ?File
+    {
+        return $this->partnerFile;
+    }
+
+    /**
+     * @param File|null $partnerFile
+     * @return Partner
+     * @throws Exception
+     */
+    public function setPartnerFile(?File $partnerFile): Partner
+    {
+        $this->partnerFile = $partnerFile;
+
+        if ($this->partnerFile instanceof UploadedFile) {
+            $this->updatedAt = new DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFilenamePartner(): ?string
+    {
+        return $this->filenamePartner;
+    }
+
+    /**
+     * @param string|null $filenamePartner
+     * @return Partner
+     */
+    public function setFilenamePartner(?string $filenamePartner): Partner
+    {
+        $this->filenamePartner = $filenamePartner;
+        return $this;
+    }
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $updatedAt;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLogo(): ?string
-    {
-        return $this->logo;
-    }
-
-    public function setLogo(string $logo): self
-    {
-        $this->logo = $logo;
-
-        return $this;
-    }
 
     public function getName(): ?string
     {
@@ -86,6 +143,18 @@ class Partner
     public function setLink(string $link): self
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

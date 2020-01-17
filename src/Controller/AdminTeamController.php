@@ -70,6 +70,8 @@ class AdminTeamController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Le membre de l\'équipe a été modifié');
+
 
             return $this->redirectToRoute('team_index');
         }

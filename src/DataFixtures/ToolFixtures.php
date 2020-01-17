@@ -53,18 +53,18 @@ class ToolFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $i = 0;
+        $loop = 0;
 
         foreach (self::SUBCATEGORIES as $category => $tools) {
             foreach ($tools as $key => $toolName) {
                 $tool = new Tool();
                 $tool->setName($toolName);
-                $tool->setCategory($this->getReference('categories_' . $i));
+                $tool->setCategory($this->getReference('categories_' . $loop));
                 $this->addReference('tools_' . $toolName, $tool);
 
                 $manager->persist($tool);
             }
-            $i++;
+            $loop++;
         }
 
         $manager->flush();

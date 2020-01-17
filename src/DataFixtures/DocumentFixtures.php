@@ -15,18 +15,21 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Faker\Factory::create();
 
-        for ($i=0; $i<40; $i++) {
-            $document = new Document();
-            $document->setDescription($faker->realText(100));
-            $document->setName($faker->realText(10));
-            $document->setTool($this->getReference('tools_' . rand(0, 19)));
-            $document->setUpdatedAt(new DateTime());
-            $document->setFileName('');
+        foreach (ToolFixtures::SUBCATEGORIES as $category => $tools) {
+            foreach ($tools as $key => $toolName) {
+                for ($i = 0; $i < 5; $i++) {
+                    $document = new Document();
 
+                    $document->setDescription($faker->realText(100));
+                    $document->setName($faker->realText(10));
+                    $document->setTool($this->getReference('tools_' . $toolName));
+                    $document->setUpdatedAt(new DateTime());
+                    $document->setFileName('');
 
-            $manager->persist($document);
+                    $manager->persist($document);
+                }
+            }
         }
-
         $manager->flush();
     }
 

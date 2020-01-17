@@ -52,7 +52,7 @@ class Team
      *      }
      * )
      * @Assert\File(
-     *     maxSize="5M",
+     *     maxSize="500k",
      * )
      * @Vich\UploadableField(mapping="team_image", fileNameProperty="imagename")
      */

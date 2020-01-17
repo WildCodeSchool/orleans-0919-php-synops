@@ -42,3 +42,8 @@ a:focus, img:focus {
 img {
     filter: grayscale(1);
 }
+
+.alert {
+    position: fixed;
+    top: 8vw;
+}

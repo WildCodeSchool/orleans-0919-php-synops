@@ -20,17 +20,17 @@
                     </div>
 
                     {% for document in tool.documents %}
-                    <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
-                         data-parent="#accordion">
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <div class="icon">
-                                    <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                        <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="icon">
+                                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                                    </div>
+                                    <p class="ml-5">{{ document.description }}</p>
                                 </div>
-                                <p class="ml-5">{{ document.description }}</p>
                             </div>
                         </div>
-                    </div>
                     {% endfor %}
                 </div>
             {% endfor %}
@@ -41,7 +41,7 @@
 
     <div class="container">
 
-        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
+        <h2 id="comments" class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
         {% if is_granted('ROLE_MEMBER') %}
             {{ include('comment/_form.html.twig') }}
         {% else %}
@@ -55,11 +55,14 @@
 
         {% for comment in comments %}
             <div class="comments mt-5 mb-5">
-                <p><span class="font-weight-bold text-primary">{{ comment.author.firstname }}</span> <span class="float-right font-italic">Le {{ comment.date|date("d/m/Y") }}</span><br>
+                <p><span class="font-weight-bold text-primary">{{ comment.author.firstname }}</span> <span
+                            class="float-right font-italic">Le {{ comment.date|date("d/m/Y") }}</span><br>
                     <span class="font-italic author-infos">
-                        {{ comment.author.function }} chez {{ comment.author.company }}
-                    </span>
+                        {{ comment.author.function }} chez {{ comment.author.company }}</span>
                 </p>
+                {% if app.user.id == comment.author.id or "ROLE_ADMIN" in app.user.roles %}
+                    {{ include('comment/_delete_form.html.twig') }}
+                {% endif %}
                 <p class="comment p-4 text-left">
                     <i class="fas fa-angle-double-left mr-2 text-primary align-middle"></i> {{ comment.comment }}
                     <i class="fas fa-angle-double-right ml-2 text-primary align-middle"></i>

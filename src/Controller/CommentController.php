@@ -16,16 +16,21 @@ class CommentController extends AbstractController
 {
     /**
      * @Route("/{id}", name="comment_delete", methods={"DELETE"})
-     * @IsGranted("ROLE_ADMIN")
+     * @param Request $request
+     * @param Comment $comment
+     * @return Response
      */
     public function delete(Request $request, Comment $comment): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
+        $toolSlug = $comment->getCategory()->getSlug();
+
+        if ($this->isCsrfTokenValid('delete' . $comment->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($comment);
             $entityManager->flush();
         }
+        $this->addFlash('success', 'Le commentaire à bien été supprimé.');
 
-        return $this->redirectToRoute('comment_index');
+        return $this->redirectToRoute('tool', ['slug' => $toolSlug, '_fragment' => 'comments']);
     }
 }

@@ -38,7 +38,7 @@ class Tool
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="tool")
+     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="tool", orphanRemoval=true)
      */
     private $documents;
 

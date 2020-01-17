@@ -6,11 +6,10 @@ use App\Entity\Tool;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Faker;
 
 class ToolFixtures extends Fixture implements DependentFixtureInterface
 {
-    const RH = [
+    const HR = [
         'Modèles de support aux Entretiens Annuels',
         'Modèles de support aux Entretiens Professionnels',
         'Modèle de Fiche de Poste',
@@ -19,7 +18,7 @@ class ToolFixtures extends Fixture implements DependentFixtureInterface
         'Modèles divers de Compte-Rendu de réunion'
     ];
 
-    const APPUI_COMMERCIAL = [
+    const BUSINESS = [
         'Liste d\'accroches téléphoniques',
         'Méthodologie d\'études de marché',
         'Conseils clés à l\'écriture d\'un pitch / d\'un argumentaire de vente',
@@ -34,14 +33,14 @@ class ToolFixtures extends Fixture implements DependentFixtureInterface
         'Divers modèles'
     ];
 
-    const GESTION_DE_PROJETS = [
+    const PROJECTS = [
         'Modèle de Compte Rendu de Réunion dans le cadre de la Gestion de Projets',
         'Méthodologie en Gestion de Projets',
         'Modèle de Planifiation en Gestion de Projets',
         'Modèle d\'Analyse de Réparition des Temps'
     ];
 
-    const FORMATION = [
+    const TRAINING = [
         'Modèle de liste de présence',
         'Modèle de convocation',
         'TODO-list de l\'organisation d\'ne formation en Interne',
@@ -50,13 +49,47 @@ class ToolFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create();
-
-        for ($i = 0; $i < 20; $i++) {
+        foreach (self::HR as $key => $name) {
             $tool = new Tool();
-            $tool->setName($faker->realText(100));
-            $tool->setCategory($this->getReference('categories_' . rand(0, 4)));
-            $this->addReference('tools_' . $i, $tool);
+            $tool->setName($name);
+            $tool->setCategory($this->getReference('categories_' . 0));
+//            $this->addReference('tools_' . $key, $tool);
+
+            $manager->persist($tool);
+        }
+
+        foreach (self::BUSINESS as $key => $name) {
+            $tool = new Tool();
+            $tool->setName($name);
+            $tool->setCategory($this->getReference('categories_' . 1));
+//            $this->addReference('tools_' . $key, $tool);
+
+            $manager->persist($tool);
+        }
+
+        foreach (self::MARKETING as $key => $name) {
+            $tool = new Tool();
+            $tool->setName($name);
+            $tool->setCategory($this->getReference('categories_' . 2));
+//            $this->addReference('tools_' . $key, $tool);
+
+            $manager->persist($tool);
+        }
+
+        foreach (self::PROJECTS as $key => $name) {
+            $tool = new Tool();
+            $tool->setName($name);
+            $tool->setCategory($this->getReference('categories_' . 3));
+//            $this->addReference('tools_' . $key, $tool);
+
+            $manager->persist($tool);
+        }
+
+        foreach (self::TRAINING as $key => $name) {
+            $tool = new Tool();
+            $tool->setName($name);
+            $tool->setCategory($this->getReference('categories_' . 4));
+//            $this->addReference('tools_' . $key, $tool);
 
             $manager->persist($tool);
         }

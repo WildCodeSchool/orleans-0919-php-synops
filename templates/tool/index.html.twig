@@ -22,12 +22,13 @@
                     {% for document in tool.documents %}
                         <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
                              data-parent="#accordion">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div class="icon">
-                                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
-                                    </div>
-                                    <p class="ml-5">{{ document.description }}</p>
+                            <div class="card-body tool_card ml-5 row justify-content-start">
+                                <a href="{{ vich_uploader_asset(document,'file') }} ">
+                                    <i class="fas fa-file-pdf fa-5x mr-5 "></i>
+                                </a>
+                                <div class="align-content-between">
+                                    <h4>{{ document.name }}</h4>
+                                    <p>{{ document.description }}</p>
                                 </div>
                             </div>
                         </div>

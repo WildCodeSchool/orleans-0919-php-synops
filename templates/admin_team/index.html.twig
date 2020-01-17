@@ -47,7 +47,10 @@
                         <td>{{ team.lastname }}</td>
                         <td>{{ team.email }}</td>
                         <td>{{ team.description }}</td>
-                        <td>{{team.picture}}</td>
+                        <td> {% if team.imagename %}
+                                <img src="{{ vich_uploader_asset(team, 'imageFile') }}" alt="image equipe" class="img-team">
+                            {% endif %}
+                        </td>
                         <td>
                             <div class="d-flex justify-content-around align-items-center">
                                 <a href="{{ path('team_edit', {'id': team.id}) }}"><i class="fas fa-pen"></i></a>

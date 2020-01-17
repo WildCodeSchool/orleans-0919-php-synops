@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class TeamType extends AbstractType
 {
@@ -26,8 +27,11 @@ class TeamType extends AbstractType
             ->add('description', CKEditorType::class, [
                 'label' => 'Carrière'
             ])
-            ->add('picture', TextType::class, [
-                'label' => 'Photo'
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Photo',
+                'required' => false,
+                'delete_label' => 'Supprimer l\'image ?',
+                'download_label' => 'Agrandir l\'image'
             ]);
     }
 

@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use App\Entity\Section;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -23,6 +25,10 @@ class ArticleType extends AbstractType
                 'required' => 'true',
                 'delete_label' => 'Supprimer l\'image ?',
                 'download_label' => 'Agrandir l\'image'
+            ])
+            ->add('section', EntityType::class, [
+                'class' => Section::class,
+                'choice_label' => 'fullSection'
             ])
             ->add('title', TextType::class, [
                 'label' => 'Titre de l\'article',

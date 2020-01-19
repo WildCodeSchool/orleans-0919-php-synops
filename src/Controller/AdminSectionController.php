@@ -68,12 +68,11 @@ class AdminSectionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('section_index');
+            $this->addFlash('success', 'La section a été modifiée');
         }
 
         return $this->render('admin_section/edit.html.twig', [
-            'admin_section' => $section,
+            'section' => $section,
             'form' => $form->createView(),
         ]);
     }

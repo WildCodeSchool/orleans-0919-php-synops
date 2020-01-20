@@ -1,5 +1,5 @@
 <form method="post" action="{{ path('partner_delete', {'id': partner.id}) }}" onsubmit="return confirm('Voulez vous supprimer ce partenaire ?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-    <button class="btn text-danger fa-2x"><i class="fas fa-trash m-2"></i></button>
+    <button class="btn btn-danger mb-5 mt-4"><i class="fas fa-trash mr-2"></i> Supprimer</button>
 </form>

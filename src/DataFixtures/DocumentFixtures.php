@@ -24,6 +24,7 @@ class DocumentFixtures extends Fixture implements DependentFixtureInterface
                     $document->setName($faker->realText(10));
                     $document->setTool($this->getReference('tools_' . $toolName));
                     $document->setUpdatedAt(new DateTime());
+                    $document->setMimeTypeFile($faker->mimeType);
                     $document->setFileName('');
 
                     $manager->persist($document);

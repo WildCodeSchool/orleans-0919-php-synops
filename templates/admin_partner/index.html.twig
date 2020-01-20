@@ -4,24 +4,25 @@
 
 {% block body %}
 
-    {% include '_backToTop.html.twig' %}
-
     <div class="container-content">
+
         <h1 class="title">Partenaires</h1>
 
-        <div class="container admin-partners">
+        {% include '_backToTop.html.twig' %}
+
+        <div class="container admin-partners mt-n5">
 
             <a href="{{ path('partner_new') }}">
-                <button class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter</button>
+                <button class="btn btn-primary"><i class="fas fa-plus mr-2"></i> Ajouter un partenaire</button>
             </a>
 
             {% for partner in partners %}
-                <div class="card mb-3 mt-3" style="max-width: 650px;">
+                <div class="card mb-3 mt-3">
                     <div class="row no-gutters bg-light">
                         <div class="col-md-4">
                             {% if partner.filenamePartner %}
                                 <img src="{{ vich_uploader_asset(partner, 'partnerFile') }}" alt="partner"
-                                     class="img-partner">
+                                     class="img-partner card-img-top">
                             {% endif %}
                         </div>
                         <div class="col-md-8">
@@ -29,9 +30,9 @@
                                 <h3 class="card-title ">{{ partner.name }}</h3>
                             </div>
 
-                            <div class="d-flex justify-content-center align-items-center">
+                            <div class="d-flex justify-content-center align-items-center flex-column">
                                 <a href="{{ path('partner_edit', {'id': partner.id}) }}">
-                                    <button class="btn align-text-bottom text-primary"><i class="fas fa-pen fa-2x"></i>
+                                    <button class="btn btn-primary align-text-bottom"><i class="fas fa-pen mr-2"></i> Modifier
                                     </button>
                                 </a>
 

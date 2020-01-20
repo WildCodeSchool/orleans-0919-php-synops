@@ -4,11 +4,13 @@
 
 {% block body %}
 
-    <div class="container-content admin_tool">
+    <div class="container-content admin-tool">
         <h1 class="title">Boîte à outils</h1>
 
+        {% include '_backToTop.html.twig' %}
+
         <div class="container">
-            <div class="button_tool mr-5 mb-5 d-flex justify-content-start">
+            <div class="button_tool mr-5 mb-5 d-flex justify-content-start mt-n5">
                 <a href="{{ path('tool_new') }}">
                     <button class="btn btn-primary"><i class="fas fa-plus mr-2"></i>Ajouter une sous-catégorie</button>
                 </a>
@@ -26,42 +28,65 @@
                     <div class="card-header card_button" id="headingOne">
                         <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
                                 data-target="#collapse{{ category.id }}"
-                                aria-expanded="false" aria-controls="collapseOne"><h3>{{ category.sector }}<i
-                                        class="fas fa-chevron-down ml-5"></i><i class="fas fa-chevron-up ml-5"></i>
-                            </h3>
+                                aria-expanded="false" aria-controls="collapseOne">
+                            <h2>
+                                {{ category.sector }}
+                                <i class="fas fa-chevron-down ml-5"></i>
+                                <i class="fas fa-chevron-up ml-5"></i>
+                            </h2>
                         </button>
                     </div>
                     {% for tool in category.tools %}
                         <div id="collapse{{ category.id }}" class="collapse" aria-labelledby="headingOne"
                              data-parent="#accordionDeals">
-                            <div class="card-body tool_card ml-2">
-                                <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ tool.name }}
-                                <a href="{{ path('tool_edit', {'id': tool.id}) }}">
-                                    <button class="btn align-text-bottom text-primary"><i
-                                                class="fas fa-pen fa-2x ml-5"></i>{{ include('admin_tool/_delete_form.html.twig') }}
-                                    </button>
-                                </a>
-                            </div>
-                            {% for document in tool.documents %}
-                                <div class="card-body tool_card ml-5 row justify-content-start">
-                                    <a href="{{ vich_uploader_asset(document,'file') }} ">
-                                        <i class="fas fa-file-pdf fa-5x mr-5 "></i>
+
+                            <div class="card-body tool-card ml-2 card-tool">
+                                <h3 class="d-block">
+                                    <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ tool.name }}
+                                </h3>
+
+                                <div class="d-flex mt-2">
+                                    <a href="{{ path('tool_edit', {'id': tool.id}) }}" class="btn btn-primary mr-2">
+                                        <i class="fas fa-pen mr-2 mt-1"></i> Modifier
                                     </a>
-                                    <div class="align-content-between">
-                                        <h4>{{ document.name }}</h4>
-                                        <p>{{ document.description }}</p>
-                                    </div>
-                                    <a href="{{ path('document_edit', {'id': document.id}) }}">
-                                        <button class="btn align-text-bottom text-primary"><i
-                                                    class="fas fa-pen fa-2x ml-5"></i>{{ include('admin_document/_delete_form.html.twig') }}
-                                        </button>
-                                    </a>
+                                    {{ include('admin_tool/_delete_form.html.twig') }}
+
                                 </div>
-                            {% else %}
-                                <tr>
-                                    <td colspan="3">Aucun outil à afficher actuellement.</td>
-                                </tr>
-                            {% endfor %}
+
+                            </div>
+
+                            <div class="documents">
+                                {% for document in tool.documents %}
+
+                                    <div class="d-flex ml-5 mr-5">
+                                        <div class="card-head d-flex">
+                                            <a href="{{ vich_uploader_asset(document,'file') }}">
+                                                <i class="fas fa-file-pdf fa-5x mr-5 "></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="card-body row d-flex flex-column">
+
+                                            <div class="align-content-between">
+                                                <h4 class="card-title">{{ document.name }}</h4>
+                                                <p class="card-text mb-4"><small class="font-italic">{{ document.description }}</small></p>
+                                            </div>
+
+                                            <div class="d-flex buttons pb-3">
+                                                <a href="{{ path('document_edit', {'id': document.id}) }}"
+                                                   class="btn btn-primary">
+                                                    <i class="fas fa-pen mr-2"></i> Modifier
+                                                </a>
+                                                {{ include('admin_document/_delete_form.html.twig') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="3">Aucun outil à afficher actuellement.</td>
+                                    </tr>
+                                {% endfor %}
+                            </div>
                         </div>
                     {% endfor %}
                 {% else %}

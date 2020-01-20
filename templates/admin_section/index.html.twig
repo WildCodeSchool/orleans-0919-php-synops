@@ -9,11 +9,11 @@
         <div class="container admin-section">
 
             <a href="{{ path('section_new') }}">
-                <button class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter</button>
+                <button class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter une section</button>
             </a>
 
             {% for section in sections %}
-                <div class="card mb-3 mt-3" style="max-width: 650px;">
+                <div class="card mb-3 mt-3">
                     <div class="row no-gutters bg-light">
 
                         <div class="col-md-8">
@@ -22,13 +22,14 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex flex-column justify-content-center align-items-center">
                             <a href="{{ path('section_edit', {'id': section.id}) }}">
-                                <button class="btn align-text-bottom text-primary"><i class="fas fa-pen fa-2x"></i>
+                                <button class="btn align-text-bottom btn-primary d-block m-1">
+                                    <i class="fas fa-pen mr-2"></i> Modifier
                                 </button>
                             </a>
 
-                            <div class="">
+                            <div class="m-1">
                                 {{ include('admin_section/_delete_form.html.twig') }}
                             </div>
                         </div>

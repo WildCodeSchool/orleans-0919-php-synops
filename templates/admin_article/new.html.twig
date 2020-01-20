@@ -9,7 +9,7 @@
 
         <div class="container mb-5">
             <a href="{{ path('article_index') }}">
-                <button type="button" class="btn btn-secondary">Retour aux actualités</button>
+                <button type="button" class="btn btn-secondary"><i class="fas fa-reply"></i> Retour aux actualités</button>
             </a>
         </div>
 
@@ -22,7 +22,7 @@
                 {{ form_row(form.content) }}
                 {{ form_row(form.date) }}
                 <div class="d-flex justify-content-center mb-5">
-                    <button class="btn btn-primary">Ajouter l'article</button>
+                    <button class="btn btn-primary"><i class="fas fa-save mr-2"></i> Ajouter l'article</button>
                 </div>
                 <div class="d-flex justify-content-center"
                 {{ include('admin_article/_form.html.twig') }}

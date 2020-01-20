@@ -10,6 +10,15 @@
         <h1 class="title">Liste des articles</h1>
     </div>
 
+    <div class="container">
+        <div class="col-12">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <button class="btn btn-primary">Rechercher</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
     <div class="container-fluid articles">
         <div class="row no-gutters">
             <div class="col-lg-12 col-xs-1">
@@ -24,6 +33,7 @@
                                 {% endif %}
 
                                 <h2 class="card-title">{{ article.title }}</h2>
+                                <p>{{ article.section.name }}</p>
                                 <p class="card-text">{{ article.content|truncate(500,true)|raw }}</p>
                                 <p class="card-text date">
                                     {{ article.date ? article.date|date('d/m/Y H:i') : '' }}
@@ -54,13 +64,15 @@
                     <i class="fas fa-angle-double-left"></i> Précédent
                 </div>
             {% else %}
-                <a href="{{ path('article_list', {'page': page-1 }) }}" class="btn btn-primary m-1">
+                <a href="{{ path('article_list', {'page': page-1 }|merge(app.request.query.all)) }}"
+                   class="btn btn-primary m-1">
                     <i class="fas fa-angle-double-left"></i> Précédent
                 </a>
             {% endif %}
 
             {% if page < nbPages %}
-                <a href="{{ path('article_list', {'page': page+1 }) }}" class="btn btn-primary m-1">
+                <a href="{{ path('article_list', {'page': page+1 }|merge(app.request.query.all)) }}"
+                   class="btn btn-primary m-1">
                     Suivant <i class="fas fa-angle-double-right"></i>
                 </a>
             {% else %}

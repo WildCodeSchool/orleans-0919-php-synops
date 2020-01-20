@@ -1,14 +1,21 @@
 <?php
 
-
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Section;
+use App\Form\ArticleSearchType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\SectionRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormFactory;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -26,18 +33,33 @@ class ArticleController extends AbstractController
     public function list(
         int $page,
         ArticleRepository $articleRepository,
-        CategoryRepository $categoryRepository
+        Request $request
     ): Response {
-        $categories = $categoryRepository->findAll();
+        /**
+         * @var FormFactory
+         */
+        $formFactory = $this->get('form.factory');
+        $form = $formFactory->createNamed('', ArticleSearchType::class);
 
-        $articles = $articleRepository->findAllPaginateAndSort($page);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $search = $data['search'];
+            $section = $data['section'];
+            $articles = $articleRepository->findLikeName($search, $section);
+        } else {
+            $articles = $articleRepository->findBy([], ['date' => 'DESC']);
+            $articles = $articleRepository->findAllPaginateAndSort($page);
+        }
+
         $nbArticles = count($articleRepository->findAllPaginateAndSort());
 
         return $this->render('article/list.html.twig', [
             'articles' => $articles,
             'page' => $page,
             'nbPages' => ceil($nbArticles / self::NB_MAX_ARTICLES_PER_PAGE),
-            'categories' => $categories
+            'form' => $form->createView(),
         ]);
     }
 

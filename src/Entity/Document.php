@@ -45,10 +45,6 @@ class Document
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Veuillez renseigner ces informations")
-     * @Assert\Length(
-     *     max = 255,
-     *     maxMessage = "Votre nom {{ value }} ne peut pas faire plus de {{ limit }} caractères"
-     * )
      */
     private $description;
 

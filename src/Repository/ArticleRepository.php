@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Controller\ArticleController;
 use App\Entity\Article;
+use App\Entity\Section;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -38,6 +39,20 @@ class ArticleRepository extends ServiceEntityRepository
             $firstResult = ($page - 1) * ArticleController::NB_MAX_ARTICLES_PER_PAGE;
             $qb->setFirstResult($firstResult)->setMaxResults(ArticleController::NB_MAX_ARTICLES_PER_PAGE);
         }
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findLikeName(?string $search = '', ?Section $section = null)
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->andWhere('a.title LIKE :title')
+            ->setParameter('title', '%' . $search . '%');
+        if ($section) {
+            $qb->andWhere('a.section = :section')
+                ->setParameter('section', $section);
+        }
+        $qb->orderBy('a.date', 'DESC');
 
         return $qb->getQuery()->getResult();
     }

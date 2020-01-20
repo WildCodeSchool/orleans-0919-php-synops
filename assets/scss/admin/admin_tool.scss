@@ -1,4 +1,4 @@
-.admin_tool {
+.admin-tool {
     .category_button {
         border-left: solid 5px $warm-color;
         padding-left: 1rem;
@@ -36,8 +36,13 @@
         color: $warm-color;
     }
 
-    h3 {
+    h2 {
         font-size: calc(22px + 6 * ((100vw - 320px) / 700));
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        text-transform: uppercase;
     }
 
     button[aria-expanded=true] .fa-chevron-down {
@@ -50,5 +55,24 @@
 
     .pointer{
         cursor:pointer;
+    }
+
+    .card-tool {
+        border-bottom: solid 1px lighten($secondary-color, 55%);
+    }
+
+    .card-tool:hover{
+        color: $primary-color;
+        background-color: lighten($secondary-color, 65%);
+    }
+}
+
+.documents {
+    display: flex;
+    flex-direction: column;
+
+    .card-head {
+        display: flex;
+        align-items: center;
     }
 }

@@ -36,7 +36,7 @@
                         <td>{{ team.firstname }}</td>
                         <td>{{ team.lastname }}</td>
                         <td>{{ team.email }}</td>
-                        <td>{{ team.description }}</td>
+                        <td>{{ team.description|raw }}</td>
                         <td> {% if team.imagename %}
                                 <img src="{{ vich_uploader_asset(team, 'imageFile') }}" alt="image equipe" class="img-team">
                             {% endif %}

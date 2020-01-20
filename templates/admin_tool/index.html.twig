@@ -57,26 +57,28 @@
 
                             <div class="documents">
                                 {% for document in tool.documents %}
-                                    <div class="d-flex">
-                                        <div class="card-head ml-5 d-flex">
+
+                                    <div class="d-flex ml-5 mr-5">
+                                        <div class="card-head d-flex">
                                             <a href="{{ vich_uploader_asset(document,'file') }}">
                                                 <i class="fas fa-file-pdf fa-5x mr-5 "></i>
                                             </a>
                                         </div>
 
-                                        <div class="card-body row d-flex">
+                                        <div class="card-body row d-flex flex-column">
 
                                             <div class="align-content-between">
                                                 <h4 class="card-title">{{ document.name }}</h4>
                                                 <p class="card-text mb-4">{{ document.description }}</p>
                                             </div>
 
-                                            <a href="{{ path('document_edit', {'id': document.id}) }}"
-                                               class="btn btn-primary">
-                                                <i class="fas fa-pen mr-2"></i> Modifier
-                                            </a>
-                                            {{ include('admin_document/_delete_form.html.twig') }}
-
+                                            <div class="d-flex">
+                                                <a href="{{ path('document_edit', {'id': document.id}) }}"
+                                                   class="btn btn-primary">
+                                                    <i class="fas fa-pen mr-2"></i> Modifier
+                                                </a>
+                                                {{ include('admin_document/_delete_form.html.twig') }}
+                                            </div>
                                         </div>
                                     </div>
                                 {% else %}

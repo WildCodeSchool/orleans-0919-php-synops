@@ -23,6 +23,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Photo</th>
+                    <th>Section</th>
                     <th>Titre</th>
                     <th>Contenu</th>
                     <th>Date</th>
@@ -34,8 +35,11 @@
                     <tr>
                         <td>{{ article.id }}</td>
                         <td> {% if article.filename %}
-                                <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article" class="img-article">
+                                <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
+                                     class="img-article">
                             {% endif %}</td>
+                        <td><span style="color:{{ article.section.color ?? '' }}">{{ article.section.name ??'' }}</span>
+                        </td>
                         <td>{{ article.title }}</td>
                         <td>{{ article.content|truncate(200) }}</td>
                         <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>

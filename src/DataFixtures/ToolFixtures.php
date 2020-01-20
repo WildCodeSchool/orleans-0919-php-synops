@@ -6,21 +6,65 @@ use App\Entity\Tool;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Faker;
 
 class ToolFixtures extends Fixture implements DependentFixtureInterface
 {
+
+    const SUBCATEGORIES = [
+
+        'HR' => [
+            'Modèles de support aux Entretiens Annuels',
+            'Modèles de support aux Entretiens Professionnels',
+            'Modèle de Fiche de Poste',
+            'Modèle de rédaction d\'une annonce',
+            'Modèle de support d\'entretin d\'embauche (Savoir-Être)',
+            'Modèles divers de Compte-Rendu de réunion'
+        ],
+
+        'BUSINESS' => [
+            'Liste d\'accroches téléphoniques',
+            'Méthodologie d\'études de marché',
+            'Conseils clés à l\'écriture d\'un pitch / d\'un argumentaire de vente',
+            'Modèle de questionnnaire satisfaction client'
+        ],
+
+        'MARKETING' => [
+            'Guide de création de Plaquettes Commerciales',
+            'Liste de Banques d\'Images Libres de Droits',
+            'Liste de Documents pouvant contribuer à la Notoriété d\'une Entreprise',
+            'Idées de Campagnes de Communication',
+            'Divers modèles'
+        ],
+
+        'PROJECTS' => [
+            'Modèle de Compte Rendu de Réunion dans le cadre de la Gestion de Projets',
+            'Méthodologie en Gestion de Projets',
+            'Modèle de Planifiation en Gestion de Projets',
+            'Modèle d\'Analyse de Réparition des Temps'
+        ],
+
+        'TRAINING' => [
+            'Modèle de liste de présence',
+            'Modèle de convocation',
+            'TODO-list de l\'organisation d\'ne formation en Interne',
+            'TODO-list de l\'organisation d\'ne formation en Externe'
+        ]
+    ];
+
     public function load(ObjectManager $manager)
     {
-        $faker = Faker\Factory::create();
+        $loop = 0;
 
-        for ($i=0; $i<20; $i++) {
-            $tool = new Tool();
-            $tool->setName($faker->realText(100));
-            $tool->setCategory($this->getReference('categories_' . rand(0, 4)));
-            $this->addReference('tools_' . $i, $tool);
+        foreach (self::SUBCATEGORIES as $tools) {
+            foreach ($tools as $tool => $toolName) {
+                $tool = new Tool();
+                $tool->setName($toolName);
+                $tool->setCategory($this->getReference('categories_' . $loop));
+                $this->addReference('tools_' . $toolName, $tool);
 
-            $manager->persist($tool);
+                $manager->persist($tool);
+            }
+            $loop++;
         }
 
         $manager->flush();

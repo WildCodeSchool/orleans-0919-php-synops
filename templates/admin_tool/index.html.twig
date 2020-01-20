@@ -39,30 +39,6 @@
                     {% for tool in category.tools %}
                         <div id="collapse{{ category.id }}" class="collapse" aria-labelledby="headingOne"
                              data-parent="#accordionDeals">
-<<<<<<< HEAD
-                            <div class="card-body tool_card ml-2">
-                                <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ tool.name }}
-                                <a href="{{ path('tool_edit', {'id': tool.id}) }}">
-                                    <button class="btn align-text-bottom text-primary"><i
-                                                class="fas fa-pen fa-2x ml-5"></i>{{ include('admin_tool/_delete_form.html.twig') }}
-                                    </button>
-                                </a>
-                            </div>
-                            {% for document in tool.documents %}
-                                <div class="card-body tool_card ml-5 row justify-content-start">
-                                    <a href="{{ vich_uploader_asset(document,'file') }} ">
-                                    <i class="{{ document.mimeIcon }} fa-5x mr-5 "></i>
-                                    </a>
-                                    <div class="align-content-between">
-                                        <h4>{{ document.name }}</h4>
-                                        <p>{{ document.description }}</p>
-                                    </div>
-                                    <a href="{{ path('document_edit', {'id': document.id}) }}">
-                                        <button class="btn align-text-bottom text-primary"><i
-                                                    class="fas fa-pen fa-2x ml-5"></i>{{ include('admin_document/_delete_form.html.twig') }}
-                                        </button>
-=======
-
                             <div class="card-body tool-card ml-2 card-tool">
                                 <h3 class="d-block">
                                     <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ tool.name }}
@@ -71,7 +47,6 @@
                                 <div class="d-flex mt-2">
                                     <a href="{{ path('tool_edit', {'id': tool.id}) }}" class="btn btn-primary mr-2">
                                         <i class="fas fa-pen mr-2 mt-1"></i> Modifier
->>>>>>> 050f4836dfaf68ae755e330b4ebc95e11321c57c
                                     </a>
                                     {{ include('admin_tool/_delete_form.html.twig') }}
 

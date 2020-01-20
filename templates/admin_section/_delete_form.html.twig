@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('section_delete', {'id': section.id}) }}" onsubmit="return confirm('Voulez vous supprimer cette section ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ section.id) }}">
+    <button class="btn btn-danger"><i class="fas fa-trash mr-2"></i> Supprimer</button>
+</form>

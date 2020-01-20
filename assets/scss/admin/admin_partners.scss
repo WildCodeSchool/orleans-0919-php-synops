@@ -2,4 +2,14 @@
     img {
         filter: grayscale(0);
     }
+
+    .card {
+        width: 100%;
+    }
+}
+
+.edit-partner {
+    .btn-secret {
+        display: none;
+    }
 }

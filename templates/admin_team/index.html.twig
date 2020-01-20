@@ -9,21 +9,11 @@
 
         <h1 class="title">L'équipe</h1>
 
-        <div class="container-fluid">
-            {% for label, messages in app.flashes %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ label }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endfor %}
-        </div>
-
         <div class="container-fluid admin-container ">
 
             <div class="m-5 d-flex justify-content-start">
                 <a href="{{ path('team_new') }}">
-                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Nouveau membre de l'équipe</button>
+                    <button class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter un membre à l'équipe</button>
                 </a>
             </div>
 
@@ -46,14 +36,14 @@
                         <td>{{ team.firstname }}</td>
                         <td>{{ team.lastname }}</td>
                         <td>{{ team.email }}</td>
-                        <td>{{ team.description }}</td>
+                        <td>{{ team.description|striptags }}</td>
                         <td> {% if team.imagename %}
                                 <img src="{{ vich_uploader_asset(team, 'imageFile') }}" alt="image equipe" class="img-team">
                             {% endif %}
                         </td>
                         <td>
-                            <div class="d-flex justify-content-around align-items-center">
-                                <a href="{{ path('team_edit', {'id': team.id}) }}"><i class="fas fa-pen"></i></a>
+                            <div class="d-flex flex-column justify-content-around align-items-center">
+                                <a href="{{ path('team_edit', {'id': team.id}) }}" class="btn btn-primary m-1"><i class="fas fa-pen mr-2"></i> Modifier</a>
                                 {% include 'admin_team/_delete_form.html.twig' %}
                             </div>
                         </td>

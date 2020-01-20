@@ -1,4 +1,4 @@
-.admin_tool {
+.admin-tool {
     .category_button {
         border-left: solid 5px $warm-color;
         padding-left: 1rem;
@@ -6,7 +6,7 @@
         text-align: start;
     }
 
-    .card{
+    .card {
         border: none;
         width: 75%;
     }
@@ -32,12 +32,17 @@
         font-size: $primary-font-size;
     }
 
-    .fa-chevron-down:hover, .fa-chevron-up:hover{
+    .fa-chevron-down:hover, .fa-chevron-up:hover {
         color: $warm-color;
     }
 
-    h3 {
+    h2 {
         font-size: calc(22px + 6 * ((100vw - 320px) / 700));
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        text-transform: uppercase;
     }
 
     button[aria-expanded=true] .fa-chevron-down {
@@ -48,7 +53,42 @@
         display: none;
     }
 
-    .pointer{
-        cursor:pointer;
+    .pointer {
+        cursor: pointer;
+    }
+
+    .card-tool {
+        border-bottom: solid 1px lighten($secondary-color, 55%);
+        color: $secondary-color;
+    }
+
+    .card-tool:hover {
+        border: none;
+        color: $primary-color;
+        background-color: lighten($secondary-color, 65%);
+    }
+}
+
+.documents {
+    display: flex;
+    flex-direction: column;
+
+    .btn-primary {
+        width: fit-content;
+    }
+
+    .buttons {
+        width: max-content;
+        border-bottom: solid 1px lighten($secondary-color, 45%);
+    }
+
+    .card-head {
+        display: flex;
+        align-items: center;
+    }
+
+    .card-title {
+        border-left: $primary-color 4px solid;
+        padding-left: 1rem;
     }
 }

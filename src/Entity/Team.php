@@ -49,6 +49,7 @@ class Team
      *          "image/png",
      *          "image/jpeg",
      *          "image/jpg",
+     *          "image/webp",
      *      }
      * )
      * @Assert\File(

@@ -40,7 +40,6 @@ class AdminToolController extends AbstractController
         $tool = new Tool();
         $form = $this->createForm(ToolType::class, $tool);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tool);

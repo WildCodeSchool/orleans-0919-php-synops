@@ -41,7 +41,7 @@
                         <td><span style="color:{{ article.section.color ?? '' }}">{{ article.section.name ??'' }}</span>
                         </td>
                         <td>{{ article.title }}</td>
-                        <td>{{ article.content|truncate(200) }}</td>
+                        <td>{{ article.content|striptags|truncate(200) }}</td>
                         <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>
                         <td class="buttons">
                             <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary mb-2 mt-4">

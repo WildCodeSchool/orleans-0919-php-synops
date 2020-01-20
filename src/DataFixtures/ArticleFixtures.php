@@ -5,10 +5,11 @@ namespace App\DataFixtures;
 use App\Entity\Article;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class ArticleFixtures extends Fixture
+class ArticleFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -21,9 +22,15 @@ class ArticleFixtures extends Fixture
             $article->setDate($faker->dateTime);
             $article->setUpdatedAt(new DateTime());
             $article->setFilename('placeholder.png');
+            $article->setSection($this->getReference('section_' . rand(0, 9)));
             $manager->persist($article);
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [SectionFixtures::class];
     }
 }

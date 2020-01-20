@@ -1,0 +1,22 @@
+{% extends 'layout_admin.html.twig' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Sections{% endblock %}
+
+{% block body %}
+    <div class="container-content">
+        <h1 class="title">Ajouter une section à un article</h1>
+
+
+        <div class="container mb-5">
+            <a href="{{ path('section_index') }}">
+                <button class="btn btn-secondary">Retour aux sections</button>
+            </a>
+        </div>
+
+        <div class="container">
+            {{ include('admin_section/_form.html.twig') }}
+        </div>
+
+    </div>
+{% endblock %}

@@ -2,10 +2,17 @@
 
 namespace App\Entity;
 
+use Exception;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TeamRepository")
+ * @Vich\Uploadable
  */
 class Team
 {
@@ -30,15 +37,40 @@ class Team
      * @ORM\Column(type="string", length=255)
      */
     private $email;
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $picture;
 
     /**
      * @ORM\Column(type="text")
      */
     private $description;
+    /**
+     * @var File|null
+     * @Assert\Image(
+     *     mimeTypes={
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *          "image/webp",
+     *      }
+     * )
+     * @Assert\File(
+     *     maxSize="500k",
+     * )
+     * @Vich\UploadableField(mapping="team_image", fileNameProperty="imagename")
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string|null
+     */
+    private $imagename;
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -93,15 +125,49 @@ class Team
         return $this;
     }
 
-    public function getPicture(): ?string
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $imageFile
+     */
+    public function setImageFile(?File $imageFile = null): void
     {
-        return $this->picture;
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new DateTime('now');
+        }
     }
 
-    public function setPicture(string $picture): self
+    /**
+     * @return File|null
+     */
+    public function getImageFile(): ?File
     {
-        $this->picture = $picture;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function setImageName(?string $imagename): void
+    {
+        $this->imagename = $imagename;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imagename;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 }

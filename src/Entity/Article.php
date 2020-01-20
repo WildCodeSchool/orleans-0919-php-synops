@@ -106,6 +106,11 @@ class Article
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="articles")
+     */
+    private $section;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -208,6 +213,18 @@ class Article
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getSection(): ?Section
+    {
+        return $this->section;
+    }
+
+    public function setSection(?Section $section): self
+    {
+        $this->section = $section;
 
         return $this;
     }

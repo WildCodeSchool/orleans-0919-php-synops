@@ -32,16 +32,11 @@
                                 {{ include('admin_section/_delete_form.html.twig') }}
                             </div>
                         </div>
-
                     </div>
                 </div>
             {% else %}
-                <tr>
-                    <td colspan="4">no records found</td>
-                </tr>
+                <h2 class="m-5">Aucune section à afficher actuellement.</h2>
             {% endfor %}
-
-
         </div>
     </div>
 {% endblock %}

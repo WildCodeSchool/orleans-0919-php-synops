@@ -5,5 +5,302 @@
 {% block body %}
     <section class="index-admin">
 
+        <div class="guide">
+            <h1 class="title">Utiliser le panneau d'administration</h1>
+
+            <div class="accordion" id="accordionExample">
+                <div class="d-flex">
+                    <div id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Les partenaires
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                La boîte à outils
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="headingThree">
+                        <h2 class="mb-0">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                Les membres
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="headingFour">
+                        <h2 class="mb-0">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                Les actualités
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="headingFive">
+                        <h2 class="mb-0">
+                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                    data-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive">
+                                L'équipe
+                            </button>
+                        </h2>
+                    </div>
+                </div>
+
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                     data-parent="#accordionExample">
+                    <div class="card card-body">
+                        <h2>Ajouter/Modifier un partenaire</h2>
+                        <ol>
+                            <li>Cliquez sur l'onglet <b>partenaires</b> dans la barre de navigation.</li>
+                            <li>Cliquez sur le boutton <b>ajouter un partenaire</b> ou <b>modifier</b> en face du
+                                partenaire
+                                que vous souhaitez modifier.
+                            </li>
+                            <li>Remplir le formulaire. Le bouton <b>Browse</b> vous permet de sélectionner une image
+                                directement depuis vos dossiers. <i class="text-danger">Il est normal que le nom du
+                                    fichier sélectionné ne s'affiche pas dans la barre.</i></li>
+                            <li>Cliquez sur <b>sauvegarder</b> ou <b>mettre à jour</b></li>
+                            <li>Vous êtes redirigée vers la liste de tous les partenaires.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Supprimer un partenaire</h2>
+                        <ol>
+                            <li>Cliquez sur le boutton <b>supprimer</b> en face du partenaire que vous souhaitez
+                                supprimer.
+                            </li>
+                            <li>Confirmez la suppression en cliquant sur <b>ok</b></li>
+                            <li>Vous êtes redirigée vers la liste de tous les partenaires.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card card-body">
+                        <h2>Consulter les outils</h2>
+                        Pour consulter la liste d'outils de chaque pôle, cliquez sur la flèche. La liste des
+                        sous-catégorie et de chaque document va se dérouler.
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Ajouter/Modifier une sous-catégorie</h2>
+                        <ol>
+                            <li>Cliquez sur <b>ajouter une sous-catégorie</b> ou <b>modifier</b> une sous-catégorie
+                                précise.
+                            </li>
+                            <li>Vous êtes redirigée vers un formulaire. Sélectionnez le pôle dans lequel la
+                                sous-catégorie doit être ajoutée. Nommez la sous-catégorie.
+                            </li>
+                            <li>Cliquez sur <b>Sauvegarder</b> ou <b>Mettre à jour</b>.</li>
+                            <li>Vous êtes redirigée vers la liste de la boîte à outil.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Supprimer une sous-catégorie</h2>
+                        <ol>
+                            <li>Cliquez sur le boutton <b>supprimer</b> en face de la sous-catégorie que vous
+                                souhaitez supprimer.
+                                <i class="text-danger">Supprimer une sous-catégorie entraîne la suppression de
+                                    tous les documents reliés. Assurez-vous que la sous-catégorie est vide.</i>
+                            </li>
+                            <li>Confirmez la suppression en cliquant sur <b>ok</b></li>
+                            <li>Vous êtes redirigée vers la liste de tous les partenaires.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Ajouter/Modifier un outil, un document</h2>
+                        <ol>
+                            <li>Si vous souhaitez ajouter un document dans une nouvelle sous-catégorie, il faut
+                                préalablement créer celle-ci.
+                            </li>
+                            <li>Cliquez sur <b>ajouter un outil</b> ou <b>modifier</b> un document précis.</li>
+                            <li>Sélectionner la sous-catégorie à laquelle est reliée le document.</li>
+                            <li>Nommez le document et ajouter une brève description.</li>
+                            <li>Cliquez sur <b>Sauvegarder</b> ou <b>Mettre à jour</b>.</li>
+                            <li>Le boutton <b>browse</b> vous permet d'héberger un fichier depuis vos dossiers.
+                                <i class="text-danger">Il est normal que le nom du fichier n'apparaisse pas dans la
+                                    barre</i></li>
+                            <li>Cliquez sur <b>sauvegarder</b> ou <b>mettre à jour</b></li>
+                            <li>Vous êtes redirigée vers la liste de la boîte à outil.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Supprimer un outil, un document</h2>
+                        <ol>
+                            <li>Cliquez sur le boutton <b>supprimer</b> sous la description du document que vous
+                                souhaitez supprimer.
+                            </li>
+                            <li>Confirmez la suppression en cliquant sur <b>ok</b></li>
+                            <li>Vous êtes redirigée vers la liste de la boîte à outil.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                     data-parent="#accordionExample">
+                    <div class="card card-body">
+                        <h2>Valider un membre</h2>
+
+                        <ol>
+                            <li>Si des membres se sont inscrits, ils sont en attente de validation (le temps de procéder
+                                à des échanges, au paiement, etc...) et n'ont pas encore accès à la boîte à outils. Les
+                                membres en attente se retrouvent en haut de la page <b>Membres</b>.
+                            </li>
+                            <li>Pour valider un membre, cliquez simplement sur <b>valider le membre</b>. Il sera
+                                automatiquement transférer dans la liste des membres et aura accès à son espace client
+                                et à la boîte à outils.
+                            </li>
+                            <li>Vous pouvez également cliquer sur <b>supprimer</b> pour refuser la validation si vous
+                                n'allez finalement pas travailler ensemble.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Gérer les membres</h2>
+                        <ol>
+                            <li>Le boutton <b>télécharger la liste des membres</b> vous permet d'extraire la base de
+                                données des membres dans un ficher tableur.
+                            </li>
+                            <li>Si vous cessez temporairement de travailler avec une entreprise, cliquez sur <b>revoquer
+                                    les accès</b>. Le membre aura toujours accàs à son espace client mais pas à la boîte
+                                à outils. Il est alors transférer dans les <b>anciens membres</b>.
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Anciens membres</h2>
+                        <ol>
+                            <li>Une notification apparaît au-dessus d'un membre dont les droits ont été révoqués depuis
+                                6
+                                mois ou plus. Vous pouvez alors le supprimer en cliquant sur <b>supprimer</b>. Un membre
+                                supprimé est définitivement supprimé de la base de données avec ses informations.
+                            </li>
+                            <li>Si vous cessez temporairement de travailler avec une entreprise, cliquez sur <b>revoquer
+                                    les accès</b>. Le membre aura toujours accàs à son espace client mais pas à la boîte
+                                à outils. Il est alors transférer dans les <b>anciens membres</b>.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                     data-parent="#accordionExample">
+                    <div class="card card-body">
+                        <h2>Ajouter une section</h2>
+
+                        <ol>
+                            <li>Cliquez sur <b>ajouter une section</b> en face d'une section
+                                précise. La section permet de catégoriser les types d'actualités (portrait, témoignage,
+                                etc...)
+                            </li>
+                            <li>Nommez la section.</li>
+                            <li>Vous êtes redirigée vers la liste des sections.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Ajouter/Modifier une actualité</h2>
+
+                        <ol>
+                            <li>Cliquez sur <b>ajouter une actualité</b> ou <b>modifier</b> en face d'une actualité
+                                précise.
+                            </li>
+                            <li>Remplissez le formulaire. Le boutton <b>browse</b> vous permet d'héberger une image
+                                depuis vos dossiers.
+                            </li>
+                            <li>Sélectionnez une section. <i class="text-danger">Celle-ci doit avoir été créer au
+                                    préalable.</i>
+                            </li>
+                            <li>Nommez votre article et compléter son contenu. Vous disposez d'un outil de mise en page
+                                du texte (gras, italique, souligné, paragraphes, alignements, etc...)
+                            </li>
+                            <li>Pensez à sélectionner la date et l'heure.</li>
+                            <li>Cliquez sur <b>ajouter l'article</b> ou <b>mettre à jour</b>.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Supprimer une actualité</h2>
+                        <ol>
+                            <li>Cliquez sur <b>supprimer</b> en face de l'actualité que vous souhaitez supprimer. Elle
+                                n'apparaira plus sur le site.
+                            </li>
+                            <li>Confirmez en cliquant sur <b>ok</b></li>
+                            <li>Vous êtes redirigée vers la liste des actualités.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                     data-parent="#accordionExample">
+                    <div class="card card-body">
+                        <h2>L'équipe</h2>
+                        Dans le cas où l'équipe s'agrandisse, nous avons ajouté la possibilité d'en modifier les
+                        membres.
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Ajouter un membre à l'équipe</h2>
+
+                        <ol>
+                            <li><a href="{{ path('team_new') }}" class="btn btn-primary">Cliquez ici</a></li>
+                            <li>Remplissez le formulaire. Le boutton <b>browse</b> vous permet d'héberger une image
+                                depuis vos dossiers. Nommez le nouveau membre et compléter son profil. Vous disposez
+                                d'un outil de mise en page du texte (gras, italique, souligné, paragraphes, alignements,
+                                etc...)
+                            </li>
+                            <li>Le membre est automatiquement ajouté à la page d'accueil.</li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Modifier un membre de l'équipe</h2>
+                        <ol>
+                            <li><a href="{{ path('team_index') }}">Cliquez ici</a>
+                            </li>
+                            <li>Cliquez sur <b>modifier</b> en face du memrbe dont vous souhaitez modifier le profil,
+                                nom, photo.
+                            </li>
+                            <li>Remplissez le formulaire. Le boutton <b>browse</b> vous permet d'héberger une image
+                                depuis vos dossiers. Nommez le nouveau membre et compléter son profil. Vous disposez
+                                d'un outil de mise en page du texte (gras, italique, souligné, paragraphes, alignements,
+                                etc...)
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="card card-body border-top-0">
+                        <h2>Supprimer un membre de l'équipe</h2>
+                        <ol>
+                            <li><a href="{{ path('team_index') }}">Cliquez ici</a>
+                            </li>
+                            <li>Cliquez sur <b>supprimer</b> en face du membre que vous souhaitez supprimer.
+                            </li>
+                            <li>Confirmez en cliquant sur <b>ok</b></li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+
     </section>
 {% endblock %}

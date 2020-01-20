@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Mime\MimeTypes;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -14,11 +15,26 @@ use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
- *  @UniqueEntity("description")
+ * @UniqueEntity("description")
  * @Vich\Uploadable
  */
 class Document
 {
+    const MIMETYPE = [
+        'application/pdf' => 'fas fa-file-pdf',
+        'application/msword' => 'fas fa-file-word',
+        'application/vnd.ms-powerpoint'=> 'fas fa-file-powerpoint',
+        'application/vnd.ms-excel'=>'fas fa-file-excel',
+        'application/msexcel'=>'fas fa-file-excel',
+        'application/x-msexcel'=>'fas fa-file-excel',
+        'application/x-ms-excel'=>'fas fa-file-excel',
+        'application/x-excel'=>'fas fa-file-excel',
+        'application/xls'=>'fas fa-file-excel',
+        'application/x-xls'=>'fas fa-file-excel',
+        'application/vnd.ms-powerpoint.presentation.macroEnabled.12'=>'fas fa-file-powerpoint',
+        'default'=>"fas fa-file-alt"
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -39,7 +55,7 @@ class Document
     private $tool;
 
     /**
-     * @Vich\UploadableField(mapping="document_file", fileNameProperty="fileName")
+     * @Vich\UploadableField(mapping="document_file", fileNameProperty="fileName", mimeType="mimeTypeFile")
      * @Assert\File(
      *     maxSize="2M",
      * )
@@ -66,6 +82,10 @@ class Document
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mimeTypeFile;
 
     public function getId(): ?int
     {
@@ -159,5 +179,26 @@ class Document
         $this->name = $name;
 
         return $this;
+    }
+
+    public function getMimeTypeFile(): string
+    {
+        return $this->mimeTypeFile;
+    }
+
+    public function setMimeTypeFile(string $mimeTypeFile): self
+    {
+        $this->mimeTypeFile = $mimeTypeFile;
+
+        return $this;
+    }
+
+    public function getMimeIcon(): ?string
+    {
+        if (array_key_exists($this->getMimeTypeFile(), self::MIMETYPE)) {
+            return self::MIMETYPE[$this->getMimeTypeFile()];
+        } else {
+            return self::MIMETYPE['default'];
+        }
     }
 }

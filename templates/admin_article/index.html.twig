@@ -41,7 +41,7 @@
                         <td><span style="color:{{ article.section.color ?? '' }}">{{ article.section.name ??'' }}</span>
                         </td>
                         <td>{{ article.title }}</td>
-                        <td>{{ article.content|truncate(200) }}</td>
+                        <td>{{ article.content|striptags|truncate(200) }}</td>
                         <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>
                         <td>
                             <div class="d-flex justify-content-around align-items-center">

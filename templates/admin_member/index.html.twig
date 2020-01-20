@@ -45,7 +45,7 @@
                         <div class="col-lg-3 ml-3 d-flex flex-column">
                             <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
                                 <button class="btn btn-warm-color w-50 m-2" type="submit">
-                                    Valider le membre
+                                    <i class="fas fa-check mr-2"></i> Valider le membre
                                 </button>
                             </form>
                             {{ include('admin_member/_delete_form.html.twig') }}
@@ -66,8 +66,9 @@
 
         <div class="container">
 
-            <a class="btn btn-success" href="{{ path('admin_member_export') }}"><i class="fas fa-table fa-2x mr-2"></i>Télécharger
-                la liste des membres</a>
+            <a class="btn btn-success d-flex align-items-center mt-n5" href="{{ path('admin_member_export') }}">
+                <i class="fas fa-table fa-2x mr-2"></i>Télécharger la liste des membres
+            </a>
 
             {% for user in users %}
 
@@ -89,7 +90,7 @@
 
                         <div class="col-lg-3 ml-3 d-flex flex-column justify-content-center">
                             <form action="{{ path('admin_remove_access', { id: user.id }) }}" method="post">
-                                <button class="btn btn-secondary w-50 m-2">Retirer les accès</button>
+                                <button class="btn btn-secondary w-50 m-2"><i class="fas fa-ban mr-2"></i> Retirer les accès</button>
                             </form>
                         </div>
 
@@ -124,7 +125,7 @@
                             <div class="notification-access text-danger">
                                 {% if user.isExpired %}
                                     <i class="fas fa-info-circle"></i>
-                                    Les droits ont expiré depuis six mois
+                                    Les droits de ce membre ont expiré depuis six mois
                                 {% else %}
                                 {% endif %}
                             </div>
@@ -143,7 +144,7 @@
                         <div class="col-lg-3 ml-3 d-flex flex-column mt-4">
                             <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
                                 <button class="btn btn-warm-color w-50 m-2" type="submit">
-                                    Réaccorder les droits
+                                    <i class="far fa-check-square mr-2"></i> Rendre les accès
                                 </button>
                             </form>
                             {{ include('admin_member/_delete_form.html.twig') }}

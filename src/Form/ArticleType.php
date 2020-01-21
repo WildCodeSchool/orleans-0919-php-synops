@@ -22,7 +22,7 @@ class ArticleType extends AbstractType
         $builder
             ->add('pictureFile', VichImageType::class, [
                 'label' => 'Image',
-                'required' => 'true',
+                'required' => false,
                 'delete_label' => 'Supprimer l\'image ?',
                 'download_label' => 'Agrandir l\'image'
             ])

@@ -55,11 +55,12 @@ class Article
      *     mimeTypes={
      *          "image/png",
      *          "image/jpeg",
+     *          "image/webp",
      *          "image/jpg",
      *      }
      * )
      * @Assert\File(
-     *     maxSize="5M",
+     *     maxSize="2M",
      * )
      * @Vich\UploadableField(mapping="article_image", fileNameProperty="filename")
      */

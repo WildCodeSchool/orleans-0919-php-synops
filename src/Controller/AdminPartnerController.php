@@ -38,6 +38,7 @@ class AdminPartnerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($partner);
             $entityManager->flush();
+            $this->addFlash('success', 'Le partenaire a été créé');
 
             return $this->redirectToRoute('partner_index');
         }
@@ -68,6 +69,7 @@ class AdminPartnerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'Le partenaire a été modifié');
 
             return $this->redirectToRoute('partner_index');
         }
@@ -87,6 +89,7 @@ class AdminPartnerController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partner);
             $entityManager->flush();
+            $this->addFlash('danger', 'Le partenaire a été supprimé');
         }
 
         return $this->redirectToRoute('partner_index');

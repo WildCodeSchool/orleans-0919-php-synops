@@ -44,7 +44,7 @@ class AdminToolController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($tool);
             $entityManager->flush();
-            $this->addFlash('success', 'La sous-catégorie a été créé');
+            $this->addFlash('success', 'La sous-catégorie a été créée');
 
 
             return $this->redirectToRoute('tool_index');
@@ -78,7 +78,7 @@ class AdminToolController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('success', 'La sous-catégorie a été modifié');
+            $this->addFlash('success', 'La sous-catégorie a été modifiée');
 
             return $this->redirectToRoute('tool_index');
         }
@@ -98,7 +98,7 @@ class AdminToolController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($tool);
             $entityManager->flush();
-            $this->addFlash('danger', 'La sous-catégorie a été supprimé');
+            $this->addFlash('danger', 'La sous-catégorie a été supprimée');
         }
 
         return $this->redirectToRoute('tool_index');

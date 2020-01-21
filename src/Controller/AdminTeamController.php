@@ -91,7 +91,7 @@ class AdminTeamController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($team);
             $entityManager->flush();
-            $this->addFlash('success', 'Le membre de l\'équipe a été supprimé');
+            $this->addFlash('danger', 'Le membre de l\'équipe a été supprimé');
         }
 
         return $this->redirectToRoute('team_index');

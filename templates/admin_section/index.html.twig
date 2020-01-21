@@ -12,6 +12,11 @@
                 <button class="btn btn-primary"><i class="fas fa-plus"></i> Ajouter une section</button>
             </a>
 
+            <a href="{{ path('article_index') }}">
+                <button type="button" class="btn btn-secondary ml-5"><i class="fas fa-reply mr-2"></i> Retour aux actualités
+                </button>
+            </a>
+
             {% for section in sections %}
                 <div class="card mb-3 mt-3">
                     <div class="row no-gutters bg-light">

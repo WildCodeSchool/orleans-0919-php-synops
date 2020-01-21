@@ -23,17 +23,18 @@
         <div class="row no-gutters">
             <div class="col-lg-12 col-xs-1">
                 <div class="row justify-content-around d-flex flex-wrap">
+
                     {% for article in articles %}
                         <div class="card">
                             <div class="card-body">
-
+                                <div class="badge d-flex justify-content-end"
+                                     style="color:{{ article.section.color }}">{{ article.section.name }}
+                                </div>
                                 {% if article.filename %}
                                     <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
                                          class="card-img-top">
                                 {% endif %}
-
                                 <h2 class="card-title">{{ article.title }}</h2>
-                                <p>{{ article.section.name }}</p>
                                 <p class="card-text">{{ article.content|truncate(500,true)|raw }}</p>
                                 <p class="card-text date">
                                     {{ article.date ? article.date|date('d/m/Y H:i') : '' }}

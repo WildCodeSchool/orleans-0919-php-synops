@@ -8,8 +8,10 @@
             <h1 class="title"> {{ article.title }}</h1>
         </div>
         <div class="container">
+
+            <h2 class="badge-section" style="color:{{ article.section.color }}">{{ article.section.name }}</h2>
             <p class="card-text date">
-                {{ article.date ? article.date|localizeddate('long','short') }}
+                Publié le {{ article.date|date('d/m/Y H:i') }}
             </p>
             <div class="card mb-3 border-none">
                 {% if article.filename %}

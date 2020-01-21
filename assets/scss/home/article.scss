@@ -32,6 +32,11 @@
         font-weight: bold;
     }
 
+    .badge {
+        font-size: 14pt;
+        font-style: italic;
+    }
+
     .btn btn-dark {
         background-color: $secondary-color;
     }
@@ -52,20 +57,20 @@
 
     .buttons {
         .btn {
-            width:8rem;
+            width: 8rem;
         }
     }
 }
 
 .btn-inactive {
     background-color: $secondary-color;
-    color:$light-color;
+    color: $light-color;
     cursor: default;
-    border:none;
+    border: none;
 }
 
 .btn-inactive:hover {
-    color:$light-color;
+    color: $light-color;
 }
 
 

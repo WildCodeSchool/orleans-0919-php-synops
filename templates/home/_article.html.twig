@@ -17,8 +17,12 @@
 
                     <div class="card">
                         <div class="card-body">
+                            <div class="badge d-flex justify-content-end"
+                                 style="color:{{ article.section.color }}">{{ article.section.name }}
+                            </div>
                             {% if article.filename %}
-                                <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article" class="card-img-top">
+                                <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
+                                     class="card-img-top">
                             {% endif %}
                             <h2 class="card-title">{{ article.title }}</h2>
                             <p class="card-text">{{ article.content|truncate(250,true)|raw }}</p>

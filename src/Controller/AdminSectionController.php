@@ -86,7 +86,7 @@ class AdminSectionController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($section);
             $entityManager->flush();
-            $this->addFlash('success', 'La section a été supprimée');
+            $this->addFlash('danger', 'La section a été supprimée');
         }
 
         return $this->redirectToRoute('section_index');

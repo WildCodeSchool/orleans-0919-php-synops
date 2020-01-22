@@ -29,7 +29,7 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
      * @Assert\Length(
      *     max = 255,
      *     maxMessage = "Votre titre ne peut pas faire plus de {{ limit }} caractères"
@@ -45,7 +45,7 @@ class Article
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="Veuillez renseigner ces informations")
      */
     private $content;
 

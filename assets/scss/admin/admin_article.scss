@@ -24,3 +24,37 @@
         object-fit: cover;
     }
 }
+
+.admin-list-article {
+    .date {
+        font-style: italic;
+        text-align: right;
+        color: $primary-color;
+    }
+
+    .card {
+        margin-top: 2rem;
+        width: 30rem;
+    }
+
+    .card-img-top {
+        height: 20rem;
+        object-fit: cover;
+    }
+
+    .card-title {
+        margin-top: 1em;
+        font-size: 2em;
+        color: $primary-color;
+        font-weight: bold;
+    }
+
+    .badge {
+        font-size: 14pt;
+        font-style: italic;
+    }
+
+    p {
+        line-height: 30px;
+    }
+}

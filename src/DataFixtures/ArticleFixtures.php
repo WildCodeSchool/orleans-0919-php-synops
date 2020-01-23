@@ -25,11 +25,8 @@ class ArticleFixtures extends Fixture
             $manager->persist($article);
 
             $this->addReference('article_' . $i, $article);
-
         }
 
         $manager->flush();
     }
-
-
 }

@@ -90,7 +90,9 @@
 
                         <div class="col-lg-3 ml-3 d-flex flex-column justify-content-center">
                             <form action="{{ path('admin_remove_access', { id: user.id }) }}" method="post">
-                                <button class="btn btn-secondary w-50 m-2"><i class="fas fa-ban mr-2"></i> Retirer les accès</button>
+                                <button class="btn btn-secondary w-50 m-2"><i class="fas fa-ban mr-2"></i> Retirer les
+                                    accès
+                                </button>
                             </form>
                         </div>
 
@@ -122,14 +124,6 @@
                     <div class="row member-row mt-5 mb-5">
 
                         <div class="col-lg-4 text-center ml-2">
-                            <div class="notification-access text-danger">
-                                {% if user.isExpired %}
-                                    <i class="fas fa-info-circle"></i>
-                                    Les droits de ce membre ont expiré depuis six mois
-                                {% else %}
-                                {% endif %}
-                            </div>
-
                             <p class="font-weight-bold">{{ user.company }}</p>
                             <p class="text-secondary font-italic">{{ user.field }}</p>
                             <p>{{ user.email }}</p>
@@ -148,6 +142,15 @@
                                 </button>
                             </form>
                             {{ include('admin_member/_delete_form.html.twig') }}
+                        </div>
+                        <div class="col-lg-8 mt-2">
+                            <div class="notification-access text-danger">
+                                {% if user.isExpired %}
+                                    <i class="fas fa-info-circle"></i>
+                                    {{ user.company }} ne dispose plus des accès au site depuis maintenant six mois
+                                {% else %}
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
 

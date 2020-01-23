@@ -9,7 +9,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker;
 
-class ArticleFixtures extends Fixture implements DependentFixtureInterface
+class ArticleFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
@@ -22,15 +22,14 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article->setDate($faker->dateTime);
             $article->setUpdatedAt(new DateTime());
             $article->setFilename('placeholder.png');
-            $article->getSections($this->getReference('section_' . rand(0, 9)));
             $manager->persist($article);
+
+            $this->addReference('article_' . $i, $article);
+
         }
 
         $manager->flush();
     }
 
-    public function getDependencies()
-    {
-        return [SectionFixtures::class];
-    }
+
 }

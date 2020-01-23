@@ -8,7 +8,7 @@
 }
 
 .logo-fb, .logo-in {
-    @include font-size(37px);
+    @include font-size(50px);
     padding: 10px;
 }
 
@@ -20,6 +20,10 @@
     height: 7.3vw;
 }
 
+.logo-responsive {
+    height: calc(2.5rem + 3.3vw);
+}
+
 .custom-toggler.navbar-toggler {
     border: none;
 }
@@ -27,12 +31,12 @@
 .custom-toggler .navbar-toggler-icon {
     background-image: url(
     "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(237, 181, 45)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-    height: calc(3rem + 3.3vw);
-    width: calc(3rem + 3.3vw);
+    height: calc(2.8rem + 3.3vw);
+    width: calc(2.8rem + 3.3vw);
 }
 
 .navbar-toggler {
-    border-color: $warm-color;
+    border-color: $light-color;
 }
 
 .navbar {

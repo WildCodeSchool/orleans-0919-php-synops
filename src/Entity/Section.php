@@ -29,13 +29,20 @@ class Section
     private $color;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="section", orphanRemoval=true)
+     * * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="sections")
      */
-    private $articles;
+    private $article;
 
-    public function __construct()
+    public function getArticle(): ?Article
     {
-        $this->articles = new ArrayCollection();
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -63,37 +70,6 @@ class Section
     public function setColor(string $color): self
     {
         $this->color = $color;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Article[]
-     */
-    public function getArticles(): Collection
-    {
-        return $this->articles;
-    }
-
-    public function addArticle(Article $article): self
-    {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-            $article->setSection($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(Article $article): self
-    {
-        if ($this->articles->contains($article)) {
-            $this->articles->removeElement($article);
-            // set the owning side to null (unless already changed)
-            if ($article->getSection() === $this) {
-                $article->setSection(null);
-            }
-        }
 
         return $this;
     }

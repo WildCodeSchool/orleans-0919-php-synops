@@ -37,11 +37,17 @@
                 {% for article in articles %}
                     <tr>
                         <td>{{ article.id }}</td>
-                        <td> {% if article.filename %}
+
+                        <td>
+                            {% if article.filename %}
                                 <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
                                      class="img-article">
-                            {% endif %}</td>
-                        <td><span style="color:{{ article.section.color ?? '' }}">{{ article.section.name ??'' }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% for section in article.sections %}
+                            <span style="color:{{ section.color }}">{{ section.name }}</span>
+                            {% endfor %}
                         </td>
                         <td>{{ article.title }}</td>
                         <td>{{ article.content|striptags|truncate(200) }}</td>

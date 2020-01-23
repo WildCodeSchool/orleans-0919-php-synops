@@ -22,7 +22,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article->setDate($faker->dateTime);
             $article->setUpdatedAt(new DateTime());
             $article->setFilename('placeholder.png');
-            $article->setSection($this->getReference('section_' . rand(0, 9)));
+            $article->getSections($this->getReference('section_' . rand(0, 9)));
             $manager->persist($article);
         }
 

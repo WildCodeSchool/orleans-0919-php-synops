@@ -8,8 +8,9 @@
             <h1 class="title"> {{ article.title }}</h1>
         </div>
         <div class="container">
-
-            <h2 class="badge-section" style="color:{{ article.section.color }}">{{ article.section.name }}</h2>
+            {% if article.section.name is defined and article.section.color is defined %}
+                <h2 class="badge-section" style="color:{{ article.section.color }}">{{ article.section.name }}</h2>
+            {% endif %}
             <p class="card-text date">
                 Publié le {{ article.date|date('d/m/Y H:i') }}
             </p>

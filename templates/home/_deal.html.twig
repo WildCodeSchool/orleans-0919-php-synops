@@ -1,22 +1,188 @@
 <h2 class="title">NOTRE OFFRE</h2>
 <div class="accordion row justify-content-center " id="accordionDeals">
     <div class="card">
-        {% for category in categories %}
-            <div class="card-header card_button" id="headingOne">
-                <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
-                        data-target="#collapse{{ category.id }}"
-                        aria-expanded="false" aria-controls="collapseOne"><h3>{{ category.sector }}<i
-                                class="fas fa-chevron-down ml-5"></i><i class="fas fa-chevron-up ml-5"></i></h3>
-                </button>
+
+        <div class="card-header card_button" id="headingOne">
+            <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
+                    data-target="#collapseHR"
+                    aria-expanded="false" aria-controls="collapseOne">
+                <h3>Accompagnement RH
+                    <i class="fas fa-chevron-down ml-5"></i><i class="fas fa-chevron-up ml-5"></i>
+                </h3>
+            </button>
+        </div>
+
+        <div id="collapseHR" class="collapse" aria-labelledby="headingOne"
+             data-parent="#accordionDeals">
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Gestion des compétences
             </div>
-            {% for tool in category.tools %}
-                <div id="collapse{{ category.id }}" class="collapse" aria-labelledby="headingOne"
-                     data-parent="#accordionDeals">
-                    <div class="card-body tool_card ml-3">
-                        <i class="fas fa-1x fa-angle-double-right mr-3"></i>{{ tool.name }}
-                    </div>
-                </div>
-            {% endfor %}
-        {% endfor %}
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Recrutement
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Marque employeur
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Animation CODIR / COPIL / COMEX
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Politique d'évacuation du personnel
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Accompagnement au dialogue social
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Fidélisation du personnel
+            </div>
+        </div>
+
+
+        <div class="card-header card_button" id="headingOne">
+            <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
+                    data-target="#collapseBusiness"
+                    aria-expanded="false" aria-controls="collapseOne">
+                <h3>Appui commercial
+                    <i class="fas fa-chevron-down ml-5"></i><i class="fas fa-chevron-up ml-5"></i>
+                </h3>
+            </button>
+        </div>
+
+        <div id="collapseBusiness" class="collapse" aria-labelledby="headingOne"
+             data-parent="#accordionDeals">
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Diagnostic de la force commerciale
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Animation équipe commerciale / management à distance
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Développement de l'opportunité commerciale
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Process, traitement de l'information commerciale
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Appui à l'argumentaire commercial
+            </div>
+        </div>
+
+
+        <div class="card-header card_button" id="headingOne">
+            <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
+                    data-target="#collapseMarketing"
+                    aria-expanded="false" aria-controls="collapseOne">
+                <h3>Appui marketing & communicaton
+                    <i class="fas fa-chevron-down ml-5"></i><i class="fas fa-chevron-up ml-5"></i>
+                </h3>
+            </button>
+        </div>
+
+        <div id="collapseMarketing" class="collapse" aria-labelledby="headingOne"
+             data-parent="#accordionDeals">
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Élaboration de la stratégie de communication
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Élaboration des stratégies marketing
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Conduite de campagnes, d'opérations marketing ponctuelles
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Refonte / création de la communication
+            </div>
+        </div>
+
+
+        <div class="card-header card_button" id="headingOne">
+            <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
+                    data-target="#collapseProjects"
+                    aria-expanded="false" aria-controls="collapseOne">
+                <h3>Conduite et gestion de projets
+                    <i class="fas fa-chevron-down ml-5"></i><i class="fas fa-chevron-up ml-5"></i>
+                </h3>
+            </button>
+        </div>
+
+        <div id="collapseProjects" class="collapse" aria-labelledby="headingOne"
+             data-parent="#accordionDeals">
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Accompagnement pour la création et la mise en actions du plan stratégique
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Nouvelles organisations de travail
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Management de transition
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Digitalisation
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Évènementiel
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Relations partenaires, actionnaires, sponsors
+            </div>
+        </div>
+
+
+        <div class="card-header card_button" id="headingOne">
+            <button class="btn btn-link category_button mb-3" type="button" data-toggle="collapse"
+                    data-target="#collapseTraining"
+                    aria-expanded="false" aria-controls="collapseOne">
+                <h3>Formation
+                    <i class="fas fa-chevron-down ml-5"></i><i class="fas fa-chevron-up ml-5"></i>
+                </h3>
+            </button>
+        </div>
+
+        <div id="collapseTraining" class="collapse" aria-labelledby="headingOne"
+             data-parent="#accordionDeals">
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Gestion de Projets
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Stratégie marketing et communication
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Gestion des Ressources Humaines
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Animation managériale
+            </div>
+            <div class="card-body tool_card ml-3">
+                <i class="fas fa-1x fa-angle-double-right mr-3"></i>
+                Organisation administrative des TPE-PME
+            </div>
+        </div>
+
     </div>
 </div>

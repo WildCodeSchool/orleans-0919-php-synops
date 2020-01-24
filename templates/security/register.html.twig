@@ -19,11 +19,17 @@
                 {{ form_row(registrationForm.phone) }}
                 {{ form_row(registrationForm.password.first) }}
                 {{ form_row(registrationForm.password.second) }}
-                <div class="d-flex mt-4">
-                    {{ form_row(registrationForm.agreeTerms) }}
-                    <a href="{{ path('terms') }}" title="Ouvrir dans une autre fenêtre" target="_blank"
-                       class="text-warm-color ml-1">termes d'utilisation.</a>
+                <div class="gdpr mt-4">
+                        Les informations recueillies vous concernant font l’objet d’un traitement destiné aux
+                        dirigeants de SYN’OPS pour leurs fichiers internes. Ces données ne sont pas diffusées.
+                        Conformément à la Législation en vigueur, vous bénéficiez d’un droit d’accès, de
+                        rectification, de portabilité, d’effacement de celles-ci ou une limitation du traitement.
+                        Vous pouvez vous opposer au traitement des données vous concernant et disposez du droit de
+                        retirer votre consentement à tout moment en vous adressant à la direction de SYN’OPS.
+                        Vous avez la possibilité d’introduire une réclamation auprès d’une autorité de contrôle.
+
                 </div>
+                {{ form_row(registrationForm.agreeTerms) }}
             </div>
 
             <button class="btn btn-lg btn-warm-color mt-4" type="submit">

@@ -20,7 +20,9 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
-                'label' => 'J\'accepte les',
+                'label' =>
+                    'J\'ai pris connaissance des conditions d\'utilisations de mes données personnelles 
+                    et je les accepte',
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez acceptez les termes d\'utilisation.'

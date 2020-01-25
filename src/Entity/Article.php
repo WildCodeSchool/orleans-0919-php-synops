@@ -109,6 +109,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Section", inversedBy="articles")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $section;
 

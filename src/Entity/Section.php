@@ -29,7 +29,7 @@ class Section
     private $color;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="section", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="section")
      */
     private $articles;
 

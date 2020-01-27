@@ -1,6 +1,7 @@
 @media screen and (max-width: 575px){
     .engagements {
         $smaller-pic-size: 80%;
+
         .picture {
             width: $smaller-pic-size;
             height: $smaller-pic-size;
@@ -8,6 +9,7 @@
         }
     }
 }
+
 .engagements {
     .card {
         border: none;

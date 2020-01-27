@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use DateTime;
 
 /**
  * @Route("/admin/equipe")
@@ -36,6 +37,7 @@ class AdminTeamController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $team->setUpdatedAt(new DateTime());
             $entityManager->persist($team);
             $entityManager->flush();
             $this->addFlash('success', 'Un nouveau membre a été ajouté à l\'équipe');
@@ -69,6 +71,7 @@ class AdminTeamController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $team->setUpdatedAt(new DateTime());
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Le membre de l\'équipe a été modifié');
 

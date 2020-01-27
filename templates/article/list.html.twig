@@ -27,11 +27,22 @@
                     {% for article in articles %}
                         <div class="card">
                             <div class="card-body">
+
                                 {% if article.section.name is defined and article.section.color is defined %}
-                                    <div class="badge d-flex justify-content-end"
-                                         style="color:{{ article.section.color }}">{{ article.section.name }}
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex justify-content-end mt-n2 mb-2">
+                                            <img src="{{ asset('build/images/BOUSSOLE_BLANC.png') }}"
+                                                 alt="{{ article.section.name }}"
+                                                 class="section-color rounded-circle"
+                                                 style="background-color: {{ article.section.color }}">
+                                        </div>
+
+                                        <div class="badge d-flex justify-content-end mb-2">
+                                            <div class="section">{{ article.section.name }}</div>
+                                        </div>
                                     </div>
                                 {% endif %}
+
                                 {% if article.filename %}
                                     <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
                                          class="card-img-top">

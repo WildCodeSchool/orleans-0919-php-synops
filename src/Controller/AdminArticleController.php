@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,6 +37,7 @@ class AdminArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $article->setUpdatedAt(new DateTime());
             $entityManager->persist($article);
             $entityManager->flush();
             $this->addFlash('success', 'L\'article a été créé');
@@ -68,6 +70,7 @@ class AdminArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->setUpdatedAt(new DateTime());
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'L\'article a été modifié');
 

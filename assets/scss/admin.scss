@@ -38,3 +38,7 @@
 .container-content {
     margin-top: 12rem;
 }
+
+.custom-file-label:lang(fr)::after {
+    content: 'Parcourir';
+}

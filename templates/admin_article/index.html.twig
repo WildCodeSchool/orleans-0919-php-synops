@@ -10,7 +10,7 @@
 
         {% include '_backToTop.html.twig' %}
 
-        <div class="container-fluid admin-container admin-articles">
+        <div class="container-fluid">
 
             <div class="mt-n5 mb-5 d-flex justify-content-start">
                 <a href="{{ path('article_new') }}">
@@ -20,48 +20,42 @@
                     <button class="btn btn-secondary"><i class="fas fa-share mr-2"></i> Se rendre aux sections</button>
                 </a>
             </div>
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Photo</th>
-                    <th>Section</th>
-                    <th>Titre</th>
-                    <th>Contenu</th>
-                    <th>Date</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for article in articles %}
-                    <tr>
-                        <td>{{ article.id }}</td>
-                        <td> {% if article.filename %}
-                                <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
-                                     class="img-article">
-                            {% endif %}</td>
-                        <td><span style="color:{{ article.section.color ?? '' }}">{{ article.section.name ??'' }}</span>
-                        </td>
-                        <td>{{ article.title }}</td>
-                        <td>{{ article.content|striptags|truncate(200) }}</td>
-                        <td>{{ article.date ? article.date|date('d/m/Y H:i') : '' }}</td>
-                        <td class="buttons">
-                            <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary mb-2 mt-4">
-                                <i class="fas fa-pen mr-2"></i> Modifier
-                            </a>
-                            {% include 'admin_article/_delete_form.html.twig' %}
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="6">no records found</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
         </div>
 
+        <div class="container admin-list-article">
+            <div class="row no-gutters">
+                <div class="col-lg-12 col-xs-1">
+                    <div class="justify-content-around d-flex flex-wrap">
+                        {% for article in articles %}
+                            <div class="card">
+                                <div class="card-body">
+                                    {% if article.section.name is defined and article.section.color is defined %}
+                                        <div class="badge d-flex justify-content-end"
+                                             style="color:{{ article.section.color }}">{{ article.section.name }}
+                                        </div>
+                                    {% endif %}
+                                    {% if article.filename %}
+                                        <img src="{{ vich_uploader_asset(article, 'pictureFile') }}" alt="image article"
+                                             class="card-img-top">
+                                    {% endif %}
+                                    <h2 class="card-title">{{ article.title }}</h2>
+                                    <p class="card-text">{{ article.content|striptags|truncate(200,true) }}</p>
+                                    <p class="date card-text">{{ article.date|date('d/m/Y H:i') }}</p>
+                                    <div class="d-flex justify-content-between d-flex align-items-baseline">
+                                        <a href="{{ path('article_edit', {'id': article.id}) }}"
+                                           class="btn btn-primary mb-2 mt-4">
+                                            <i class="fas fa-pen mr-2"></i> Modifier
+                                        </a>
+                                        {% include 'admin_article/_delete_form.html.twig' %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <h2 class="m-5">Aucune actualité à afficher actuellement.</h2>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 {% endblock %}

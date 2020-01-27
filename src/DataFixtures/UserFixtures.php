@@ -78,7 +78,9 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
             $user->setFunction($faker->word);
             $user->setPassword($faker->password);
             $user->setPhone($faker->phoneNumber);
+            $user->setRemoveAccessDate($faker->dateTime);
             $user->setRoles(['ROLE_MEMBER']);
+            $user->setRoles(['ROLE_ACCESS_REMOVED']);
             $manager->persist($user);
         }
 

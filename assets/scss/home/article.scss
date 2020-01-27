@@ -33,8 +33,18 @@
     }
 
     .badge {
-        font-size: 14pt;
+        font-size: 12pt;
+        font-weight: normal;
         font-style: italic;
+        background-color: $primary-color;
+        color: $light-color;
+    }
+
+    .section-color {
+        text-align: right;
+        height: 2.8rem;
+        width: 2.8rem;
+        filter: grayscale(0);
     }
 
     .btn btn-dark {

@@ -32,21 +32,6 @@
         font-weight: bold;
     }
 
-    .badge {
-        font-size: 12pt;
-        font-weight: normal;
-        font-style: italic;
-        background-color: $primary-color;
-        color: $light-color;
-    }
-
-    .section-color {
-        text-align: right;
-        height: 2.8rem;
-        width: 2.8rem;
-        filter: grayscale(0);
-    }
-
     .btn btn-dark {
         background-color: $secondary-color;
     }
@@ -60,6 +45,21 @@
             display: none;
         }
     }
+}
+
+.badge {
+    font-size: 12pt;
+    font-weight: normal;
+    font-style: italic;
+    background-color: $primary-color;
+    color: $light-color;
+}
+
+.section-color {
+    text-align: right;
+    height: 2.8rem;
+    width: 2.8rem;
+    filter: grayscale(0);
 }
 
 .pagination {

@@ -129,13 +129,13 @@
                             <p>{{ user.email }}</p>
                         </div>
 
-                        <div class="col-lg-4 ml-3 mt-4">
+                        <div class="col-lg-4 ml-3">
                             <p>{{ user.firstname }} {{ user.lastname }}</p>
                             <p>{{ user.function }}</p>
                             <p>{{ user.phone }}</p>
                         </div>
 
-                        <div class="col-lg-3 ml-3 d-flex flex-column mt-4">
+                        <div class="col-lg-3 ml-3 d-flex flex-column mt-3">
                             <form action="{{ path('admin_validate_member', { id: user.id }) }}" method="post">
                                 <button class="btn btn-warm-color w-50 m-2" type="submit">
                                     <i class="far fa-check-square mr-2"></i> Rendre les accès

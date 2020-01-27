@@ -17,7 +17,7 @@ class ArticleSearchType extends AbstractType
             ->setMethod('GET')
             ->add('search', SearchType::class, [
                 'required' => false,
-                'label' => 'Rechercher'
+                'label' => 'Rechercher par titre'
             ])
             ->add('section', EntityType::class, [
                 'class' => Section::class,

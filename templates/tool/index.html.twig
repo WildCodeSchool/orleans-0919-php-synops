@@ -44,7 +44,7 @@
 
         <div class="container">
 
-        <h2 id="comments" class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
+            <h2 id="comments" class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
             {{ include('comment/_form.html.twig') }}
 
             <h2 class="title-comment text-uppercase text-primary pl-3 mb-5 mt-5">tous les avis</h2>
@@ -69,18 +69,20 @@
 
     {% else %}
 
-        <div class="container access-denied p-5 mb-5">
-            <p>
-                Vous n'avez pas encore accès à cette page.
-                <br>
-                Veuillez attendre l'approbation des administratrices.
-            </p>
+        <div class="col-12 ">
+            <div class="container access-denied p-5 mb-5">
+                <p>
+                    Vous n'avez pas encore accès à cette page.
+                    <br>
+                    Veuillez attendre l'approbation des administratrices.
+                </p>
 
-            <p>
-                En cas de problème, n'hésitez pas à
-                <br>
-                <a href="{{ path('contact') }}" class="btn btn-warm-color mt-3">Les contacter</a>
-            </p>
+                <p>
+                    En cas de problème, n'hésitez pas à
+                    <br>
+                    <a href="{{ path('contact') }}" class="btn btn-warm-color mt-3">Les contacter</a>
+                </p>
+            </div>
         </div>
 
     {% endif %}

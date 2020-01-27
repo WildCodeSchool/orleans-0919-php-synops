@@ -5,70 +5,85 @@
 {% block body %}
     <h1 class="title container-content">{{ category.sector }}</h1>
 
-    <div class="container-fluid deal tools">
-        <div id="accordion">
-            {% for tool in category.tools %}
-                <div class="card">
-                    <div class="card-header card_button" id="headingOne">
-                        <button class="btn btn-link mb-3 text-left category_button" type="button"
-                                data-toggle="collapse"
-                                data-target="#collapse{{ tool.id }}"
-                                aria-expanded="false" aria-controls="collapseOne">
-                            <h2>{{ tool.name }} <i class="fas fa-chevron-down ml-5"></i><i
-                                        class="fas fa-chevron-up ml-5"></i></h2>
-                        </button>
-                    </div>
+    {% if is_granted("ROLE_MEMBER") %}
 
-                    {% for document in tool.documents %}
-                        <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
-                             data-parent="#accordion">
-                            <div class="card-body tool_card ml-5 row justify-content-start">
-                                <a href="{{ vich_uploader_asset(document,'file') }} ">
-                                    <i class="{{ document.mimeIcon }} fa-5x mr-5 "></i>
-                                </a>
-                                <div class="align-content-between">
-                                    <h4>{{ document.name }}</h4>
-                                    <p>{{ document.description }}</p>
+        <div class="container-fluid deal tools">
+            <div id="accordion">
+                {% for tool in category.tools %}
+                    <div class="card">
+                        <div class="card-header card_button" id="headingOne">
+                            <button class="btn btn-link mb-3 text-left category_button" type="button"
+                                    data-toggle="collapse"
+                                    data-target="#collapse{{ tool.id }}"
+                                    aria-expanded="false" aria-controls="collapseOne">
+                                <h2>{{ tool.name }} <i class="fas fa-chevron-down ml-5"></i><i
+                                            class="fas fa-chevron-up ml-5"></i></h2>
+                            </button>
+                        </div>
+
+                        {% for document in tool.documents %}
+                            <div id="collapse{{ tool.id }}" class="collapse" aria-labelledby="headingOne"
+                                 data-parent="#accordion">
+                                <div class="card-body tool_card ml-5 row justify-content-start">
+                                    <a href="{{ vich_uploader_asset(document,'file') }} ">
+                                        <i class="{{ document.mimeIcon }} fa-5x mr-5 "></i>
+                                    </a>
+                                    <div class="align-content-between">
+                                        <h4>{{ document.name }}</h4>
+                                        <p>{{ document.description }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endfor %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <h1 class="title">Commentaires</h1>
+
+        <div class="container">
+
+            <h2 id="comments" class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
+            {{ include('comment/_form.html.twig') }}
+
+            <h2 class="title-comment text-uppercase text-primary pl-3 mb-5 mt-5">tous les avis</h2>
+
+            {% for comment in comments %}
+                <div class="comments mt-5 mb-5">
+                    <p><span class="font-weight-bold text-primary">{{ comment.author.firstname }}</span> <span
+                                class="float-right font-italic">Le {{ comment.date|date("d/m/Y") }}</span><br>
+                        <span class="font-italic author-infos">
+                        {{ comment.author.function }} chez {{ comment.author.company }}</span>
+                    </p>
+                    {% if app.user.id == comment.author.id or "ROLE_ADMIN" in app.user.roles %}
+                        {{ include('comment/_delete_form.html.twig') }}
+                    {% endif %}
+                    <p class="comment p-4 text-left">
+                        <i class="fas fa-angle-double-left mr-2 text-primary align-middle"></i> {{ comment.comment }}
+                        <i class="fas fa-angle-double-right ml-2 text-primary align-middle"></i>
+                    </p>
                 </div>
             {% endfor %}
         </div>
-    </div>
 
-    <h1 class="title">Commentaires</h1>
+    {% else %}
 
-    <div class="container">
-
-        <h2 id="comments" class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
-        {% if is_granted('ROLE_MEMBER') %}
-            {{ include('comment/_form.html.twig') }}
-        {% else %}
-            Vous devez être membre pour laisser un avis.
-            <a href="{{ path('app_login') }}">
-                <button class="btn btn-warm-color">Se connecter</button>
-            </a>
-        {% endif %}
-
-        <h2 class="title-comment text-uppercase text-primary pl-3 mb-5 mt-5">tous les avis</h2>
-
-        {% for comment in comments %}
-            <div class="comments mt-5 mb-5">
-                <p><span class="font-weight-bold text-primary">{{ comment.author.firstname }}</span> <span
-                            class="float-right font-italic">Le {{ comment.date|date("d/m/Y") }}</span><br>
-                    <span class="font-italic author-infos">
-                        {{ comment.author.function }} chez {{ comment.author.company }}</span>
+        <div class="col-12 ">
+            <div class="container access-denied p-5 mb-5">
+                <p>
+                    Vous n'avez pas encore accès à cette page.
+                    <br>
+                    Veuillez attendre l'approbation des administratrices.
                 </p>
-                {% if app.user.id == comment.author.id or "ROLE_ADMIN" in app.user.roles %}
-                    {{ include('comment/_delete_form.html.twig') }}
-                {% endif %}
-                <p class="comment p-4 text-left">
-                    <i class="fas fa-angle-double-left mr-2 text-primary align-middle"></i> {{ comment.comment }}
-                    <i class="fas fa-angle-double-right ml-2 text-primary align-middle"></i>
+
+                <p>
+                    En cas de problème, n'hésitez pas à
+                    <br>
+                    <a href="{{ path('contact') }}" class="btn btn-warm-color mt-3">Les contacter</a>
                 </p>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+
+    {% endif %}
 {% endblock %}

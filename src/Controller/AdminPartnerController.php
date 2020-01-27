@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use DateTime;
 
 /**
  * @Route("/admin/partenaire")
@@ -36,6 +37,7 @@ class AdminPartnerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $partner->setUpdatedAt(new DateTime());
             $entityManager->persist($partner);
             $entityManager->flush();
             $this->addFlash('success', 'Le partenaire a été créé');
@@ -68,6 +70,7 @@ class AdminPartnerController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $partner->setUpdatedAt(new DateTime());
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', 'Le partenaire a été modifié');
 

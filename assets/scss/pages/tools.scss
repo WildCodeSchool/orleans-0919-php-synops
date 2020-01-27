@@ -1,7 +1,7 @@
 .tools {
     width: 80%;
 
-    .card-body  {
+    .card-body {
         margin-left: 5rem;
         margin-right: 5rem;
     }
@@ -27,4 +27,15 @@
 .author-infos {
     font-size: 1.3rem;
     color: $secondary-color;
+}
+
+.access-denied {
+    background-color: $primary-color;
+    color: $light-color;
+    box-shadow: -15px -15px $warm-color;
+    border-radius:calc(0.25rem - 1px);
+
+    p {
+        text-align: center;
+    }
 }

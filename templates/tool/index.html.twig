@@ -44,15 +44,8 @@
 
         <div class="container">
 
-            <h2 id="comments" class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
-            {% if is_granted('ROLE_MEMBER') %}
-                {{ include('comment/_form.html.twig') }}
-            {% else %}
-                Vous devez être membre pour laisser un avis.
-                <a href="{{ path('app_login') }}">
-                    <button class="btn btn-warm-color">Se connecter</button>
-                </a>
-            {% endif %}
+        <h2 id="comments" class="title-comment text-uppercase text-primary pl-3 mb-5">laisser un avis</h2>
+            {{ include('comment/_form.html.twig') }}
 
             <h2 class="title-comment text-uppercase text-primary pl-3 mb-5 mt-5">tous les avis</h2>
 

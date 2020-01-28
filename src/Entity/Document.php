@@ -64,7 +64,7 @@ class Document
     private $file;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @var string|null
      */
     private $fileName;
@@ -83,7 +83,7 @@ class Document
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $mimeTypeFile;
 
@@ -181,7 +181,7 @@ class Document
         return $this;
     }
 
-    public function getMimeTypeFile(): string
+    public function getMimeTypeFile(): ?string
     {
         return $this->mimeTypeFile;
     }

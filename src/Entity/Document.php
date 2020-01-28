@@ -182,9 +182,9 @@ class Document
         return $this;
     }
 
-    public function getMimeTypeFile(): ?string
+    public function getMimeTypeFile(): string
     {
-        return $this->mimeTypeFile;
+        return $this->mimeTypeFile ?? '';
     }
 
     public function setMimeTypeFile(?string $mimeTypeFile): self

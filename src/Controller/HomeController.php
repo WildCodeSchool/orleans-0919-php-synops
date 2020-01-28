@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Team;
 use App\Repository\DocumentRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\PartnerRepository;
@@ -56,5 +57,12 @@ class HomeController extends AbstractController
         $categories = $categoryRepository->findBy([], ['sector' => 'ASC']);
 
         return $this->render('_categories_in_nav.html.twig', ['categories' => $categories]);
+    }
+
+    public function footer(TeamRepository $teamRepository)
+    {
+        $teams = $teamRepository->findBy(['id'], ['id' => 'ASC'], 2);
+
+        return $this->render('home/_footer.html.twig', ['teams' => $teams]);
     }
 }

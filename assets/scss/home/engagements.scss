@@ -1,17 +1,3 @@
-@media screen and (max-width: 575px) {
-    
-    .engagements {
-        
-        $smaller-pic-size: 80%;
-
-        .picture {
-            width: $smaller-pic-size;
-            height: $smaller-pic-size;
-            margin-bottom: 2rem;
-        }
-    }
-}
-
 .engagements {
     .card {
         border: none;
@@ -55,4 +41,18 @@
     text-transform: uppercase;
     letter-spacing: 0.3rem;
 
+}
+
+@media screen and (max-width: 575px) {
+
+    .engagements {
+
+        $smaller-pic-size: 11rem;
+
+        .picture {
+            width: $smaller-pic-size;
+            height: $smaller-pic-size;
+            margin-bottom: 2rem;
+        }
+    }
 }

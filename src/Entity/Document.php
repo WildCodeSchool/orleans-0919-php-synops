@@ -23,16 +23,16 @@ class Document
     const MIMETYPE = [
         'application/pdf' => 'fas fa-file-pdf',
         'application/msword' => 'fas fa-file-word',
-        'application/vnd.ms-powerpoint'=> 'fas fa-file-powerpoint',
-        'application/vnd.ms-excel'=>'fas fa-file-excel',
-        'application/msexcel'=>'fas fa-file-excel',
-        'application/x-msexcel'=>'fas fa-file-excel',
-        'application/x-ms-excel'=>'fas fa-file-excel',
-        'application/x-excel'=>'fas fa-file-excel',
-        'application/xls'=>'fas fa-file-excel',
-        'application/x-xls'=>'fas fa-file-excel',
-        'application/vnd.ms-powerpoint.presentation.macroEnabled.12'=>'fas fa-file-powerpoint',
-        'default'=>"fas fa-file-alt"
+        'application/vnd.ms-powerpoint' => 'fas fa-file-powerpoint',
+        'application/vnd.ms-excel' => 'fas fa-file-excel',
+        'application/msexcel' => 'fas fa-file-excel',
+        'application/x-msexcel' => 'fas fa-file-excel',
+        'application/x-ms-excel' => 'fas fa-file-excel',
+        'application/x-excel' => 'fas fa-file-excel',
+        'application/xls' => 'fas fa-file-excel',
+        'application/x-xls' => 'fas fa-file-excel',
+        'application/vnd.ms-powerpoint.presentation.macroEnabled.12' => 'fas fa-file-powerpoint',
+        'default' => "fas fa-file-alt"
     ];
 
     /**
@@ -64,7 +64,7 @@ class Document
     private $file;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @var string|null
      */
     private $fileName;
@@ -83,7 +83,7 @@ class Document
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $mimeTypeFile;
 
@@ -183,7 +183,7 @@ class Document
 
     public function getMimeTypeFile(): string
     {
-        return $this->mimeTypeFile;
+        return $this->mimeTypeFile ?? '';
     }
 
     public function setMimeTypeFile(?string $mimeTypeFile): self

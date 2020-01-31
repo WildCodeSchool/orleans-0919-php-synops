@@ -1,0 +1,9 @@
+{% for team in teams %}
+    <div class="d-flex justify-content-around col-lg-4 col-12 order-{{ loop.index }}">
+        <address>
+            <p> {{ team.firstname }} {{ team.lastname }} </p>
+            <p> {{ team.phone }} </p>
+            <p> {{ team.email }} </p>
+        </address>
+    </div>
+{% endfor %}

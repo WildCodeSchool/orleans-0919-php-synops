@@ -61,8 +61,8 @@ class HomeController extends AbstractController
 
     public function footer(TeamRepository $teamRepository)
     {
-        $teams = $teamRepository->findBy(['id'], ['id' => 'ASC'], 2);
+        $teams = $teamRepository->findBy([], ['id' => 'ASC'], 2);
 
-        return $this->render('home/_footer.html.twig', ['teams' => $teams]);
+        return $this->render('_teams_in_footer.html.twig', ['teams' => $teams]);
     }
 }

@@ -35,7 +35,7 @@
     }
 
     h3 {
-        font-size: calc(22px + 6 * ((100vw - 320px) / 700));
+        @include font-size(2.5rem);
     }
 
     button[aria-expanded=true] .fa-chevron-down {

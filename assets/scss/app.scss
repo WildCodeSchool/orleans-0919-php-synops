@@ -12,6 +12,10 @@
 @import "footer";
 @import "arrow";
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
 
     p {

@@ -1,7 +1,6 @@
 .concretely {
     .smaller-title {
-        font-size: $title-size/1.5;
-        padding: 0.5rem;
+        @include font-size(2.3rem);
     }
 
     .container {

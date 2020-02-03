@@ -51,6 +51,10 @@
     z-index: 1050;
 }
 
+.dropdown-divider:last-of-type {
+    display: none;
+}
+
 .dropdown-item {
     @include font-size(25px);
     color: $light-color;

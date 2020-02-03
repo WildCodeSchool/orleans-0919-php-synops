@@ -14,8 +14,12 @@ class SectionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('color', ColorType::class)
+            ->add('name', TextType::class, [
+                'label' => 'Section',
+            ])
+            ->add('color', ColorType::class, [
+                'label' => 'Couleur',
+            ])
         ;
     }
 

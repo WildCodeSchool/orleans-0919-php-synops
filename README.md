@@ -1,12 +1,3 @@
-## Getting Started for trainers
-
-Before your students can code, you have some work to do !
-
-### Prerequisites
-
-Create a repository on Github in WildCodeSchool organization following this exemple :
-**ville-session-language-project** as **bordeaux-0219-php-servyy**
-
 ### Get starter kit
 
 1. Clone this project
@@ -18,7 +9,6 @@ Create a repository on Github in WildCodeSchool organization following this exem
 5. `git add .`
 6. `git commit -m "Init project repository"`
 7. `git push -u origin master`
-8. Run script synops_category.sql
 
 ### Check on Travis
 
@@ -51,6 +41,7 @@ Create a repository on Github in WildCodeSchool organization following this exem
 1. Clone this project
 2. Run `composer install`
 3. Run `yarn install`
+4. Run `script synops_category.sql`
 
 ### Working
 

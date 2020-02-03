@@ -38,7 +38,7 @@
                                      class="card-img-top">
                             {% endif %}
                             <h2 class="card-title">{{ article.title }}</h2>
-                            <p class="card-text">{{ article.content|striptags|truncate(250,true) }}</p>
+                            <p class="card-text">{{ article.content|striptags|truncate(250,true)|raw }}</p>
                             <p class="date card-text">{{ article.date|date('d/m/Y H:i') }}</p>
                             <a href="{{ path('article_show', {'slug': article.slug }) }}" class="card-link btn btn-warm-color">
                                 <i class="far fa-eye mr-2"></i> Lire l'article complet

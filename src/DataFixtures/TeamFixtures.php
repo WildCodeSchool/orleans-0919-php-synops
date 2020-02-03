@@ -13,7 +13,9 @@ class TeamFixtures extends Fixture
         'Anne' => [
             'firstname' => 'Anne',
             'lastname' => 'd\'HERBIGNY',
-            'email' => 'https://www.linkedin.com/in/anne-dherbigny/',
+            'email' => 'anne@syn-ops.fr',
+            'linkedin' => 'https://www.linkedin.com/in/anne-dherbigny/',
+            'phone' => '06 66 90 77 95',
             'description' => 'Anne a une expérience d’une dizaine d’années notamment dans le BTP,
              la finance et l’industrie, sur des
             fonctions supports clés.
@@ -28,7 +30,9 @@ class TeamFixtures extends Fixture
         'Quitterie' => [
             'firstname' => 'Quitterie',
             'lastname' => 'BAURÈS',
-            'email' => 'https://www.linkedin.com/in/quitterie-baurès-533547a8/',
+            'email' => 'quitterie@syn-ops.fr',
+            'linkedin' => 'https://www.linkedin.com/in/quitterie-baurès-533547a8/',
+            'phone' => '06 82 27 91 96',
             'description' => 'Quitterie a travaillé une dizaine d’années en TPE-PME & associations patronales.
             De formation initiale Assistante de Direction, elle a par la suite occupé des fonctions commerciales et
             managériales, en passant par le développement de compétences marketing/communication. 
@@ -47,6 +51,8 @@ class TeamFixtures extends Fixture
             $team->setFirstname($data['firstname']);
             $team->setLastname($data['lastname']);
             $team->setEmail($data['email']);
+            $team->setLinkedin($data['linkedin']);
+            $team->setPhone($data['phone']);
             $team->setDescription($data['description']);
             $team->setImageName($data['imagename']);
             $team->setUpdatedAt(new DateTime());

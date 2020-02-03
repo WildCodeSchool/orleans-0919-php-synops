@@ -20,7 +20,9 @@ class DocumentType extends AbstractType
             ->add('name', TextareaType::class, ['label' => "Nom de l'outil"])
             ->add('description', TextareaType::class, ['label' => "Description de l'outil"])
             ->add('file', VichFileType::class, [
-                'required' => false
+                'required' => false,
+                'delete_label' => 'Supprimer le fichier',
+                'download_label' => 'Voir le fichier'
             ])
         ;
     }

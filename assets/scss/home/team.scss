@@ -8,7 +8,7 @@
 
 .team-name {
     color: $primary-color;
-    font-size: 38pt;
+    @include font-size(3.6rem);
     text-align: center;
 }
 

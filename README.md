@@ -1,34 +1,3 @@
-# Project 3 - Starter Kit - Symfony 4.4.*
-
-![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
-
-This starter kit is here to easily start a repository for your students.
-
-It's symfony website-skeleton project with some additional tools to validate code standards.
-
-* GrumPHP, as pre-commit hook, will run 2 tools when `git commit` is run :
-  
-    * PHP_CodeSniffer to check PSR2 
-    * PHPStan will check PHP recommendation
-     
-  If tests fail, the commit is canceled and a warning message is displayed to developper.
-
-* Travis CI, as Continuous Integration will be run when a branch with active pull request is updated on github. It will run :
-
-    * Tasks to check if vendor, .idea, env.local are not versionned,
-    * PHP_CodeSniffer to check PSR2,
-    * PHPStan will check PHP recommendation.
- 
-
-## Getting Started for trainers
-
-Before your students can code, you have some work to do !
-
-### Prerequisites
-
-Create a repository on Github in WildCodeSchool organization following this exemple :
-**ville-session-language-project** as **bordeaux-0219-php-servyy**
-
 ### Get starter kit
 
 1. Clone this project
@@ -72,6 +41,7 @@ Create a repository on Github in WildCodeSchool organization following this exem
 1. Clone this project
 2. Run `composer install`
 3. Run `yarn install`
+4. Run `script synops_category.sql`
 
 ### Working
 

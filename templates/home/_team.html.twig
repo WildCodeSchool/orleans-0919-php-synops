@@ -14,9 +14,10 @@
                 <div class="team-square bg-{{ loop.index0 is even ? 'warm-color' : 'secondary' }}"></div>
                 <img src="{{ vich_uploader_asset(team, 'imageFile') }}" class="rounded-circle picture profile-picture" alt="{{ team.imageName }}">
             </div>
-            <h2 class="team-name m-5 d-flex justify-content-center">
+            <h2 class="team-name m-5 d-flex justify-content-center flex-column">
                 {{ team.firstname }}  {{ team.lastname }}
-                <a href="{{ team.linkedin }}" target="_blank"><i class="fab fa-linkedin ml-2"></i></a>
+                <a href="{{ team.linkedin }}" target="_blank">
+                    <i class="fab fa-linkedin ml-2"></i></a>
             </h2>
             <p>{{ team.description|raw }}</p>
         </div>

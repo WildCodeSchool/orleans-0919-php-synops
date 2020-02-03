@@ -1,5 +1,5 @@
 <form method="post" action="{{ path('tool_delete', {'id': tool.id}) }}"
-      onsubmit="return confirm('Supprimer cette sous-catégorie entrainera la supression de tous les documents associés. ' +
+      onsubmit="return confirm('Supprimer cette sous-catégorie entraînera la supression de tous les documents associés. ' +
        'Voulez-vous supprimer la supprimer ? ');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ tool.id) }}">
